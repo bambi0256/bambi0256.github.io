@@ -1,0 +1,46 @@
+name: Deploy Blog
+
+on:
+  push:
+    branches:
+      - main   # main 브랜치로 푸시될 때마다 실행됩니다.
+  pull_request:
+    branches:
+      - main   # PR이 main 브랜치에 생성될 때마다 실행됩니다.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout 소스 코드
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 2. Node.js 환경 설정
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'   # 사용하고자 하는 Node.js 버전
+
+      # 3. 의존성 설치
+      - name: Install dependencies
+        run: |
+          npm install marked  # marked 라이브러리를 설치 (마크다운 -> HTML 변환에 사용)
+
+      # 4. 마크다운 파일을 HTML로 변환
+      - name: Convert Markdown to HTML
+        run: |
+          node js/convert-md-to-html.js  # js/convert-md-to-html.js 실행
+
+      # 5. index.html 업데이트
+      - name: Update index.html
+        run: |
+          node js/update-index.js  # js/update-index.js 실행
+
+      # 6. 배포
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./htmlposts  # GitHub Pages에 업로드할 디렉토리
