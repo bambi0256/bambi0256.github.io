@@ -1,0 +1,22 @@
+name: Update Projects Pages
+
+on:
+  push:
+    paths:
+      - 'projectsmd/**'      # projectsmd 폴더에 변경이 있을 때 트리거
+  workflow_run:
+    workflows: ["Update Pages"]    # 'Update Pages' 워크플로우가 완료되면 실행
+    types:
+      - completed
+
+jobs:
+  update_projects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger the update-pages workflow for projects
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          workflow: "update-pages.yml"   # 트리거할 워크플로우 파일 이름
+          ref: refs/heads/main            # 트리거할 브랜치 (필요한 경우 수정)
+          inputs: 
+            trigger: 'true'   # 필요에 따라 인풋 추가
