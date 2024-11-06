@@ -1,0 +1,14 @@
+---
+title: "Blog Post Title"
+author_image: "assets/img/author.jpg"
+tags:
+  - "Tag1"
+  - "Tag2"
+  - "Tag3"
+  - "Tag4"
+date: "2024-11-06"
+---
+
+# Blog Post Title
+
+This is the content of the blog post.
