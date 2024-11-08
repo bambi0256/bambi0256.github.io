@@ -14,8 +14,24 @@ def load_metadata_from_md(filepath):
     """Extract metadata from markdown file header."""
     with open(filepath, 'r') as file:
         lines = file.readlines()
-    metadata = yaml.safe_load("".join(lines[:lines.index('---', 1) + 1]))
-    return metadata
+
+    # 메타데이터의 경계를 찾기 위해 첫 번째와 두 번째 '---'의 위치를 확인
+    if lines[0].strip() == '---':
+        end_idx = None
+        for i in range(1, len(lines)):
+            if lines[i].strip() == '---':
+                end_idx = i
+                break
+
+        if end_idx:
+            metadata_content = "".join(lines[1:end_idx])
+            metadata = yaml.safe_load(metadata_content)
+            return metadata
+        else:
+            raise ValueError("Markdown file does not contain closing '---' for metadata")
+    else:
+        raise ValueError("Markdown file does not contain starting '---' for metadata")
+
 
 def convert_md_to_html(filepath):
     """Convert markdown to HTML."""
