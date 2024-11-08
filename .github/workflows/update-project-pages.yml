@@ -40,6 +40,4 @@ jobs:
         git config --local user.name "GitHub Actions Bot"
         git add .
         git commit -m "Auto-update blog pages and index"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }}
