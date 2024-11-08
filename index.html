@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="./assets/css/indexstyle.css">
+    <style>
+        /* 버튼 정렬 및 스타일 */
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .see-my-works, .about-me-link {
+            text-decoration: none;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">Instagram</a>
+            <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">GitHub</a>
+        </div>
+    </header>
+
+    <!-- Intro Section -->
+    <main>
+        <section class="intro">
+            <img class="profile-image" src="assets/image/your-image.jpg" alt="Portrait of [Your Name]">
+            <p>Hi, I'm [Your Name]. I'm a passionate developer, designer, and creator. Welcome to my personal space where I share my work and thoughts.</p>
+        </section>
+
+        <div class="button-container">
+            <a href="#projects" class="see-my-works" role="button">See my works</a>
+            <a href="about.html" class="about-me-link" role="button">About me →</a>
+        </div>
+
+        <!-- Latest Work Section -->
+        <section id="projects">
+            <h2>Latest Work</h2>
+            <div class="post-grid">
+                
+            </div>
+            <a href="projects.html" class="view-more">View More</a>
+        </section>
+
+        <!-- Recent Posts Section -->
+        <section id="recent-posts">
+            <h2>Recent Posts</h2>
+            <div class="post-grid">
+                
+            </div>
+            <a href="blog.html" class="view-more">View More</a>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">Instagram</a>
+            <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">GitHub</a>
+        </div>
+    </footer>
+
+    <script>
+        // 부드러운 스크롤 기능
+        document.querySelector('.see-my-works').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
