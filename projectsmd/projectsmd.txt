@@ -1,9 +1,0 @@
----
-title: "Project Title"
-tag: "Design"
-image: "assets/img/project-image.jpg"
----
-
-# Project Title
-
-Detailed description of the project goes here.
