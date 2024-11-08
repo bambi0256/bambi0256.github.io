@@ -8,6 +8,7 @@ BLOG_MD_DIR = "./mdposts/blog/"
 PROJECTS_MD_DIR = "./mdposts/projects/"
 
 def load_metadata_from_md(filepath):
+    """Extract metadata from markdown file header."""
     with open(filepath, 'r') as file:
         lines = file.readlines()
     metadata = yaml.safe_load("".join(lines[:lines.index('---', 1) + 1]))
