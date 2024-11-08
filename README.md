@@ -4,6 +4,8 @@ Only myself homepage
 
 
 # Updated Project File Structure and Explanation
+
+```
 (root)
 ├ .github
 │   └ workflows
@@ -42,6 +44,7 @@ Only myself homepage
 ├ blog-template.html                     # Blog 페이지 개별 포스트 템플릿
 ├ README.md                              # 프로젝트 설명 파일
 └ requirements.txt                       # Python 패키지 의존성 목록 파일
+```
 
 ### 설명
 
