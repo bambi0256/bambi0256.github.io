@@ -4,14 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ title }}</title>
+    <title>{{ site_title }}</title>
     <link rel="stylesheet" href="./assets/css/indexstyle.css">
+    <style>
+        /* 버튼 정렬 및 스타일 */
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .see-my-works, .about-me-link {
+            text-decoration: none;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="logo">
-            <h1>{{ title }}</h1>
+            <h1>{{ site_title }}</h1>
         </div>
         <nav>
             <ul>
@@ -22,32 +40,33 @@
             </ul>
         </nav>
         <div class="social-icons">
-            <a href="https://www.instagram.com/yourusername" target="_blank">Instagram</a>
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">Instagram</a>
+            <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">GitHub</a>
         </div>
     </header>
 
     <!-- Intro Section -->
     <main>
         <section class="intro">
-            <img class="profile-image" src="your-image.jpg" alt="Your Image">
+            <img class="profile-image" src="assets/image/your-image.jpg" alt="Portrait of [Your Name]">
             <p>Hi, I'm [Your Name]. I'm a passionate developer, designer, and creator. Welcome to my personal space where I share my work and thoughts.</p>
         </section>
 
-        <a href="#projects" class="see-my-works">
-            <button>See my works</button>
-        </a>
+        <div class="button-container">
+            <a href="#projects" class="see-my-works" role="button">See my works</a>
+            <a href="about.html" class="about-me-link" role="button">About me →</a>
+        </div>
 
         <!-- Latest Work Section -->
         <section id="projects">
             <h2>Latest Work</h2>
             <div class="post-grid">
-                {% for post in projects %}
-                <div class="post-card" onclick="window.location.href='projects/{{ post.slug }}.html'">
-                    <img src="{{ post.image }}" alt="{{ post.title }}">
+                {% for project in projects %}
+                <div class="post-card" onclick="window.location.href='projects/{{ project.slug }}.html'">
+                    <img src="{{ project.image }}" alt="Project image of {{ project.title }}">
                     <div class="post-overlay">
-                        <h3>{{ post.title }}</h3>
-                        <p>{{ post.tag }}</p>
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.tag }}</p>
                     </div>
                 </div>
                 {% endfor %}
@@ -89,9 +108,17 @@
             </ul>
         </nav>
         <div class="social-icons">
-            <a href="https://www.instagram.com/yourusername" target="_blank">Instagram</a>
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">Instagram</a>
+            <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">GitHub</a>
         </div>
     </footer>
+
+    <script>
+        // 부드러운 스크롤 기능
+        document.querySelector('.see-my-works').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
