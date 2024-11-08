@@ -10,9 +10,15 @@ PROJECTS_MD_DIR = "./mdposts/projects/"
 def load_metadata_from_md(filepath):
     """Extract metadata from markdown file header."""
     with open(filepath, 'r') as file:
-        lines = file.readlines()
-    metadata = yaml.safe_load("".join(lines[:lines.index('---', 1) + 1]))
-    return metadata
+        content = file.read()
+    
+    # 메타데이터의 시작과 끝을 탐색하여 추출
+    if content.startswith('---'):
+        _, metadata_content, _ = content.split('---', 2)
+        metadata = yaml.safe_load(metadata_content)
+        return metadata
+    else:
+        raise ValueError("Markdown file does not contain metadata")
 
 def get_recent_posts(directory, num_posts=3):
     posts = []
