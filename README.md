@@ -1,9 +1,9 @@
-# bambi0256.github.io
-Only myself homepage
+# Github Page로 Blog 만들기 프로젝트
+생성 툴 없이 혼자 만들기!
 
 
 
-# Updated Project File Structure and Explanation
+# Project 파일 구조
 
 ```
 (root)
