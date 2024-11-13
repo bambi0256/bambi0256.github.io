@@ -2,12 +2,15 @@
     {
         "title": "Exploring the World of AI",
         "date": "2024-11-08",
+        "author": "Jane Doe",
         "author_image": "/assets/image/author.jpg",
+        "main_image": "/assets/image/ai-world.jpg",
         "tags": [
             "AI",
             "Technology",
             "Future"
         ],
+        "excerpt": "A deep dive into the fascinating world of artificial intelligence and what it means for our future.",
         "slug": "sample-blog-post"
     }
 ]
