@@ -1,0 +1,222 @@
+/* General Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Header and Footer */
+header, footer {
+    background-color: #292b2c;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav ul, footer nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li, footer nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a, footer nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover, footer nav ul li a:hover {
+    color: #ff7f50;
+}
+
+header .social-icons, footer .social-icons {
+    margin-top: 10px;
+}
+
+/* Main Content Styles */
+main {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+}
+
+/* Intro Section */
+.intro {
+    text-align: center;
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Card Grid Layout */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Card Item Style */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card Hover Effect */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Image */
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 4px solid #ff7f50;
+}
+
+/* Card Content */
+.card-content {
+    padding: 20px;
+    text-align: left;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-content p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* View More Link */
+.view-more {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #ff7f50;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #ff7f50;
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.view-more:hover {
+    background-color: #ff7f50;
+    color: #ffffff;
+}
+
+/* Pagination Button Styles */
+.pagination button {
+    background-color: #292b2c;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    margin: 0 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1rem;
+}
+
+.pagination button:hover {
+    background-color: #ff7f50;
+    transform: translateY(-3px);
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Active Pagination Style */
+.pagination .active {
+    background-color: #ff7f50;
+    color: #fff;
+    cursor: default;
+}
+
+/* Pagination Container */
+.pagination {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination button:not(.active) {
+    background-color: #292b2c;
+    color: #ffffff;
+}
+
+/* Footer Additional Styles */
+footer {
+    margin-top: 50px;
+    font-size: 0.9rem;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 15px;
+    transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+}
