@@ -3,16 +3,9 @@
         "title": "Personal Portfolio Website",
         "date": "2024-10-15",
         "author_image": "/assets/image/author.jpg",
-        "tag": "Web Development",
-        "slug": "personal-portfolio-website"
-    },
-    {
-        "title": "Personal Portfolio Website",
-        "date": "2024-10-15",
-        "author_image": "/assets/image/author.jpg",
         "tags": [
             "Web Development"
         ],
-        "slug": "personal-portfolio-website"
+        "slug": "sample-project"
     }
 ]
