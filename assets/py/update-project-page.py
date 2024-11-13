@@ -22,12 +22,12 @@ def load_metadata_and_content_from_md(filepath):
         return metadata, html_content
     return None, None
 
-def write_html_from_template(slug, content, template_file, output_dir):
-    """Render HTML using a Jinja2 template and content."""
-    env = Environment(loader=FileSystemLoader(BLOG_TEMPLATE_DIR))
+def write_html_from_template(metadata, content, template_file, output_dir):
+    """Render HTML using a Jinja2 template and both metadata and content."""
+    env = Environment(loader=FileSystemLoader(PROJECT_TEMPLATE_DIR))
     template = env.get_template(template_file)
-    output_html = template.render(content=content)
-    output_path = os.path.join(output_dir, slug, 'index.html')
+    output_html = template.render(metadata=metadata, content=content)
+    output_path = os.path.join(output_dir, metadata['slug'], 'index.html')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w') as output_file:
         output_file.write(output_html)
@@ -47,7 +47,7 @@ def main():
             metadata, content = load_metadata_and_content_from_md(filepath)
             if metadata:
                 metadata['slug'] = filename[:-3]  # Assuming filename without extension as slug
-                write_html_from_template(metadata['slug'], content, PROJECT_POST_TEMPLATE, PROJECT_HTML_DIR)
+                write_html_from_template(metadata, content, PROJECT_POST_TEMPLATE, PROJECT_HTML_DIR)
                 project_posts.append(metadata)
 
     # Update JSON file
