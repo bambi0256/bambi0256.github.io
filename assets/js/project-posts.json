@@ -2,10 +2,14 @@
     {
         "title": "Personal Portfolio Website",
         "date": "2024-10-15",
+        "author": "John Smith",
         "author_image": "/assets/image/author.jpg",
+        "main_image": "/assets/image/portfolio.jpg",
         "tags": [
-            "Web Development"
+            "Web Development",
+            "Portfolio"
         ],
+        "excerpt": "A showcase of my personal portfolio website, built using HTML, CSS, and JavaScript to highlight my projects and skills.",
         "slug": "sample-project"
     }
 ]
