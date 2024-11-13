@@ -16,60 +16,42 @@ def load_metadata_from_md(filepath):
         content = file.read()
     
     if content.startswith('---'):
-        _, metadata_content, _ = content.split('---', 2)
-        metadata = yaml.safe_load(metadata_content)
+        _, meta_str, body = content.split('---', 2)
+        metadata = yaml.safe_load(meta_str)
+        metadata['content'] = markdown.markdown(body)
         return metadata
-    else:
-        raise ValueError("Markdown file does not contain metadata")
+    return None
 
-def convert_md_to_html(filepath):
-    """Convert markdown to HTML."""
-    with open(filepath, 'r') as file:
-        content = file.read()
-    return markdown.markdown(content)
-
-def generate_post_html(template_name, metadata, content):
-    """Create HTML for a single post from metadata and content."""
+def write_html_from_template(metadata, template_file, output_dir):
+    """Render HTML using a Jinja2 template and metadata."""
     env = Environment(loader=FileSystemLoader(BLOG_TEMPLATE_DIR))
-    template = env.get_template(template_name)
-    return template.render(metadata=metadata, content=content)
+    template = env.get_template(template_file)
+    output_html = template.render(metadata)
+    output_path = os.path.join(output_dir, metadata['slug'], 'index.html')
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, 'w') as output_file:
+        output_file.write(output_html)
 
-def load_existing_json(filepath):
-    """Load existing JSON data from a file, or return an empty list if the file does not exist or is empty."""
-    if not os.path.exists(filepath) or os.stat(filepath).st_size == 0:
-        return []
-    with open(filepath, 'r') as file:
-        return json.load(file)
-
-def update_blog_page():
-    # 디렉토리 생성 확인
-    if not os.path.exists(BLOG_HTML_DIR):
-        os.makedirs(BLOG_HTML_DIR)
-    
-    posts = load_existing_json(BLOG_JSON_FILE)
-
-    for md_file in os.listdir(BLOG_MD_DIR):
-        if md_file.endswith(".md"):
-            filepath = os.path.join(BLOG_MD_DIR, md_file)
-            metadata = load_metadata_from_md(filepath)
-            html_content = convert_md_to_html(filepath)
-            
-            # Create post directory and save index.html
-            post_dir = os.path.join(BLOG_HTML_DIR, metadata['slug'])
-            if not os.path.exists(post_dir):
-                os.makedirs(post_dir)
-            output_path = os.path.join(post_dir, 'index.html')
-            post_html = generate_post_html(BLOG_POST_TEMPLATE, metadata, html_content)
-            with open(output_path, 'w') as file:
-                file.write(post_html)
-            
-            # Append post metadata
-            if metadata not in posts:  # 중복 추가 방지
-                posts.append(metadata)
-    
-    # 최신 글을 기준으로 정렬 후 JSON 파일로 저장
-    posts = sorted(posts, key=lambda x: x['date'], reverse=True)
+def update_blog_json(blog_posts):
+    """Initialize and write the blog posts to the JSON file."""
     with open(BLOG_JSON_FILE, 'w') as json_file:
-        json.dump(posts, json_file, indent=4)
+        json.dump(blog_posts, json_file, indent=4)
 
-update_blog_page()
+def main():
+    blog_posts = []
+
+    # Iterate over all markdown files in the blog directory
+    for filename in os.listdir(BLOG_MD_DIR):
+        if filename.endswith('.md'):
+            filepath = os.path.join(BLOG_MD_DIR, filename)
+            metadata = load_metadata_from_md(filepath)
+            if metadata:
+                metadata['slug'] = filename[:-3]  # Assuming filename without extension as slug
+                write_html_from_template(metadata, BLOG_POST_TEMPLATE, BLOG_HTML_DIR)
+                blog_posts.append(metadata)
+
+    # Update JSON file
+    update_blog_json(blog_posts)
+
+if __name__ == "__main__":
+    main()
