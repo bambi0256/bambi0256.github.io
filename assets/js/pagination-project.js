@@ -25,16 +25,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     pagePosts.forEach(post => {
                         const postCard = `
                             <div class="post-card">
-                                <a href="/project/${post.slug}/">
-                                    <div class="post-text">
-                                        <p><strong>${post.title}</strong></p>
-                                        <p>${post.excerpt}</p>
-                                        <p class="post-tags">
-                                            ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                                        </p>
-                                        <p class="post-date">Posted on ${post.date}</p>
-                                    </div>
-                                </a>
+                                <img src="${post.main_image}" alt="${post.title}">
+                                <div class="post-info">
+                                    <h3>${post.title}</h3>
+                                    <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</p>
+                                </div>
                             </div>
                         `;
                         projectGrid.innerHTML += postCard;
@@ -58,16 +53,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     latestWorks.forEach(post => {
                         const postCard = `
                             <div class="post-card">
-                                <a href="/project/${post.slug}/">
-                                    <div class="post-text">
-                                        <p><strong>${post.title}</strong></p>
-                                        <p>${post.excerpt}</p>
-                                        <p class="post-tags">
-                                            ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                                        </p>
-                                        <p class="post-date">Posted on ${post.date}</p>
-                                    </div>
-                                </a>
+                                <img src="${post.main_image}" alt="${post.title}">
+                                <div class="post-info">
+                                    <h3>${post.title}</h3>
+                                    <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</p>
+                                </div>
                             </div>
                         `;
                         homeLatestWorks.innerHTML += postCard;

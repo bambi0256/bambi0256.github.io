@@ -24,17 +24,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     pagePosts.forEach(post => {
                         const postCard = `
-                            <div class="post-card">
-                                <a href="/blog/${post.slug}/">
-                                    <div class="post-text">
-                                        <p><strong>${post.title}</strong></p>
-                                        <p>${post.excerpt}</p>
-                                        <p class="post-tags">
-                                            ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                                        </p>
-                                        <p class="post-date">Posted on ${post.date}</p>
-                                    </div>
-                                </a>
+                            <div class="recent-post-card">
+                                <img src="${post.main_image}" alt="${post.title}">
+                                <div class="card-content">
+                                    <h3>${post.title}</h3>
+                                    <p>${post.excerpt}</p>
+                                    <p class="post-meta">
+                                        <img src="${post.author_image}" alt="${post.author}" class="author-image">
+                                        <span>${post.author} - ${post.date}</span>
+                                    </p>
+                                </div>
                             </div>
                         `;
                         blogGrid.innerHTML += postCard;
@@ -57,17 +56,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     recentPosts.forEach(post => {
                         const postCard = `
-                            <div class="post-card">
-                                <a href="/blog/${post.slug}/">
-                                    <div class="post-text">
-                                        <p><strong>${post.title}</strong></p>
-                                        <p>${post.excerpt}</p>
-                                        <p class="post-tags">
-                                            ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                                        </p>
-                                        <p class="post-date">Posted on ${post.date}</p>
-                                    </div>
-                                </a>
+                            <div class="recent-post-card">
+                                <img src="${post.main_image}" alt="${post.title}">
+                                <div class="card-content">
+                                    <h3>${post.title}</h3>
+                                    <p>${post.excerpt}</p>
+                                    <p class="post-meta">
+                                        <img src="${post.author_image}" alt="${post.author}" class="author-image">
+                                        <span>${post.author} - ${post.date}</span>
+                                    </p>
+                                </div>
                             </div>
                         `;
                         homeRecentPosts.innerHTML += postCard;
