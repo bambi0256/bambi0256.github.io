@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blog - B.Bee</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <!-- Header Section -->
     {% include './header.html' %}
 
-    <!-- Blog Section -->
     <main>
-        <section id="blog">
-            <h2 class="section-title">Blog</h2>
-            <div id="blog-posts-container" class="post-grid"></div>
+        <section class="blog-intro section">
+            <div class="container">
+                <h1 class="section-title">Welcome to My Blog</h1>
+                <p class="section-description">Explore my latest thoughts, ideas, and inspirations.</p>
+            </div>
         </section>
 
-        <!-- Pagination Controls -->
-        <div id="pagination-controls" class="pagination-controls"></div>
+        <section class="blog-list section">
+            <div class="container">
+                <div id="blog-posts-container" class="post-grid"></div>
+                <div id="pagination-controls" class="pagination-controls"></div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer Section -->
     {% include './footer.html' %}
-
-    <!-- Include JavaScript Files -->
-    <script src="/assets/js/pagination-blog.js" defer></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     let currentPage = 1;
     const postsPerPage = 6;
 
@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(data => {
                 console.log('Loaded blog posts data:', data);
-                
-                // Update Blog Page
+
+                // Update Blog Page Grid
                 const blogGrid = document.querySelector("#blog-posts-container");
                 if (blogGrid) {
                     blogGrid.innerHTML = ''; // Clear existing content
@@ -24,52 +24,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     pagePosts.forEach(post => {
                         const postCard = `
-                            <div class="recent-post-card">
+                            <a href="/blog/${post.slug}/" class="post-card">
                                 <img src="${post.main_image}" alt="${post.title}">
-                                <div class="card-content">
+                                <div class="post-info">
                                     <h3>${post.title}</h3>
-                                    <p>${post.excerpt}</p>
-                                    <p class="post-meta">
-                                        <img src="${post.author_image}" alt="${post.author}" class="author-image">
-                                        <span>${post.author} - ${post.date}</span>
-                                    </p>
+                                    <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}</p>
                                 </div>
-                            </div>
+                            </a>
                         `;
                         blogGrid.innerHTML += postCard;
                     });
 
-                    // Update pagination buttons
+                    // Update pagination controls
                     const totalPages = Math.ceil(data.length / postsPerPage);
-                    document.querySelector("#pagination-controls").innerHTML = `
-                        <button ${page <= 1 ? "disabled" : ""} onclick="loadBlogPosts(${page - 1})">Previous</button>
-                        <span>Page ${page} of ${totalPages}</span>
-                        <button ${page >= totalPages ? "disabled" : ""} onclick="loadBlogPosts(${page + 1})">Next</button>
-                    `;
-                }
-
-                // Update Home Page Recent Posts
-                const homeRecentPosts = document.querySelector("#recent-posts-container");
-                if (homeRecentPosts) {
-                    homeRecentPosts.innerHTML = ''; // Clear existing content
-                    const recentPosts = data.slice(0, 3); // Show latest 3 posts
-
-                    recentPosts.forEach(post => {
-                        const postCard = `
-                            <div class="recent-post-card">
-                                <img src="${post.main_image}" alt="${post.title}">
-                                <div class="card-content">
-                                    <h3>${post.title}</h3>
-                                    <p>${post.excerpt}</p>
-                                    <p class="post-meta">
-                                        <img src="${post.author_image}" alt="${post.author}" class="author-image">
-                                        <span>${post.author} - ${post.date}</span>
-                                    </p>
-                                </div>
-                            </div>
+                    const paginationControls = document.querySelector("#pagination-controls");
+                    if (paginationControls) {
+                        paginationControls.innerHTML = `
+                            <button ${page <= 1 ? "disabled" : ""} onclick="loadBlogPosts(${page - 1})">Previous</button>
+                            <span>Page ${page} of ${totalPages}</span>
+                            <button ${page >= totalPages ? "disabled" : ""} onclick="loadBlogPosts(${page + 1})">Next</button>
                         `;
-                        homeRecentPosts.innerHTML += postCard;
-                    });
+                    }
                 }
             })
             .catch(error => {
