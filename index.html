@@ -4,58 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>B.Bee</title>
+    <title>Home - B.Bee</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <!-- Header Section -->
     <header>
     <div class="container header-content">
+        <!-- Logo -->
         <div class="logo">
             <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
         </div>
+        
+        <!-- Navigation -->
         <nav>
             <ul class="nav-list">
-                <li><a href="/">Home</a></li>
-                <li><a href="/project/">Project</a></li>
-                <li><a href="/blog/">Blog</a></li>
-                <li><a href="/about/">About</a></li>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/project/" class="nav-link">Projects</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/about/" class="nav-link">About</a></li>
             </ul>
         </nav>
+        
+        <!-- Social Icons -->
         <div class="social-icons">
-            <a href="https://www.instagram.com/_j256p" target="_blank"><img src="/assets/image/instagram-icon.png" alt="Instagram"></a>
-            <a href="https://github.com/bambi0256" target="_blank"><img src="/assets/image/github-icon.png" alt="GitHub"></a>
+            <a href="https://www.instagram.com/_j256p" target="_blank">
+                <img src="/assets/image/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/bambi0256" target="_blank">
+                <img src="/assets/image/github-icon.png" alt="GitHub">
+            </a>
         </div>
-        <div class="menu-toggle">☰</div>
+
+        <!-- Hamburger Menu -->
+        <div class="menu-toggle" id="menu-toggle">
+            ☰
+        </div>
     </div>
-<script src="/assets/js/set-current.js" defer></script>
+
+    <!-- Mobile Navigation (Dropdown) -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul class="nav-list">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="/project/" class="nav-link">Projects</a></li>
+            <li><a href="/blog/" class="nav-link">Blog</a></li>
+            <li><a href="/about/" class="nav-link">About</a></li>
+        </ul>
+    </div>
 </header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileNav = document.getElementById("mobile-nav");
+
+        menuToggle.addEventListener("click", function () {
+            mobileNav.classList.toggle("open");
+        });
+    });
+</script>
 
     <!-- Intro Section -->
     <main>
         <section class="intro">
-            <div class="text">
-                <h1>Welcome to B.Bee's Blog</h1>
-                <p>Discover the world of technology and creativity.</p>
-                <button onclick="window.location.href='/about/'">Learn More</button>
-            </div>
-            <div class="image">
-                <img src="path-to-your-image.jpg" alt="Hero Image">
+            <div class="container">
+                <div class="text">
+                    <h1>Welcome to B.Bee's Blog</h1>
+                    <p>Explore creativity, technology, and ideas in one space.</p>
+                    <button class="about-me-button" onclick="window.location.href='/about/'">About Me →</button>
+                </div>
+                <div class="image">
+                    <img src="/assets/image/hero-image.jpg" alt="Hero Image">
+                </div>
             </div>
         </section>
 
         <!-- Latest Work Section -->
-        <section id="latest-work">
-            <h2 class="section-title">Latest Works</h2>
-            <div id="latest-work-posts-container" class="post-grid"></div>
-            <a href="/project/" class="view-more">View More</a>
+        <section id="latest-work" class="section">
+            <div class="container">
+                <h2 class="section-title">Latest Works</h2>
+                <p class="section-description">Discover my most recent projects and creations.</p>
+                <div id="latest-work-posts-container" class="post-grid"></div>
+                <a href="/project/" class="view-more">View More</a>
+            </div>
         </section>
 
         <!-- Recent Posts Section -->
-        <section id="recent-posts">
-            <h2 class="section-title">Recent Posts</h2>
-            <div id="recent-posts-container" class="post-grid"></div>
-            <a href="/blog/" class="view-more">View More</a>
+        <section id="recent-posts" class="section">
+            <div class="container">
+                <h2 class="section-title">Recent Posts</h2>
+                <p class="section-description">Catch up on my latest thoughts and ideas.</p>
+                <div id="recent-posts-container" class="post-grid"></div>
+                <a href="/blog/" class="view-more">View More</a>
+            </div>
         </section>
     </main>
 
@@ -79,9 +120,5 @@
         </div>
     </div>
 </footer>
-
-    <!-- Include JavaScript Files -->
-    <script src="/assets/js/pagination-blog.js" defer></script>
-    <script src="/assets/js/pagination-project.js" defer></script>
 </body>
 </html>
