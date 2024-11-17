@@ -29,7 +29,8 @@ jobs:
         run: |
           python assets/py/update-blog-page.py
           python assets/py/update-project-page.py
-          git add blog/ project/ assets/js/
+          python assets/py/update-home-page.py
+          git add blog/ project/ assets/js/ index.html
 
       - name: Commit changes
         run: |
