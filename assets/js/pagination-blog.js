@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 console.log('Loaded blog posts data:', data);
 
-                // Update Blog Page Grid
+                // Update Blog Page
                 const blogGrid = document.querySelector("#blog-posts-container");
                 if (blogGrid) {
                     blogGrid.innerHTML = ''; // Clear existing content
@@ -24,18 +24,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     pagePosts.forEach(post => {
                         const postCard = `
-                            <a href="/blog/${post.slug}/" class="post-card">
-                                <img src="${post.main_image}" alt="${post.title}">
-                                <div class="post-info">
-                                    <h3>${post.title}</h3>
-                                    <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}</p>
-                                </div>
-                            </a>
+                            <div class="post-card">
+                                <a href="/blog/${post.slug}/">
+                                    <img src="${post.main_image}" alt="${post.title}">
+                                    <div class="post-info">
+                                        <h3>${post.title}</h3>
+                                        <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}</p>
+                                    </div>
+                                </a>
+                            </div>
                         `;
                         blogGrid.innerHTML += postCard;
                     });
 
-                    // Update pagination controls
+                    // Pagination Controls
                     const totalPages = Math.ceil(data.length / postsPerPage);
                     const paginationControls = document.querySelector("#pagination-controls");
                     if (paginationControls) {
@@ -45,6 +47,28 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button ${page >= totalPages ? "disabled" : ""} onclick="loadBlogPosts(${page + 1})">Next</button>
                         `;
                     }
+                }
+
+                // Update Home Page Recent Posts
+                const homeRecentPosts = document.querySelector("#recent-posts-container");
+                if (homeRecentPosts) {
+                    homeRecentPosts.innerHTML = ''; // Clear existing content
+                    const recentPosts = data.slice(0, postsPerPage); // Show latest 6 posts
+
+                    recentPosts.forEach(post => {
+                        const postCard = `
+                            <div class="recent-post-card">
+                                <a href="/blog/${post.slug}/">
+                                    <img src="${post.main_image}" alt="${post.title}">
+                                    <div class="card-content">
+                                        <h3>${post.title}</h3>
+                                        <p>${post.excerpt}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                        homeRecentPosts.innerHTML += postCard;
+                    });
                 }
             })
             .catch(error => {
