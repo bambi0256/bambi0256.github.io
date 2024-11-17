@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>B.Bee</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    {% include './header.html' %}
+
+    <!-- Intro Section -->
+    <main>
+        <section class="intro">
+            <img class="profile-image" src="your-image.jpg" alt="Your Image">
+            <p>Hi, I'm [Your Name]. I'm a passionate developer, designer, and creator. Welcome to my personal space where I share my work and thoughts.</p>
+            <button class="about-me-button" onclick="window.location.href='/about/'">About me →</button>
+        </section>
+
+        <!-- Latest Work Section -->
+        <section id="latest-work">
+            <h2 class="section-title">Latest Works</h2>
+            <div id="latest-work-posts-container" class="post-grid"></div>
+            <a href="/project/" class="view-more">View More</a>
+        </section>
+
+        <!-- Recent Posts Section -->
+        <section id="recent-posts">
+            <h2 class="section-title">Recent Posts</h2>
+            <div id="recent-posts-container" class="post-grid"></div>
+            <a href="/blog/" class="view-more">View More</a>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    {% include './footer.html' %}
+
+    <!-- Include JavaScript Files -->
+    <script src="/assets/js/pagination-blog.js" defer></script>
+    <script src="/assets/js/pagination-project.js" defer></script>
+</body>
+</html>

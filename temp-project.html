@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Projects - B.Bee</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    {% include './header.html' %}
+
+    <!-- Project Section -->
+    <main>
+        <section id="project">
+            <h2 class="section-title">Projects</h2>
+            <div id="project-posts-container" class="post-grid"></div>
+        </section>
+
+        <!-- Pagination Controls -->
+        <div id="pagination-controls" class="pagination-controls"></div>
+    </main>
+
+    <!-- Footer Section -->
+    {% include './footer.html' %}
+
+    <!-- Include JavaScript Files -->
+    <script src="/assets/js/pagination-project.js" defer></script>
+</body>
+</html>
