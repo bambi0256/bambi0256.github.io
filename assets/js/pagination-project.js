@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     let currentPage = 1;
     const postsPerPage = 6;
 
@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(data => {
                 console.log('Loaded project posts data:', data);
-                
-                // Update Project Page
+
+                // Update Project Page Grid
                 const projectGrid = document.querySelector("#project-posts-container");
                 if (projectGrid) {
                     projectGrid.innerHTML = ''; // Clear existing content
@@ -24,44 +24,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     pagePosts.forEach(post => {
                         const postCard = `
-                            <div class="post-card">
+                            <a href="/project/${post.slug}/" class="post-card">
                                 <img src="${post.main_image}" alt="${post.title}">
                                 <div class="post-info">
                                     <h3>${post.title}</h3>
-                                    <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</p>
+                                    <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}</p>
                                 </div>
-                            </div>
+                            </a>
                         `;
                         projectGrid.innerHTML += postCard;
                     });
 
-                    // Update pagination buttons
+                    // Update pagination controls
                     const totalPages = Math.ceil(data.length / postsPerPage);
-                    document.querySelector("#pagination-controls").innerHTML = `
-                        <button ${page <= 1 ? "disabled" : ""} onclick="loadProjectPosts(${page - 1})">Previous</button>
-                        <span>Page ${page} of ${totalPages}</span>
-                        <button ${page >= totalPages ? "disabled" : ""} onclick="loadProjectPosts(${page + 1})">Next</button>
-                    `;
-                }
-
-                // Update Home Page Latest Work Section
-                const homeLatestWorks = document.querySelector("#latest-work-posts-container");
-                if (homeLatestWorks) {
-                    homeLatestWorks.innerHTML = ''; // Clear existing content
-                    const latestWorks = data.slice(0, 3); // Show latest 3 posts
-
-                    latestWorks.forEach(post => {
-                        const postCard = `
-                            <div class="post-card">
-                                <img src="${post.main_image}" alt="${post.title}">
-                                <div class="post-info">
-                                    <h3>${post.title}</h3>
-                                    <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</p>
-                                </div>
-                            </div>
+                    const paginationControls = document.querySelector("#pagination-controls");
+                    if (paginationControls) {
+                        paginationControls.innerHTML = `
+                            <button ${page <= 1 ? "disabled" : ""} onclick="loadProjectPosts(${page - 1})">Previous</button>
+                            <span>Page ${page} of ${totalPages}</span>
+                            <button ${page >= totalPages ? "disabled" : ""} onclick="loadProjectPosts(${page + 1})">Next</button>
                         `;
-                        homeLatestWorks.innerHTML += postCard;
-                    });
+                    }
                 }
             })
             .catch(error => {

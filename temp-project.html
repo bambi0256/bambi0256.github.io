@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Projects - B.Bee</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <!-- Header Section -->
     {% include './header.html' %}
 
-    <!-- Project Section -->
     <main>
-        <section id="project">
-            <h2 class="section-title">Projects</h2>
-            <div id="project-posts-container" class="post-grid"></div>
+        <section class="project-intro section">
+            <div class="container">
+                <h1 class="section-title">Explore My Projects</h1>
+                <p class="section-description">A collection of works showcasing my creativity and skills.</p>
+            </div>
         </section>
 
-        <!-- Pagination Controls -->
-        <div id="pagination-controls" class="pagination-controls"></div>
+        <section class="project-list section">
+            <div class="container">
+                <div id="project-posts-container" class="post-grid"></div>
+                <div id="pagination-controls" class="pagination-controls"></div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer Section -->
     {% include './footer.html' %}
-
-    <!-- Include JavaScript Files -->
-    <script src="/assets/js/pagination-project.js" defer></script>
 </body>
 </html>
