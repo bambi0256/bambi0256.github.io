@@ -18,6 +18,24 @@ def load_markdown_posts(directory):
                 posts.append(metadata)
     return posts
 
+def create_post_pages(posts, template_file, output_dir):
+    # Jinja2 환경 설정
+    env = Environment(loader=FileSystemLoader('./'))
+    template = env.get_template(template_file)
+    
+    for post in posts:
+        slug = post.get('slug', post['title'].replace(' ', '-').lower())
+        post_dir = os.path.join(output_dir, slug)
+        os.makedirs(post_dir, exist_ok=True)
+        
+        # 템플릿 렌더링
+        output = template.render(metadata=post, content=post['content'])
+        
+        # index.html 생성
+        output_path = os.path.join(post_dir, 'index.html')
+        with open(output_path, 'w') as f:
+            f.write(output)
+
 def update_project_page():
     # 1. Markdown 데이터 로드
     project_posts = load_markdown_posts('./mdposts/project/')
@@ -30,10 +48,11 @@ def update_project_page():
     env = Environment(loader=FileSystemLoader('./'))
     template = env.get_template('temp-project.html')
     
-    # 4. 템플릿 렌더링
-    output = template.render(posts=project_posts)
+    # 4. 개별 게시물 페이지 생성
+    create_post_pages(project_posts, 'temp-project-post.html', './project/')
     
-    # 5. 파일 생성
+    # 5. 블로그 목록 페이지 생성
+    output = template.render(posts=project_posts)
     output_path = './project/index.html'
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w') as f:
