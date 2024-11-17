@@ -85,26 +85,58 @@ header {
 }
 
 /* Responsive Navigation */
-@media (max-width: 768px) {
-    .nav-list {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #fefae0;
-        width: 200px;
-        border: 1px solid #ddd;
-    }
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
 
+.mobile-nav {
+    display: none;
+    background-color: #fefae0;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    border: 1px solid #ddd;
+    z-index: 1000;
+}
+
+.mobile-nav.open {
+    display: block;
+}
+
+.mobile-nav .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-nav .nav-list li {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.mobile-nav .nav-list a {
+    display: block;
+    padding: 10px 20px;
+    color: #264653;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.mobile-nav .nav-list a:hover {
+    background-color: #2a9d8f;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
     .menu-toggle {
         display: block;
-        cursor: pointer;
-        font-size: 24px;
     }
 
-    .menu-open .nav-list {
-        display: flex;
+    .nav-list {
+        display: none;
     }
 }
 
@@ -120,16 +152,20 @@ header {
 
 .intro .text {
     max-width: 50%;
-}
-
-.intro .text h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    text-align: left;
+    margin-right: 20px;
 }
 
 .intro .image {
     max-width: 40%;
+    text-align: center;
     animation: fadeIn 1s ease-in-out;
+}
+
+.intro img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .intro button {
@@ -148,22 +184,34 @@ header {
     background-color: #264653;
 }
 
-/* Section Titles */
-.section-title {
+/* Section Styles */
+.section {
+    padding: 80px 20px;
+    background-color: #fefae0;
     text-align: center;
-    font-size: 2rem;
-    color: #1a202c;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #264653;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: #6a6a6a;
     margin-bottom: 40px;
 }
 
-/* Post Cards */
 .post-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
+    justify-items: center;
     padding: 20px 0;
 }
 
+/* Post Card Styles */
 .post-card, .recent-post-card {
     position: relative;
     overflow: hidden;
