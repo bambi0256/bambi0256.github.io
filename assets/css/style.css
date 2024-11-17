@@ -1,13 +1,11 @@
-/* New stylesheet to implement Jazzed Kale reference design */
-
 /* General Styles */
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f7f5f2;
     color: #333;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
 .container {
@@ -19,28 +17,35 @@ body {
 h1, h2, h3 {
     font-weight: bold;
     margin-bottom: 20px;
-    color: #222;
+    color: #1a202c;
+}
+
+a {
+    text-decoration: none;
+    color: #3a6351;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #2a9d8f;
 }
 
 /* Header Styles */
 header {
-    background-color: #ffffff;
+    background-color: #fefae0;
     border-bottom: 1px solid #ddd;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    padding: 20px 0;
 }
 
 .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
-}
-
-.logo {
-    flex: 1;
+    padding: 0 20px;
 }
 
 .logo img {
@@ -51,8 +56,6 @@ header {
 .nav-list {
     list-style: none;
     display: flex;
-    flex: 2;
-    justify-content: center;
     margin: 0;
     padding: 0;
 }
@@ -62,19 +65,14 @@ header {
 }
 
 .nav-list a {
-    color: #333;
-    text-decoration: none;
+    color: #264653;
+    font-size: 1rem;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .nav-list a:hover, .nav-list a.current {
-    color: #ff7f50;
-}
-
-.social-icons {
-    flex: 1;
-    text-align: right;
+    color: #e76f51;
 }
 
 .social-icons a {
@@ -90,6 +88,13 @@ header {
 @media (max-width: 768px) {
     .nav-list {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #fefae0;
+        width: 200px;
+        border: 1px solid #ddd;
     }
 
     .menu-toggle {
@@ -100,70 +105,58 @@ header {
 
     .menu-open .nav-list {
         display: flex;
-        flex-direction: column;
-        background-color: #ffffff;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;
-        border: 1px solid #ddd;
-    }
-
-    .menu-open .nav-list li {
-        margin: 10px 0;
-        text-align: center;
     }
 }
 
-/* Hero / Intro Section */
+/* Hero Section */
 .intro {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 100px 20px;
-    background-color: #ffffff;
+    background-color: #e9c46a;
+    color: #ffffff;
 }
 
-.intro .about-me-button {
-    background-color: #ff7f50;
+.intro .text {
+    max-width: 50%;
+}
+
+.intro .text h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.intro .image {
+    max-width: 40%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.intro button {
+    background-color: #2a9d8f;
     color: #ffffff;
-    padding: 15px 30px;
     border: none;
+    padding: 15px 30px;
     border-radius: 25px;
     font-size: 1.2rem;
-    transition: background-color 0.3s;
     cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
-.intro .about-me-button:hover {
-    background-color: #e66932;
+.intro button:hover {
+    transform: scale(1.1);
+    background-color: #264653;
 }
 
-/* Latest Works and Recent Posts Section */
+/* Section Titles */
 .section-title {
     text-align: center;
     font-size: 2rem;
-    color: #222;
+    color: #1a202c;
     margin-bottom: 40px;
 }
 
-.view-more {
-    display: inline-block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    color: #ff7f50;
-    font-size: 1rem;
-    font-weight: bold;
-    text-decoration: none;
-    border: 2px solid #ff7f50;
-    border-radius: 25px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.view-more:hover {
-    background-color: #ff7f50;
-    color: #ffffff;
-}
-
-/* Post Cards - Latest Works */
+/* Post Cards */
 .post-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -171,74 +164,36 @@ header {
     padding: 20px 0;
 }
 
-.post-card {
+.post-card, .recent-post-card {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.post-card img {
+.post-card:hover, .recent-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.post-card img, .recent-post-card img {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-.post-card .post-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.post-card .post-info, .recent-post-card .card-content {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
     color: #ffffff;
     padding: 20px;
-    display: block;
-}
-
-.post-card:hover {
-    transform: scale(1.05);
-}
-
-/* Post Cards - Recent Posts */
-.recent-post-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.recent-post-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-.recent-post-card .card-content {
-    padding: 20px;
-    text-align: left;
-}
-
-.recent-post-card .card-content h3 {
-    margin-top: 0;
-    color: #333;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.recent-post-card .card-content p {
-    color: #555;
-    font-size: 0.9rem;
-    line-height: 1.5;
 }
 
 /* Footer Styles */
 footer {
-    background-color: #292b2c;
+    background-color: #264653;
     color: #ffffff;
-    padding: 40px;
+    padding: 40px 20px;
     text-align: center;
 }
 
@@ -254,18 +209,14 @@ footer nav ul li {
 }
 
 footer nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
+    color: #e9c46a;
+    font-size: 1rem;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 footer nav ul li a:hover {
-    color: #ff7f50;
-}
-
-footer .social-icons {
-    margin-top: 20px;
+    color: #f4a261;
 }
 
 footer .social-icons a {
@@ -280,5 +231,5 @@ footer .social-icons a:hover {
 footer .copyright {
     margin-top: 20px;
     font-size: 0.9rem;
-    color: #aaa;
+    color: #ddd;
 }
