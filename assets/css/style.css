@@ -200,23 +200,34 @@ header {
     background-color: #264653;
 }
 
-/* Section Styles */
-.section {
-    padding: 80px 20px;
-    background-color: #fefae0;
-    text-align: center;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    color: #264653;
-    margin-bottom: 10px;
-}
-
-.section-description {
-    font-size: 1.2rem;
-    color: #6a6a6a;
+/* Section Header */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 40px;
+}
+
+.section-header .text {
+    text-align: left;
+}
+
+.section-header .button {
+    text-align: right;
+}
+
+.section-header .view-more {
+    background-color: #2a9d8f;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.section-header .view-more:hover {
+    background-color: #264653;
+    transform: scale(1.05);
 }
 
 /* Post Grid */

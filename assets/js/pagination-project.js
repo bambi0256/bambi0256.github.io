@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 console.log('Loaded project posts data:', data);
 
-                // Update Project Page Grid
+                // Update Project Page
                 const projectGrid = document.querySelector("#project-posts-container");
                 if (projectGrid) {
                     projectGrid.innerHTML = ''; // Clear existing content
@@ -24,18 +24,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     pagePosts.forEach(post => {
                         const postCard = `
-                            <a href="/project/${post.slug}/" class="post-card">
-                                <img src="${post.main_image}" alt="${post.title}">
-                                <div class="post-info">
-                                    <h3>${post.title}</h3>
-                                    <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}</p>
-                                </div>
-                            </a>
+                            <div class="post-card">
+                                <a href="/project/${post.slug}/">
+                                    <img src="${post.main_image}" alt="${post.title}">
+                                    <div class="post-info">
+                                        <h3>${post.title}</h3>
+                                        <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}</p>
+                                    </div>
+                                </a>
+                            </div>
                         `;
                         projectGrid.innerHTML += postCard;
                     });
 
-                    // Update pagination controls
+                    // Pagination Controls
                     const totalPages = Math.ceil(data.length / postsPerPage);
                     const paginationControls = document.querySelector("#pagination-controls");
                     if (paginationControls) {
@@ -45,6 +47,28 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button ${page >= totalPages ? "disabled" : ""} onclick="loadProjectPosts(${page + 1})">Next</button>
                         `;
                     }
+                }
+
+                // Update Home Page Latest Works
+                const homeLatestWorks = document.querySelector("#latest-work-posts-container");
+                if (homeLatestWorks) {
+                    homeLatestWorks.innerHTML = ''; // Clear existing content
+                    const latestWorks = data.slice(0, postsPerPage); // Show latest 6 posts
+
+                    latestWorks.forEach(post => {
+                        const postCard = `
+                            <div class="post-card">
+                                <a href="/project/${post.slug}/">
+                                    <img src="${post.main_image}" alt="${post.title}">
+                                    <div class="post-info">
+                                        <h3>${post.title}</h3>
+                                        <p>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                        homeLatestWorks.innerHTML += postCard;
+                    });
                 }
             })
             .catch(error => {
