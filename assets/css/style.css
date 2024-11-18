@@ -14,14 +14,92 @@ body {
     padding: 20px;
 }
 
-/* Header & Footer */
-header, footer {
+/* Header Layout */
+header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: #FFDE59;
+    transition: transform 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-menu,
+    .social-icons {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #B4B4B4;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .dropdown-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .dropdown-menu ul li {
+        margin: 10px 0;
+    }
+
+    .dropdown-menu ul li a {
+        color: #FFDE59;
+        text-decoration: none;
+    }
+
+    .dropdown-menu.active {
+        display: block;
+    }
+}
+
+/* Footer */
+footer {
     background-color: #B4B4B4; /* 연한 검정 배경 */
     color: #FFDE59; /* 노랑 포인트 */
     padding: 20px 0;
 }
 
-header .nav-list, footer nav ul {
+footer nav ul {
     display: flex;
     list-style: none;
     padding: 0;
@@ -30,14 +108,14 @@ header .nav-list, footer nav ul {
     gap: 20px;
 }
 
-header .nav-list a, footer nav ul li a {
+footer nav ul li a {
     color: #FFDE59;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
-header .nav-list a:hover, footer nav ul li a:hover {
+footer nav ul li a:hover {
     color: #343434;
 }
 
@@ -98,28 +176,24 @@ header .nav-list a:hover, footer nav ul li a:hover {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
-.intro .text {
-    max-width: 50%;
-    text-align: left;
-}
-
+.intro .text,
 .intro .image {
-    max-width: 40%;
+    flex: 1 1 45%;
     text-align: center;
-    animation: fadeIn 1s ease-in-out;
 }
 
 .intro button {
+    margin-top: 20px;
+    padding: 10px 20px;
     background-color: #343434;
     color: #FFDE59;
-    padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    font-size: 1.2rem;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    font-size: 1.2rem;
 }
 
 .intro button:hover {
