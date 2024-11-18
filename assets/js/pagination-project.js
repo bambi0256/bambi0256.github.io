@@ -6,10 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch('/assets/js/project-posts.json')
             .then(response => response.json())
             .then(data => {
-                // Project 페이지에 포스트 표시
                 const projectGrid = document.querySelector("#project-posts-container");
+                const homeLatestWorks = document.querySelector("#latest-work-posts-container");
+
+                // Project Page Updates
                 if (projectGrid) {
-                    projectGrid.innerHTML = ''; // 기존 내용 제거
+                    projectGrid.innerHTML = '';
                     const start = (page - 1) * postsPerPage;
                     const end = start + postsPerPage;
                     const pagePosts = data.slice(start, end);
@@ -34,12 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
 
-                // Homepage Latest Works 표시
-                const homeLatestWorks = document.querySelector("#latest-work-posts-container");
+                // Homepage Updates
                 if (homeLatestWorks) {
-                    homeLatestWorks.innerHTML = ''; // 기존 내용 제거
+                    homeLatestWorks.innerHTML = '';
                     const latestWorks = data.slice(0, postsPerPage);
-
                     latestWorks.forEach(post => {
                         const postCard = `
                             <div class="project-post-card">
@@ -49,8 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         homeLatestWorks.innerHTML += postCard;
                     });
                 }
-            })
-            .catch(error => console.error('Error loading project posts:', error));
+            });
     }
 
     loadProjectPosts(currentPage);
