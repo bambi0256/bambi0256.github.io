@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    {% include './header.html' %}
+
+    <main>
+        <article class="blog-post">
+            <div class="container">
+                <h1>{{ title }}</h1>
+                <p class="post-meta">By <img src="/assets/image/{{ author_image }}" alt="{{ author }}" class="author-image"> {{ author }} | {{ date }}</p>
+                <div class="post-content">
+                    {{ content }}
+                </div>
+            </div>
+        </article>
+    </main>
+
+    {% include './footer.html' %}
+</body>
+</html>

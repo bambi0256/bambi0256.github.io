@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio Website</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <title></title>
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
     <div class="container header-content">
         <!-- Logo -->
         <div class="logo">
             <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
         </div>
-        
+
         <!-- Navigation -->
         <nav>
             <ul class="nav-list">
@@ -24,7 +23,7 @@
                 <li><a href="/about/" class="nav-link">About</a></li>
             </ul>
         </nav>
-        
+
         <!-- Social Icons -->
         <div class="social-icons">
             <a href="https://www.instagram.com/_j256p" target="_blank">
@@ -34,46 +33,16 @@
                 <img src="/assets/image/github-icon.png" alt="GitHub">
             </a>
         </div>
-
-        <!-- Hamburger Menu -->
-        <div class="menu-toggle" id="menu-toggle">
-            ☰
-        </div>
-    </div>
-
-    <!-- Mobile Navigation (Dropdown) -->
-    <div class="mobile-nav" id="mobile-nav">
-        <ul class="nav-list">
-            <li><a href="/" class="nav-link">Home</a></li>
-            <li><a href="/project/" class="nav-link">Projects</a></li>
-            <li><a href="/blog/" class="nav-link">Blog</a></li>
-            <li><a href="/about/" class="nav-link">About</a></li>
-        </ul>
     </div>
 </header>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const menuToggle = document.getElementById("menu-toggle");
-        const mobileNav = document.getElementById("mobile-nav");
-
-        menuToggle.addEventListener("click", function () {
-            mobileNav.classList.toggle("open");
-        });
-    });
-</script>
-
-<!-- Import set-current.js -->
-<script src="/assets/js/set-current.js" defer></script>
-
-    <!-- Blog Post Content -->
     <main>
-        <article>
-            <h1>Personal Portfolio Website</h1>
-            <p><strong>Author:</strong> John Smith</p>
-            <p><strong>Date:</strong> 2024-10-15</p>
-            <div class="post-content">
-                <p>Creating a personal portfolio website is an excellent way to showcase your skills, projects, and experiences. In this post, I'll share the process of building my own portfolio website, including the tools and technologies I used.</p>
+        <article class="project-post">
+            <div class="container">
+                <h1></h1>
+                <p class="post-meta">Completed on </p>
+                <div class="post-content">
+                    <p>Creating a personal portfolio website is an excellent way to showcase your skills, projects, and experiences. In this post, I'll share the process of building my own portfolio website, including the tools and technologies I used.</p>
 <h2>Features of My Portfolio</h2>
 <ul>
 <li><strong>Responsive Design</strong>: The website is fully responsive, ensuring that it looks great on all devices.</li>
@@ -83,28 +52,30 @@
 <h2>Technologies Used</h2>
 <p>For this project, I used HTML, CSS, and JavaScript to create a modern, clean, and user-friendly interface. I also incorporated animations to make the browsing experience more engaging.</p>
 <p>Check out my portfolio to learn more about my work and skills!</p>
+                </div>
             </div>
         </article>
     </main>
 
-    <!-- Footer Section -->
     <footer>
-    <div class="container">
+    <div class="container footer-content">
         <nav>
-            <ul class="nav-list">
+            <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/project/">Project</a></li>
+                <li><a href="/project/">Projects</a></li>
                 <li><a href="/blog/">Blog</a></li>
                 <li><a href="/about/">About</a></li>
             </ul>
         </nav>
         <div class="social-icons">
-            <a href="https://www.instagram.com/_j256p" target="_blank"><img src="/assets/image/instagram-icon.png" alt="Instagram"></a>
-            <a href="https://github.com/bambi0256" target="_blank"><img src="/assets/image/github-icon.png" alt="GitHub"></a>
+            <a href="https://www.instagram.com/_j256p" target="_blank">
+                <img src="/assets/image/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/bambi0256" target="_blank">
+                <img src="/assets/image/github-icon.png" alt="GitHub">
+            </a>
         </div>
-        <div class="copyright">
-            2024 ⓒ B.Bee | Self-made
-        </div>
+        <p>2024 ⓒ B.Bee | Self-made</p>
     </div>
 </footer>
 </body>
