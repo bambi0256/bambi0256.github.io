@@ -21,13 +21,171 @@ header, footer {
     padding: 20px 0;
 }
 
+header .nav-list, footer nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    gap: 20px;
+}
+
 header .nav-list a, footer nav ul li a {
     color: #FFDE59;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
 header .nav-list a:hover, footer nav ul li a:hover {
     color: #343434;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #FFDE59;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+/* Section Header */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.section-header .text {
+    text-align: left;
+    max-width: 60%;
+}
+
+.section-header .button {
+    text-align: right;
+}
+
+.section-header .view-more {
+    background-color: #FFDE59; /* 포인트 노랑 */
+    color: #343434; /* 진한 검정 */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.section-header .view-more:hover {
+    background-color: #343434; /* 진한 검정 */
+    color: #FFDE59; /* 포인트 노랑 */
+}
+
+/* Intro Section */
+.intro .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.intro .text {
+    max-width: 50%;
+    text-align: left;
+}
+
+.intro .image {
+    max-width: 40%;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.intro button {
+    background-color: #343434;
+    color: #FFDE59;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.intro button:hover {
+    background-color: #FFDE59;
+    color: #343434;
+}
+
+/* Latest Works Section */
+.latest-works .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.latest-works .text {
+    text-align: left;
+    max-width: 50%;
+}
+
+.latest-works .view-more {
+    background-color: #FFDE59;
+    color: #343434;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.latest-works .view-more:hover {
+    background-color: #343434;
+    color: #FFDE59;
+}
+
+/* Recent Posts Section */
+.recent-posts .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.recent-posts .text {
+    text-align: left;
+    max-width: 50%;
+}
+
+.recent-posts .view-more {
+    background-color: #343434;
+    color: #FFDE59;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.recent-posts .view-more:hover {
+    background-color: #FFDE59;
+    color: #343434;
+}
+
+/* Post Grid */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 /* Blog Post Card */
@@ -105,80 +263,6 @@ header .nav-list a:hover, footer nav ul li a:hover {
     font-weight: bold;
 }
 
-/* Intro Section */
-.intro {
-    background-color: #FFD700; /* 노랑 배경 */
-    color: #222222; /* 검정 포인트 */
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.intro button {
-    background-color: #222222;
-    color: #FFD700;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.intro button:hover {
-    background-color: #FFD700;
-    color: #222222;
-}
-
-/* Latest Works Section */
-.latest-works {
-    background-color: #222222; /* 검정 배경 */
-    color: #FFD700; /* 노랑 포인트 */
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.latest-works .view-more {
-    background-color: #FFD700;
-    color: #222222;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.latest-works .view-more:hover {
-    background-color: #222222;
-    color: #FFD700;
-}
-
-/* Recent Posts Section */
-.recent-posts {
-    background-color: #FFD700; /* 노랑 배경 */
-    color: #222222; /* 검정 포인트 */
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.recent-posts .view-more {
-    background-color: #222222;
-    color: #FFD700;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.recent-posts .view-more:hover {
-    background-color: #FFD700;
-    color: #222222;
-}
-
-/* Grid Layout */
-.post-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-}
-
 /* Pagination Controls */
 .pagination-controls {
     display: flex;
@@ -187,8 +271,8 @@ header .nav-list a:hover, footer nav ul li a:hover {
 }
 
 .pagination-controls button {
-    background-color: #FFD700;
-    color: #222222;
+    background-color: #FFDE59;
+    color: #343434;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -198,13 +282,13 @@ header .nav-list a:hover, footer nav ul li a:hover {
 }
 
 .pagination-controls button:hover {
-    background-color: #222222;
-    color: #FFD700;
+    background-color: #343434;
+    color: #FFDE59;
     transform: scale(1.1);
 }
 
 .pagination-controls button:disabled {
-    background-color: #aaa;
-    color: #fff;
+    background-color: #B4B4B4;
+    color: #FFF;
     cursor: not-allowed;
 }
