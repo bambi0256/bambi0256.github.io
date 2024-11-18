@@ -16,18 +16,93 @@ body {
 
 /* Header & Footer */
 header, footer {
-    background-color: #222222; /* 검정 배경 */
-    color: #FFD700; /* 노랑 포인트 */
+    background-color: #B4B4B4; /* 연한 검정 배경 */
+    color: #FFDE59; /* 노랑 포인트 */
     padding: 20px 0;
 }
 
 header .nav-list a, footer nav ul li a {
-    color: #FFD700;
+    color: #FFDE59;
     text-decoration: none;
 }
 
 header .nav-list a:hover, footer nav ul li a:hover {
-    color: #FFFFFF;
+    color: #343434;
+}
+
+/* Blog Post Card */
+.blog-post-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF4C5; /* 노랑 배경 */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-post-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.blog-post-card .card-text {
+    background-color: #343434; /* 검정 배경 */
+    color: #FFFFFF; /* 흰 텍스트 */
+    padding: 20px;
+    text-align: left;
+}
+
+.blog-post-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+}
+
+.blog-post-card p {
+    margin: 0;
+    font-size: 1rem;
+    color: #FFF4C5;
+}
+
+/* Project Post Card */
+.project-post-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-post-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.project-post-card:hover img {
+    transform: scale(1.1);
+}
+
+.project-post-card:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+    z-index: 1;
+}
+
+.project-post-card .card-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2;
+    color: #FFFFFF; /* 흰 텍스트 */
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 /* Intro Section */
@@ -97,7 +172,7 @@ header .nav-list a:hover, footer nav ul li a:hover {
     color: #222222;
 }
 
-/* Post Grid */
+/* Grid Layout */
 .post-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
