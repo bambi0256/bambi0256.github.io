@@ -14,220 +14,87 @@ body {
     padding: 20px;
 }
 
-h1, h2, h3 {
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #1a202c;
-}
-
-a {
-    text-decoration: none;
-    color: #3a6351;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #2a9d8f;
-}
-
-/* Header Styles */
-header {
-    background-color: #fefae0;
-    border-bottom: 1px solid #ddd;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+/* Header & Footer */
+header, footer {
+    background-color: #222222; /* 검정 배경 */
+    color: #FFD700; /* 노랑 포인트 */
     padding: 20px 0;
 }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
+header .nav-list a, footer nav ul li a {
+    color: #FFD700;
+    text-decoration: none;
 }
 
-.logo img {
-    height: 50px;
-    width: auto;
+header .nav-list a:hover, footer nav ul li a:hover {
+    color: #FFFFFF;
 }
 
-.nav-list {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-list li {
-    margin: 0 15px;
-}
-
-.nav-list a {
-    color: #264653;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-list a:hover, .nav-list a.current {
-    color: #e76f51;
-}
-
-.social-icons a {
-    margin-left: 15px;
-    transition: transform 0.3s;
-}
-
-.social-icons a:hover {
-    transform: scale(1.1);
-}
-
-/* Responsive Navigation */
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.mobile-nav {
-    display: none;
-    background-color: #fefae0;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 200px;
-    border: 1px solid #ddd;
-    z-index: 1000;
-}
-
-.mobile-nav.open {
-    display: block;
-}
-
-.mobile-nav .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.mobile-nav .nav-list li {
-    margin: 10px 0;
+/* Intro Section */
+.intro {
+    background-color: #FFD700; /* 노랑 배경 */
+    color: #222222; /* 검정 포인트 */
+    padding: 100px 20px;
     text-align: center;
 }
 
-.mobile-nav .nav-list a {
-    display: block;
+.intro button {
+    background-color: #222222;
+    color: #FFD700;
     padding: 10px 20px;
-    color: #264653;
-    text-decoration: none;
-    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.mobile-nav .nav-list a:hover {
-    background-color: #2a9d8f;
-    color: #fff;
+.intro button:hover {
+    background-color: #FFD700;
+    color: #222222;
 }
 
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-list {
-        display: none;
-    }
-}
-
-/* Intro Sections */
-.blog-intro, .project-intro, .intro {
-    background-color: #fefae0;
+/* Latest Works Section */
+.latest-works {
+    background-color: #222222; /* 검정 배경 */
+    color: #FFD700; /* 노랑 포인트 */
     padding: 80px 20px;
     text-align: center;
 }
 
-.blog-intro .section-title, .project-intro .section-title, .intro .section-title {
-    font-size: 2.5rem;
-    color: #264653;
-    margin-bottom: 20px;
-}
-
-.blog-intro .section-description, .project-intro .section-description, .intro .section-description {
-    font-size: 1.2rem;
-    color: #6a6a6a;
-    margin-bottom: 40px;
-}
-
-.intro {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #ffffff;
-}
-
-.intro .text {
-    max-width: 50%;
-    text-align: left;
-    margin-right: 20px;
-}
-
-.intro .image {
-    max-width: 40%;
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
-}
-
-.intro img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.intro button {
-    background-color: #2a9d8f;
-    color: #ffffff;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 25px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-.intro button:hover {
-    transform: scale(1.1);
-    background-color: #264653;
-}
-
-/* Section Header */
-.section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-.section-header .text {
-    text-align: left;
-}
-
-.section-header .button {
-    text-align: right;
-}
-
-.section-header .view-more {
-    background-color: #2a9d8f;
-    color: #ffffff;
+.latest-works .view-more {
+    background-color: #FFD700;
+    color: #222222;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.section-header .view-more:hover {
-    background-color: #264653;
-    transform: scale(1.05);
+.latest-works .view-more:hover {
+    background-color: #222222;
+    color: #FFD700;
+}
+
+/* Recent Posts Section */
+.recent-posts {
+    background-color: #FFD700; /* 노랑 배경 */
+    color: #222222; /* 검정 포인트 */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.recent-posts .view-more {
+    background-color: #222222;
+    color: #FFD700;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.recent-posts .view-more:hover {
+    background-color: #FFD700;
+    color: #222222;
 }
 
 /* Post Grid */
@@ -245,94 +112,24 @@ header {
 }
 
 .pagination-controls button {
-    background-color: #2a9d8f;
-    color: #ffffff;
+    background-color: #FFD700;
+    color: #222222;
     border: none;
     padding: 10px 20px;
-    margin: 0 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    margin: 0 10px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .pagination-controls button:hover {
-    background-color: #264653;
+    background-color: #222222;
+    color: #FFD700;
     transform: scale(1.1);
 }
 
 .pagination-controls button:disabled {
     background-color: #aaa;
+    color: #fff;
     cursor: not-allowed;
-}
-
-/* Post Card Adjustments */
-.post-card, .recent-post-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.post-card:hover, .recent-post-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.post-card img, .recent-post-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-.post-card .post-info, .recent-post-card .card-content {
-    text-align: left;
-    padding: 20px;
-    background-color: #ffffff;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #264653;
-    color: #ffffff;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-footer nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-footer nav ul li {
-    margin: 0 15px;
-}
-
-footer nav ul li a {
-    color: #e9c46a;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-footer nav ul li a:hover {
-    color: #f4a261;
-}
-
-footer .social-icons a {
-    margin-right: 15px;
-    transition: transform 0.3s;
-}
-
-footer .social-icons a:hover {
-    transform: scale(1.1);
-}
-
-footer .copyright {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #ddd;
 }
