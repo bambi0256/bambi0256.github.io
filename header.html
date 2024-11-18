@@ -1,16 +1,21 @@
 <header>
     <div class="container header-content">
-        <div class="logo">
-            <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
+        <!-- Logo and Navigation -->
+        <div class="logo-nav">
+            <div class="logo">
+                <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
+            </div>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/project/" class="nav-link">Projects</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
+                    <li><a href="/about/" class="nav-link">About</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul class="nav-list">
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/project/" class="nav-link">Projects</a></li>
-                <li><a href="/blog/" class="nav-link">Blog</a></li>
-                <li><a href="/about/" class="nav-link">About</a></li>
-            </ul>
-        </nav>
+
+        <!-- Social Icons -->
         <div class="social-icons">
             <a href="https://www.instagram.com/_j256p" target="_blank">
                 <img src="/assets/image/instagram-icon.png" alt="Instagram">
@@ -19,5 +24,23 @@
                 <img src="/assets/image/github-icon.png" alt="GitHub">
             </a>
         </div>
+
+        <!-- Hamburger Menu -->
+        <button class="hamburger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <!-- Dropdown Navigation -->
+    <div class="dropdown-menu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/project/">Projects</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/about/">About</a></li>
+        </ul>
     </div>
 </header>
+<script src="/assets/js/hamburger.js" defer></script>

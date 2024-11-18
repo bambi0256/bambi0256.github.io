@@ -19,18 +19,37 @@ header .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+}
+
+.logo {
+    margin-right: 20px;
 }
 
 .nav-menu {
     display: flex;
-    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
     gap: 20px;
+}
+
+.nav-list a {
+    color: #FFDE59;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-list a:hover {
+    color: #343434;
 }
 
 .social-icons {
     display: flex;
-    align-items: center;
     gap: 15px;
 }
 
@@ -64,7 +83,7 @@ header .header-content {
     .dropdown-menu {
         display: none;
         position: absolute;
-        top: 100%;
+        top: 70px;
         left: 0;
         right: 0;
         background-color: #B4B4B4;
@@ -85,6 +104,7 @@ header .header-content {
     .dropdown-menu ul li a {
         color: #FFDE59;
         text-decoration: none;
+        font-size: 1.2rem;
     }
 
     .dropdown-menu.active {
@@ -172,11 +192,13 @@ footer nav ul li a:hover {
 
 /* Intro Section */
 .intro .container {
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center; /* 중앙 정렬 */
 }
 
 .intro .text,
@@ -185,28 +207,26 @@ footer nav ul li a:hover {
     text-align: center;
 }
 
-.intro button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #343434;
-    color: #FFDE59;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2rem;
+.intro .text {
+    order: 1;
 }
 
-.intro button:hover {
-    background-color: #FFDE59;
-    color: #343434;
+.intro .image {
+    order: 2;
 }
+
+@media (max-width: 768px) {
+    .intro .text,
+    .intro .image {
+        flex: 1 1 100%;
+    }
+}
+
 
 /* Latest Works Section */
 .latest-works .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .latest-works .text {
@@ -230,10 +250,8 @@ footer nav ul li a:hover {
 
 /* Recent Posts Section */
 .recent-posts .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .recent-posts .text {
