@@ -10,18 +10,21 @@
     {% include './header.html' %}
 
     <main>
-        <section class="blog-intro section">
+        <!-- Blog Section -->
+        <section class="recent-posts section">
             <div class="container">
-                <h1 class="section-title">Welcome to My Blog</h1>
-                <p class="section-description">Explore my latest thoughts, ideas, and inspirations.</p>
-            </div>
-        </section>
-
-        <section class="blog-list section">
-            <div class="container">
+                <h1 class="section-title">Blog</h1>
+                <p class="section-description">Explore my latest thoughts, stories, and inspirations.</p>
                 <div id="blog-posts-container" class="post-grid"></div>
                 <div id="pagination-controls" class="pagination-controls"></div>
             </div>
+        </section>
+    </main>
+
+    {% include './footer.html' %}
+</body>
+</html>
+       </div>
         </section>
         <script src="/assets/js/pagination-blog.js" defer></script>
     </main>
