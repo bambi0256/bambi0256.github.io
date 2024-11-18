@@ -49,7 +49,7 @@ def update_blog_page():
     template = env.get_template('temp-blog.html')
     
     # 4. 개별 게시물 페이지 생성
-    create_post_pages(blog_posts, './blog/temp-blog-post.html', './blog/')
+    create_post_pages(blog_posts, 'temp-blog-post.html', './blog/')
     
     # 5. 블로그 목록 페이지 생성
     output = template.render(posts=blog_posts)
