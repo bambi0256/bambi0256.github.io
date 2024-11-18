@@ -14,19 +14,27 @@ body {
     padding: 20px;
 }
 
-/* Header Layout */
+/* General Header Styles */
 header .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 20px 0;
+    background-color: #B4B4B4; /* 연한 검정 배경 */
 }
 
 .logo {
     margin-right: 20px;
 }
 
+.logo img {
+    max-height: 40px;
+}
+
+/* Navigation Menu */
 .nav-menu {
     display: flex;
+    align-items: center;
 }
 
 .nav-list {
@@ -38,21 +46,33 @@ header .header-content {
 }
 
 .nav-list a {
-    color: #FFDE59;
+    color: #FFDE59; /* 포인트 노랑 */
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 .nav-list a:hover {
-    color: #343434;
+    color: #343434; /* 진한 검정 */
 }
 
+/* Social Icons */
 .social-icons {
     display: flex;
+    align-items: center;
     gap: 15px;
 }
 
+.social-icons img {
+    max-width: 24px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Hamburger Menu */
 .hamburger-menu {
     display: none;
     flex-direction: column;
@@ -69,7 +89,7 @@ header .header-content {
     transition: transform 0.3s;
 }
 
-/* Responsive */
+/* Responsive: Screen Width ≤ 768px */
 @media (max-width: 768px) {
     .nav-menu,
     .social-icons {
@@ -79,38 +99,86 @@ header .header-content {
     .hamburger-menu {
         display: flex;
     }
-
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background-color: #B4B4B4;
-        padding: 10px 0;
-        text-align: center;
-    }
-
-    .dropdown-menu ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .dropdown-menu ul li {
-        margin: 10px 0;
-    }
-
-    .dropdown-menu ul li a {
-        color: #FFDE59;
-        text-decoration: none;
-        font-size: 1.2rem;
-    }
-
-    .dropdown-menu.active {
-        display: block;
-    }
 }
+
+/* Full-Screen Overlay Menu */
+.overlay-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #FFDE59; /* 포인트 노랑 */
+    z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.overlay-menu.active {
+    display: block;
+}
+
+.overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.overlay-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.overlay-close {
+    background: none;
+    border: none;
+    color: #FFDE59;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.overlay-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.overlay-nav ul li {
+    margin: 10px 0;
+}
+
+.overlay-nav ul li a {
+    color: #FFDE59;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.overlay-nav ul li a:hover {
+    color: #FFFFFF; /* 흰색 */
+}
+
+.overlay-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.overlay-social-icons img {
+    max-width: 24px;
+    transition: transform 0.3s;
+}
+
+.overlay-social-icons img:hover {
+    transform: scale(1.1);
+}
+
 
 /* Footer */
 footer {
