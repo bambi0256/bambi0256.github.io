@@ -6,10 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch('/assets/js/blog-posts.json')
             .then(response => response.json())
             .then(data => {
-                // Blog 페이지에 포스트 표시
                 const blogGrid = document.querySelector("#blog-posts-container");
+                const homeRecentPosts = document.querySelector("#recent-posts-container");
+
+                // Blog Page Updates
                 if (blogGrid) {
-                    blogGrid.innerHTML = ''; // 기존 내용 제거
+                    blogGrid.innerHTML = '';
                     const start = (page - 1) * postsPerPage;
                     const end = start + postsPerPage;
                     const pagePosts = data.slice(start, end);
@@ -37,12 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
 
-                // Homepage 최근 포스트 표시
-                const homeRecentPosts = document.querySelector("#recent-posts-container");
+                // Homepage Updates
                 if (homeRecentPosts) {
-                    homeRecentPosts.innerHTML = ''; // 기존 내용 제거
+                    homeRecentPosts.innerHTML = '';
                     const recentPosts = data.slice(0, postsPerPage);
-
                     recentPosts.forEach(post => {
                         const postCard = `
                             <div class="blog-post-card">
@@ -55,8 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         homeRecentPosts.innerHTML += postCard;
                     });
                 }
-            })
-            .catch(error => console.error('Error loading blog posts:', error));
+            });
     }
 
     loadBlogPosts(currentPage);
