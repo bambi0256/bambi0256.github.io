@@ -1,17 +1,35 @@
-/* General Styles */
+/* General Background Color */
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f7f5f2;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    line-height: 1.8;
+    background-color: #343434;
+    color: #FFDE59;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+/* Buttons */
+button, .btn {
+    background-color: #FFDE59;
+    color: #343434;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover, .btn:hover {
+    background-color: #343434;
+    color: #FFDE59;
+    transform: scale(1.05);
+}
+
+/* Plain Text */
+p, h1, h2, h3, a {
+    color: #FFDE59;
+}
+
+a:hover {
+    color: #343434;
 }
 
 /* General Header Styles */
@@ -20,18 +38,22 @@ header .header-content {
     align-items: center;
     justify-content: space-between;
     padding: 20px 0;
-    background-color: #B4B4B4; /* 연한 검정 배경 */
+    background-color: #343434;
+    width: 1200px;
+    box-sizing: border-box;
 }
 
-.logo {
-    margin-right: 20px;
+/* Logo and Navigation */
+.logo-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .logo img {
     max-height: 40px;
 }
 
-/* Navigation Menu */
 .nav-menu {
     display: flex;
     align-items: center;
@@ -46,14 +68,14 @@ header .header-content {
 }
 
 .nav-list a {
-    color: #FFDE59; /* 포인트 노랑 */
+    color: #FFDE59;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 .nav-list a:hover {
-    color: #343434; /* 진한 검정 */
+    color: #FFFFFF;
 }
 
 /* Social Icons */
@@ -110,7 +132,7 @@ header .header-content {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    color: #FFDE59; /* 포인트 노랑 */
+    color: #FFDE59;
     z-index: 9999;
     padding: 20px;
     box-sizing: border-box;
@@ -161,7 +183,7 @@ header .header-content {
 }
 
 .overlay-nav ul li a:hover {
-    color: #FFFFFF; /* 흰색 */
+    color: #FFFFFF;
 }
 
 .overlay-social-icons {
@@ -180,10 +202,26 @@ header .header-content {
 }
 
 
+/* Social Icons */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-icons img {
+    max-width: 24px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
 /* Footer */
 footer {
-    background-color: #B4B4B4; /* 연한 검정 배경 */
-    color: #FFDE59; /* 노랑 포인트 */
+    background-color: #343434;
+    color: #FFDE59;
     padding: 20px 0;
 }
 
@@ -204,7 +242,7 @@ footer nav ul li a {
 }
 
 footer nav ul li a:hover {
-    color: #343434;
+    color: #FFFFFF;
 }
 
 /* Social Icons */
@@ -244,8 +282,8 @@ footer nav ul li a:hover {
 }
 
 .section-header .view-more {
-    background-color: #FFDE59; /* 포인트 노랑 */
-    color: #343434; /* 진한 검정 */
+    background-color: #FFDE59;
+    color: #343434;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -254,8 +292,7 @@ footer nav ul li a:hover {
 }
 
 .section-header .view-more:hover {
-    background-color: #343434; /* 진한 검정 */
-    color: #FFDE59; /* 포인트 노랑 */
+    color: #FFFFFF;
 }
 
 /* Intro Section */
@@ -269,9 +306,13 @@ footer nav ul li a:hover {
     justify-content: center; /* 중앙 정렬 */
 }
 
-.intro .text,
+.intro .text{
+    flex: 1 45%;
+    text-align: left;
+}
+
 .intro .image {
-    flex: 1 1 45%;
+    flex: 1 45%;
     text-align: center;
 }
 
@@ -290,7 +331,6 @@ footer nav ul li a:hover {
     }
 }
 
-
 /* Latest Works Section */
 .latest-works .container {
     max-width: 1200px;
@@ -303,8 +343,8 @@ footer nav ul li a:hover {
 }
 
 .latest-works .view-more {
-    background-color: #FFDE59;
-    color: #343434;
+    background-color: #343434;
+    color: #FFDE59;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -312,8 +352,8 @@ footer nav ul li a:hover {
 }
 
 .latest-works .view-more:hover {
-    background-color: #343434;
-    color: #FFDE59;
+    background-color: #FFDE59;
+    color: #343434;
 }
 
 /* Recent Posts Section */
@@ -352,7 +392,7 @@ footer nav ul li a:hover {
 .blog-post-card {
     display: flex;
     flex-direction: column;
-    background-color: #FFF4C5; /* 노랑 배경 */
+    background-color: #FFFFFF;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -366,8 +406,8 @@ footer nav ul li a:hover {
 }
 
 .blog-post-card .card-text {
-    background-color: #343434; /* 검정 배경 */
-    color: #FFFFFF; /* 흰 텍스트 */
+    background-color: #FFF4C5;
+    color: #343434;
     padding: 20px;
     text-align: left;
 }
@@ -380,7 +420,7 @@ footer nav ul li a:hover {
 .blog-post-card p {
     margin: 0;
     font-size: 1rem;
-    color: #FFF4C5;
+    color: #343434;
 }
 
 /* Project Post Card */
@@ -418,7 +458,7 @@ footer nav ul li a:hover {
     bottom: 20px;
     left: 20px;
     z-index: 2;
-    color: #FFFFFF; /* 흰 텍스트 */
+    color: #FFFFFF;
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -442,13 +482,11 @@ footer nav ul li a:hover {
 }
 
 .pagination-controls button:hover {
-    background-color: #343434;
-    color: #FFDE59;
     transform: scale(1.1);
 }
 
 .pagination-controls button:disabled {
     background-color: #B4B4B4;
-    color: #FFF;
+    color: #FFFFFF;
     cursor: not-allowed;
 }
