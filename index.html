@@ -74,10 +74,13 @@
                 <div class="text">
                     <h1 class="section-title">Welcome to B.Bee's Blog</h1>
                     <p class="section-description">Explore creativity, technology, and ideas in one space.</p>
+                    <div class="button-group">
+                        <button class="my-works" onclick="scrollToWorks()">My Works ↓</button>
+                        <button class="about-me" onclick="window.location.href='/about/'">About Me →</button>
+                    </div>
                 </div>
-                <div class="button-group">
-                    <button class="my-works" onclick="scrollToWorks()">My Works ↓</button>
-                    <button class="about-me" onclick="window.location.href='/about/'">About Me →</button>
+                <div class="image">
+                    <img src="/assets/image/intro-image.jpg" alt="Intro">
                 </div>
             </div>
         </section>
@@ -85,7 +88,15 @@
         <!-- Latest Works Section -->
         <section class="latest-works section" id="latest-works">
             <div class="container">
-                <h2 class="section-title">Latest Works</h2>
+                <div class="section-header">
+                    <div class="text">
+                        <h2 class="section-title">Latest Works</h2>
+                        <p class="section-description">Discover my most recent projects and creations.</p>
+                    </div>
+                    <div class="button">
+                        <a href="/project/" class="view-more">View More</a>
+                    </div>
+                </div>
                 <div id="latest-work-posts-container" class="post-grid"></div>
             </div>
         </section>
@@ -93,7 +104,15 @@
         <!-- Recent Posts Section -->
         <section class="recent-posts section">
             <div class="container">
-                <h2 class="section-title">Recent Posts</h2>
+                <div class="section-header">
+                    <div class="text">
+                        <h2 class="section-title">Recent Posts</h2>
+                        <p class="section-description">Catch up on my latest thoughts and ideas.</p>
+                    </div>
+                    <div class="button">
+                        <a href="/blog/" class="view-more">View More</a>
+                    </div>
+                </div>
                 <div id="recent-posts-container" class="post-grid"></div>
             </div>
         </section>
