@@ -36,6 +36,7 @@ a:hover {
 header .header-content {
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: space-between;
     padding: 20px 0;
     background-color: #343434;
@@ -97,6 +98,7 @@ header .header-content {
 /* Hamburger Menu */
 .hamburger-menu {
     display: none;
+    color: #FFDE59;
     flex-direction: column;
     gap: 5px;
     background: none;
@@ -303,7 +305,7 @@ footer nav ul li a:hover {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center; /* 중앙 정렬 */
+    justify-content: center;
 }
 
 .intro .text{
@@ -313,6 +315,7 @@ footer nav ul li a:hover {
 
 .intro .image {
     flex: 1 45%;
+    max-width: 360px;
     text-align: center;
 }
 
