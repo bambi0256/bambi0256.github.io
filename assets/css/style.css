@@ -78,6 +78,11 @@ header .header-content {
     color: #FFFFFF;
 }
 
+.nav-list .current-page a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 /* Social Icons */
 .social-icons {
     display: flex;
@@ -304,6 +309,7 @@ footer nav ul li a:hover {
     .intro .text,
     .intro .image {
         flex: 1 1 100%;
+        max-width: 480px;
     }
 }
 
