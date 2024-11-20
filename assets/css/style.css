@@ -82,6 +82,7 @@ header .header-content {
 .social-icons {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -262,7 +263,7 @@ footer nav ul li a:hover {
 
 /* Intro Section */
 .intro .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -278,11 +279,15 @@ footer nav ul li a:hover {
 
 .intro .image {
     flex: 1 45%;
-    width: 480px;
-    height: 520px;
     text-align: center;
-    border-radius: 50px;
-    object-fit: cover;
+    width: 450;
+    height: 600;
+    object-fit: hidden;
+}
+
+.intro .img {
+    width: 100%;
+    height: auto;
 }
 
 .intro .text {
@@ -360,6 +365,7 @@ footer nav ul li a:hover {
 /* Blog Post Card */
 .blog-post-card {
     display: flex;
+    height: 500px;
     flex-direction: column;
     background-color: #FFFFFF;
     border-radius: 10px;
@@ -371,11 +377,14 @@ footer nav ul li a:hover {
 .blog-post-card img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: hidden;
 }
 
 .blog-post-card .card-text {
     background-color: #FFF4C5;
+    height: 300px;
+    margin-top: -20px;
+    border-radius: 10px;
     color: #343434;
     padding: 20px;
     text-align: left;
@@ -384,6 +393,7 @@ footer nav ul li a:hover {
 .blog-post-card h3 {
     margin: 0 0 10px 0;
     font-size: 1.5rem;
+    color: #343434;
 }
 
 .blog-post-card p {
@@ -395,6 +405,7 @@ footer nav ul li a:hover {
 /* Project Post Card */
 .project-post-card {
     position: relative;
+    height: 420px;
     overflow: hidden;
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
