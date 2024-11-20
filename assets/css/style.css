@@ -282,12 +282,13 @@ footer nav ul li a:hover {
     text-align: center;
     width: 450;
     height: 600;
-    object-fit: hidden;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .intro .img {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 .intro .text {
@@ -364,9 +365,8 @@ footer nav ul li a:hover {
 
 /* Blog Post Card */
 .blog-post-card {
-    display: flex;
+    position: relative;
     height: 500px;
-    flex-direction: column;
     background-color: #FFFFFF;
     border-radius: 10px;
     overflow: hidden;
@@ -376,18 +376,22 @@ footer nav ul li a:hover {
 
 .blog-post-card img {
     width: 100%;
-    height: auto;
-    object-fit: hidden;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .blog-post-card .card-text {
+    position: absolute;
     background-color: #FFF4C5;
-    height: 300px;
-    margin-top: -20px;
-    border-radius: 10px;
+    bottom: 0;
+    width: 100%;
     color: #343434;
     padding: 20px;
     text-align: left;
+    box-sizing: border-box;
 }
 
 .blog-post-card h3 {
@@ -413,7 +417,7 @@ footer nav ul li a:hover {
 
 .project-post-card img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
 }
@@ -422,25 +426,38 @@ footer nav ul li a:hover {
     transform: scale(1.1);
 }
 
-.project-post-card:hover::before {
+.project-post-card::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+    background: linear-gradient(to bottom, rgba(255, 240, 200, 0.2), rgba(255, 240, 200, 0.9));
+    opacity: 0;
+    transition: opacity 0.3s ease;
     z-index: 1;
 }
 
-.project-post-card .card-text {
+.project-post-card:hover::before {
+    opacity: 1;
+}
+
+.card-text {
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #343434;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    opacity: 0;
     z-index: 2;
-    color: #FFFFFF;
-    font-size: 1.2rem;
-    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+.project-post-card:hover .card-text {
+    opacity: 1;
 }
 
 /* Pagination Controls */
