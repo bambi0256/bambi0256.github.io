@@ -304,6 +304,7 @@ footer nav ul li a:hover {
     .intro .text,
     .intro .image {
         flex: 1 1 100%;
+        max-width: 480px;
     }
 }
 
