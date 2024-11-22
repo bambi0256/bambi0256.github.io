@@ -2,6 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentPage = 1;
     const postsPerPage = 6;
 
+    function convertToSlug(title) {
+        return title
+            .trim() // 양쪽 공백 제거
+            .toLowerCase() // 대문자를 소문자로 변환
+            .replace(/\s+/g, "-") // 공백(하나 이상)을 하이픈(-)으로 대체
+            .replace(/%20/g, "-") // %20을 하이픈(-)으로 대체
+            .replace(/[^a-z0-9\-]/g, ""); // 알파벳, 숫자, 하이픈만 남기고 제거
+    }
+
     function loadProjectPosts(page) {
         fetch('/assets/js/project-posts.json')
             .then(response => response.json())
@@ -38,8 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         postCard.appendChild(cardText);
 
                         // Add click event listener
+                        const slug = convertToSlug(post.title);
                         postCard.addEventListener("click", () => {
-                            window.location.href = `/blog/${post.title}`;
+                            window.location.href = `/blog/${slug}`;
                         });
 
                         // Append to the grid
@@ -84,8 +94,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         postCard.appendChild(cardText);
 
                         // Add click event listener
+                        const slug = convertToSlug(post.title);
                         postCard.addEventListener("click", () => {
-                            window.location.href = `/blog/${post.title}`;
+                            window.location.href = `/blog/${slug}`;
                         });
 
                         // Append to the grid
