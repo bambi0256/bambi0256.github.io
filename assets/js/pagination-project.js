@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         // Assemble the card
                         cardText.appendChild(postTitle);
-                        cardText.appendChild(postExcerpt);
                         postCard.appendChild(postImage);
                         postCard.appendChild(cardText);
 
@@ -89,7 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         // Assemble the card
                         cardText.appendChild(postTitle);
-                        cardText.appendChild(postExcerpt);
                         postCard.appendChild(postImage);
                         postCard.appendChild(cardText);
 
