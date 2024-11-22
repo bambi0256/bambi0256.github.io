@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     pagePosts.forEach(post => {
     		// Create elements dynamically
                         const postCard = document.createElement("div");
-                        postCard.classList.add("blog-post-card");
+                        postCard.classList.add("project-post-card");
 
                         const postImage = document.createElement("img");
                         postImage.src = post.main_image;
@@ -30,9 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         const postTitle = document.createElement("h3");
                         postTitle.textContent = post.title;
-
-                        const postExcerpt = document.createElement("p");
-                        postExcerpt.textContent = post.excerpt;
 
                         // Assemble the card
                         cardText.appendChild(postTitle);
@@ -65,10 +62,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     homeLatestWorks.innerHTML = '';
                     const latestWorks = data.slice(0, postsPerPage);
 
-                    lastestWorks.forEach(post => {
+                    latestWorks.forEach(post => {
     		// Create elements dynamically
                         const postCard = document.createElement("div");
-                        postCard.classList.add("blog-post-card");
+                        postCard.classList.add("project-post-card");
 
                         const postImage = document.createElement("img");
                         postImage.src = post.main_image;
@@ -79,9 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         const postTitle = document.createElement("h3");
                         postTitle.textContent = post.title;
-
-                        const postExcerpt = document.createElement("p");
-                        postExcerpt.textContent = post.excerpt;
 
                         // Assemble the card
                         cardText.appendChild(postTitle);
