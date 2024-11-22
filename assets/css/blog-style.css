@@ -5,18 +5,18 @@
     gap: 30px;
 }
 
-/* Recent Posts Section */
-.recent-posts .container {
+/* Blog-List Section */
+.blog-list .container {
     max-width: 1200px;
     margin: 0 auto 100px;
 }
 
-.recent-posts .text {
+.blog-list .text {
     text-align: left;
     max-width: 50%;
 }
 
-.recent-posts .view-more {
+.blog-list .view-more {
     background-color: #343434;
     color: #FFDE59;
     padding: 10px 20px;
@@ -25,7 +25,7 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
-.recent-posts .view-more:hover {
+.blog-list .view-more:hover {
     background-color: #FFDE59;
     color: #343434;
 }
