@@ -1,0 +1,237 @@
+/* General Background Color */
+body {
+    background-color: #343434;
+    color: #FFDE59;
+}
+
+/* Buttons */
+button, .btn {
+    background-color: #FFDE59;
+    color: #343434;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover, .btn:hover {
+    background-color: #343434;
+    color: #FFDE59;
+    transform: scale(1.05);
+}
+
+/* Plain Text */
+p, h1, h2, h3, a {
+    color: #FFDE59;
+}
+
+a:hover {
+    color: #343434;
+}
+
+/* General Header Styles */
+header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+    background-color: #343434;
+    width: 1200px;
+    margin: 0 auto 100px;
+}
+
+/* Logo and Navigation */
+.logo-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo img {
+    max-height: 40px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+.nav-list a {
+    color: #FFDE59;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-list a:hover {
+    color: #FFFFFF;
+}
+
+.nav-list .current-page a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.social-icons img {
+    max-height: 20px;
+    object-fit: fill;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    color: #FFDE59;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: #FFDE59;
+    transition: transform 0.3s;
+}
+
+/* Responsive: Screen Width ≤ 768px */
+@media (max-width: 768px) {
+    .nav-menu,
+    .social-icons {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+}
+
+/* Full-Screen Overlay Menu */
+.overlay-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #FFDE59;
+    z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.overlay-menu.active {
+    display: block;
+}
+
+.overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.overlay-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.overlay-close {
+    background: none;
+    border: none;
+    color: #FFDE59;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.overlay-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.overlay-nav ul li {
+    margin: 10px 0;
+}
+
+.overlay-nav ul li a {
+    color: #FFDE59;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.overlay-nav ul li a:hover {
+    color: #FFFFFF;
+}
+
+.overlay-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.overlay-social-icons img {
+    max-width: 24px;
+    transition: transform 0.3s;
+}
+
+.overlay-social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background-color: #343434;
+    color: #FFDE59;
+    padding: 20px 0;
+}
+
+footer nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer nav ul li a {
+    color: #FFDE59;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+footer nav ul li a:hover {
+    color: #FFFFFF;
+}

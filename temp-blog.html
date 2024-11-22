@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - B.Bee</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/header-footer-style.css">
+    <link rel="stylesheet" href="/assets/css/blog-style.css">
 </head>
 <body>
     {% include './header.html' %}
@@ -12,8 +13,10 @@
     <main>
         <section class="blog-list section">
             <div class="container">
-                <h1 class="section-title">Blog</h1>
-                <p class="section-description">Explore my latest thoughts, stories, and inspirations.</p>
+                <div class="section-header">
+                    <h1 class="section-title">Blog</h1>
+                    <p class="section-description">Explore my latest thoughts, stories, and inspirations.</p>
+                </div>
                 <div id="blog-posts-container" class="post-grid"></div>
                 <div id="pagination-controls" class="pagination-controls"></div>
             </div>

@@ -1,0 +1,115 @@
+/* Post Grid */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Latest Works Section */
+.latest-works .container {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+}
+
+.latest-works .text {
+    text-align: left;
+    max-width: 50%;
+}
+
+.latest-works .view-more {
+    background-color: #343434;
+    color: #FFDE59;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.latest-works .view-more:hover {
+    background-color: #FFDE59;
+    color: #343434;
+}
+
+/* Project Post Card */
+.project-post-card {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-post-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.project-post-card:hover img {
+    transform: scale(1.1);
+}
+
+.project-post-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 240, 200, 0.2), rgba(255, 240, 200, 0.6));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.project-post-card:hover::before {
+    opacity: 1;
+}
+
+.project-post-card .card-text {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #343434;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    box-sizing: border-box;
+}
+
+.project-post-card:hover .card-text {
+    opacity: 1;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.pagination-controls button {
+    background-color: #FFDE59;
+    color: #343434;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.pagination-controls button:hover {
+    transform: scale(1.1);
+}
+
+.pagination-controls button:disabled {
+    background-color: #B4B4B4;
+    color: #FFFFFF;
+    cursor: not-allowed;
+}
