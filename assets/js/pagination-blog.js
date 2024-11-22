@@ -25,8 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <p>${post.excerpt}</p>
                                 </div>
                             </div>`;
-                        blogGrid.innerHTML += postCard;
-                    });
+                        postCard.addEventListener("click", () => {
+                            window.location.href = /blog/${post.title};
+                        }
+                            blogGrid.innerHTML += postCard;
+                        });
 
                     // Pagination Controls
                     const paginationControls = document.querySelector("#pagination-controls");
@@ -52,6 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <p>${post.excerpt}</p>
                                 </div>
                             </div>`;
+                        postCard.addEventListener("click", () => {
+                            window.location.href = /blog/${post.title};
+                        }
                         homeRecentPosts.innerHTML += postCard;
                     });
                 }
