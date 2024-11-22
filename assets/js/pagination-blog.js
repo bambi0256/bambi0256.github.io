@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
 
                         // Append to the grid
-                        blogGrid.appendChild(postCard);
+                        homeRecentPosts.appendChild(postCard);
                     });
                 }
             });
