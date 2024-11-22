@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <img src="${post.main_image}" alt="${post.title}">
                                 <div class="card-text">${post.title}</div>
                             </div>`;
+                        postCard.addEventListener("click", () => {
+                            window.location.href = /blog/${post.title};
+                        }
                         projectGrid.innerHTML += postCard;
                     });
 
@@ -46,6 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <img src="${post.main_image}" alt="${post.title}">
                                 <div class="card-text">${post.title}</div>
                             </div>`;
+                        postCard.addEventListener("click", () => {
+                            window.location.href = /blog/${post.title};
+                        }
                         homeLatestWorks.innerHTML += postCard;
                     });
                 }
