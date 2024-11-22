@@ -17,15 +17,36 @@ document.addEventListener("DOMContentLoaded", function () {
                     const pagePosts = data.slice(start, end);
 
                     pagePosts.forEach(post => {
-                        const postCard = `
-                            <div class="project-post-card">
-                                <img src="${post.main_image}" alt="${post.title}">
-                                <div class="card-text">${post.title}</div>
-                            </div>`;
+    		// Create elements dynamically
+                        const postCard = document.createElement("div");
+                        postCard.classList.add("blog-post-card");
+
+                        const postImage = document.createElement("img");
+                        postImage.src = post.main_image;
+                        postImage.alt = post.title;
+
+                        const cardText = document.createElement("div");
+                        cardText.classList.add("card-text");
+
+                        const postTitle = document.createElement("h3");
+                        postTitle.textContent = post.title;
+
+                        const postExcerpt = document.createElement("p");
+                        postExcerpt.textContent = post.excerpt;
+
+                        // Assemble the card
+                        cardText.appendChild(postTitle);
+                        cardText.appendChild(postExcerpt);
+                        postCard.appendChild(postImage);
+                        postCard.appendChild(cardText);
+
+                        // Add click event listener
                         postCard.addEventListener("click", () => {
-                            window.location.href = /blog/${post.title};
-                        }
-                        projectGrid.innerHTML += postCard;
+                            window.location.href = `/blog/${post.title}`;
+                        });
+
+                        // Append to the grid
+                        blogGrid.appendChild(postCard);
                     });
 
                     // Pagination Controls
@@ -43,16 +64,38 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (homeLatestWorks) {
                     homeLatestWorks.innerHTML = '';
                     const latestWorks = data.slice(0, postsPerPage);
-                    latestWorks.forEach(post => {
-                        const postCard = `
-                            <div class="project-post-card">
-                                <img src="${post.main_image}" alt="${post.title}">
-                                <div class="card-text">${post.title}</div>
-                            </div>`;
+
+                    lastestWorks.forEach(post => {
+    		// Create elements dynamically
+                        const postCard = document.createElement("div");
+                        postCard.classList.add("blog-post-card");
+
+                        const postImage = document.createElement("img");
+                        postImage.src = post.main_image;
+                        postImage.alt = post.title;
+
+                        const cardText = document.createElement("div");
+                        cardText.classList.add("card-text");
+
+                        const postTitle = document.createElement("h3");
+                        postTitle.textContent = post.title;
+
+                        const postExcerpt = document.createElement("p");
+                        postExcerpt.textContent = post.excerpt;
+
+                        // Assemble the card
+                        cardText.appendChild(postTitle);
+                        cardText.appendChild(postExcerpt);
+                        postCard.appendChild(postImage);
+                        postCard.appendChild(cardText);
+
+                        // Add click event listener
                         postCard.addEventListener("click", () => {
-                            window.location.href = /blog/${post.title};
-                        }
-                        homeLatestWorks.innerHTML += postCard;
+                            window.location.href = `/blog/${post.title}`;
+                        });
+
+                        // Append to the grid
+                        blogGrid.appendChild(postCard);
                     });
                 }
             });

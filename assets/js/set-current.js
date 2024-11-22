@@ -10,7 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add 'current-page' class to the matching nav item
     navLinks.forEach((link) => {
         const linkPath = new URL(link.href).pathname;
-        if (currentPath.startsWith(linkPath)) {
+        if (
+            currentPath === linkPath || // 정확히 일치하는 경우
+            (currentPath.startsWith(linkPath) && currentPath[linkPath.length] === "/") // 하위 경로인 경우
+        ) {
             link.parentElement.classList.add("current-page");
         }
     });
