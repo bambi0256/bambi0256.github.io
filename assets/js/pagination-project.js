@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
 
                         // Append to the grid
-                        blogGrid.appendChild(postCard);
+                        projectGrid.appendChild(postCard);
                     });
 
                     // Pagination Controls
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
 
                         // Append to the grid
-                        blogGrid.appendChild(postCard);
+                        homeLatestWorks.appendChild(postCard);
                     });
                 }
             });

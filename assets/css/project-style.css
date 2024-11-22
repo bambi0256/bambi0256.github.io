@@ -111,7 +111,6 @@
 }
 
 .pagination-controls button:disabled {
-    background-color: #B4B4B4;
-    color: #FFFFFF;
-    cursor: not-allowed;
+    opacity: 0;
+    pointer-events: none;
 }
