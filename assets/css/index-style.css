@@ -1,0 +1,235 @@
+/* Section Header */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.section-header .text {
+    text-align: left;
+    max-width: 60%;
+}
+
+.section-header .button {
+    text-align: right;
+}
+
+.section-header .view-more {
+    background-color: #FFDE59;
+    color: #343434;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.section-header .view-more:hover {
+    color: #FFFFFF;
+}
+
+/* Intro Section */
+.intro .container {
+    max-width: 1000px;
+    margin: 0 auto 100px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.intro .text{
+    flex: 1 45%;
+    text-align: left;
+}
+
+.intro .image {
+    flex: 1 45%;
+    text-align: center;
+    width: 450;
+    height: 600;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.intro .img {
+    width: 100%;
+    height: 100%;
+}
+
+.intro .text {
+    order: 1;
+}
+
+.intro .image {
+    order: 2;
+}
+
+@media (max-width: 768px) {
+    .intro .text,
+    .intro .image {
+        flex: 1 1 100%;
+        max-width: 480px;
+    }
+}
+
+/* Post Grid */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Latest Works Section */
+.latest-works .container {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+}
+
+.latest-works .text {
+    text-align: left;
+    max-width: 50%;
+}
+
+.latest-works .view-more {
+    background-color: #343434;
+    color: #FFDE59;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.latest-works .view-more:hover {
+    background-color: #FFDE59;
+    color: #343434;
+}
+
+/* Project Post Card */
+.project-post-card {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-post-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.project-post-card:hover img {
+    transform: scale(1.1);
+}
+
+.project-post-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 240, 200, 0.2), rgba(255, 240, 200, 0.6));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.project-post-card:hover::before {
+    opacity: 1;
+}
+
+.project-post-card .card-text {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #343434;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    box-sizing: border-box;
+}
+
+.project-post-card:hover .card-text {
+    opacity: 1;
+}
+
+/* Recent Posts Section */
+.recent-posts .container {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+}
+
+.recent-posts .text {
+    text-align: left;
+    max-width: 50%;
+}
+
+.recent-posts .view-more {
+    background-color: #343434;
+    color: #FFDE59;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.recent-posts .view-more:hover {
+    background-color: #FFDE59;
+    color: #343434;
+}
+
+/* Blog Post Card */
+.blog-post-card {
+    position: relative;
+    height: 500px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-post-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.blog-post-card .card-text {
+    position: absolute;
+    background-color: #FFF4C5;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    color: #343434;
+    padding: 20px;
+    text-align: left;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.blog-post-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #343434;
+}
+
+.blog-post-card p {
+    margin: 0;
+    font-size: 1rem;
+    color: #343434;
+}

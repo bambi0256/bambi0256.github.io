@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - B.Bee</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/header-footer-style.css">
+    <link rel="stylesheet" href="/assets/css/project-style.css">
 </head>
 <body>
     {% include './header.html' %}
@@ -12,11 +13,13 @@
     <main>
         <section class="project-list section">
             <div class="container">
-                <h1 class="section-title">Projects</h1>
-                <p class="section-description">A showcase of my creative and technical works.</p>
-                <div id="project-posts-container" class="post-grid"></div>
-                <div id="pagination-controls" class="pagination-controls"></div>
+                <div class="section-header">
+                    <h1 class="section-title">Projects</h1>
+                    <p class="section-description">A showcase of my creative and technical works.</p>
+                </div>
             </div>
+            <div id="project-posts-container" class="post-grid"></div>
+            <div id="pagination-controls" class="pagination-controls"></div>
         </section>
     </main>
 
