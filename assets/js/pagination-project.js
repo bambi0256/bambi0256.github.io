@@ -30,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (paginationControls) {
                         const totalPages = Math.ceil(data.length / postsPerPage);
                         paginationControls.innerHTML = `
-                            <button ${page <= 1 ? "disabled" : ""} onclick="loadProjectPosts(${page - 1})">Previous</button>
+                            <button ${page <= 1 ? "disabled" : ""} onclick="loadProjectPosts(${page - 1})"> ← </button>
                             <span>Page ${page} of ${totalPages}</span>
-                            <button ${page >= totalPages ? "disabled" : ""} onclick="loadProjectPosts(${page + 1})">Next</button>`;
+                            <button ${page >= totalPages ? "disabled" : ""} onclick="loadProjectPosts(${page + 1})"> → </button>`;
                     }
                 }
 
