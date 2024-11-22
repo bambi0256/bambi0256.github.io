@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         // Add click event listener
                         const slug = convertToSlug(post.title);
                         postCard.addEventListener("click", () => {
-                            window.location.href = `/blog/${slug}`;
+                            window.location.href = `/project/${slug}`;
                         });
 
                         // Append to the grid
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         // Add click event listener
                         const slug = convertToSlug(post.title);
                         postCard.addEventListener("click", () => {
-                            window.location.href = `/blog/${slug}`;
+                            window.location.href = `/project/${slug}`;
                         });
 
                         // Append to the grid
