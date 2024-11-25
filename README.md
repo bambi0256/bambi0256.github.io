@@ -47,16 +47,16 @@
 
 ### 2. **`/assets/`**
 - **`/css/`**: 프로젝트의 스타일을 정의한 `style.css`가 포함됩니다. 블로그의 스타일을 정의합니다.
-- **`/js/`**: 자바스크립트 파일들이 포함되어 있습니다.
+- **`/js/`**
   - **`pagination-blog.js`**: 블로그 페이지를 동적으로 업데이트하고 Pagination을 관리합니다.
   - **`pagination-project.js`**: 프로젝트 페이지를 동적으로 업데이트하고 Pagination을 관리합니다.
   - **`hamburger.js`**: 반응형 햄버거 메뉴 관리 및 작은 화면에서 메뉴를 토글하는 기능입니다.
   - **`set-current.js`**: 헤더의 현재 페이지 링크를 강조하는 기능입니다.
-- **`/py/`**: Python 스크립트 파일들이 포함되어 있습니다.
+- **`/py/`**
   - **`update-blog-page.py`**: 블로그 Markdown 파일을 HTML로 변환하고, 블로그 페이지를 업데이트합니다.
   - **`update-project-page.py`**: 프로젝트 Markdown 파일을 HTML로 변환하고, 프로젝트 페이지를 업데이트합니다.
   - **`update-home-page.py`**: 홈페이지를 생성하는 Python 스크립트로, `temp-index.html` 템플릿을 사용하여 정적 HTML 페이지를 만듭니다.
-- **`/image/`**: 웹사이트에서 사용되는 이미지들이 포함됩니다. 로고 및 소셜 아이콘 등이 저장되어 있습니다.
+- **`/image/`**
 
 ### 3. **`/mdposts/`**
 이 디렉토리는 두 개의 서브 디렉토리, `blog/`와 `project/`를 포함하며, 각각 블로그와 프로젝트 콘텐츠의 Markdown 파일들이 포함됩니다.
