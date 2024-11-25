@@ -48,8 +48,8 @@
 .intro .image {
     flex: 1 45%;
     text-align: center;
-    width: 450;
-    height: 600;
+    width: 450px;
+    height: 600px;
     object-fit: cover;
     overflow: hidden;
 }

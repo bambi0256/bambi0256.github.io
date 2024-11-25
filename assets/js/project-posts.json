@@ -10,7 +10,6 @@
             "Portfolio"
         ],
         "excerpt": "A showcase of my personal portfolio website, built using HTML, CSS, and JavaScript to highlight my projects and skills.",
-        "slug": "personal-portfolio-website",
-        "content": "<p>Creating a personal portfolio website is an excellent way to showcase your skills, projects, and experiences. In this post, I'll share the process of building my own portfolio website, including the tools and technologies I used.</p>\n<h2>Features of My Portfolio</h2>\n<ul>\n<li><strong>Responsive Design</strong>: The website is fully responsive, ensuring that it looks great on all devices.</li>\n<li><strong>Projects Section</strong>: A dedicated section to highlight my past projects, complete with images, descriptions, and links.</li>\n<li><strong>Contact Form</strong>: A simple contact form that allows visitors to reach out to me easily.</li>\n</ul>\n<h2>Technologies Used</h2>\n<p>For this project, I used HTML, CSS, and JavaScript to create a modern, clean, and user-friendly interface. I also incorporated animations to make the browsing experience more engaging.</p>\n<p>Check out my portfolio to learn more about my work and skills!</p>"
+        "slug": "personal-portfolio-website"
     }
 ]

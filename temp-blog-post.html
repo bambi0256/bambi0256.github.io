@@ -3,24 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>{{ metadata.title }}</title>
+    <link rel="stylesheet" href="/assets/css/post-style.css">
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
+    <script src="/assets/js/toc.js"></script>
 </head>
 <body>
-    {% include './header.html' %}
+    {% include "./header.html" %}
 
-    <main>
-        <article class="blog-post">
-            <div class="container">
-                <h1>{{ title }}</h1>
-                <p class="post-meta">By <img src="/assets/image/{{ author_image }}" alt="{{ author }}" class="author-image"> {{ author }} | {{ date }}</p>
-                <div class="post-content">
-                    {{ content }}
-                </div>
+    <div class="post-container">
+        <!-- Image Section -->
+        <section class="post-image-section">
+            <img src="{{ metadata.main_image }}" alt="{{ metadata.title }}">
+            <div class="image-overlay">
+                <h1>{{ metadata.title }}</h1>
             </div>
-        </article>
-    </main>
+        </section>
 
-    {% include './footer.html' %}
+        <!-- Metadata -->
+        <div class="post-metadata">
+            <span class="post-tags">{{ metadata.tags | join(', ') }}</span>
+            <span class="post-date">{{ metadata.date }}</span>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-container">
+            <article class="post-content">
+                {{ content | safe }}
+            </article>
+
+            <!-- TOC -->
+            <nav class="toc-container">
+                <h2>Table of Contents</h2>
+                <ul>
+                    {% for header in toc_headers %}
+                    <li class="{% if header.level == 1 %}toc-level-1{% else %}toc-level-2{% endif %}">
+                        <a href="#{{ header.id }}">{{ header.text }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    {% include "./footer.html" %}
 </body>
 </html>
