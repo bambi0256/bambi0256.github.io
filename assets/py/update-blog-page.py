@@ -1,62 +1,112 @@
+import frontmatter
+from jinja2 import Environment, FileSystemLoader
+from markdown import markdown
+from bs4 import BeautifulSoup
 import os
 import json
-import markdown
-import yaml
-from jinja2 import Environment, FileSystemLoader
+import re
 
-def load_markdown_posts(directory):
-    posts = []
-    for filename in os.listdir(directory):
-        if filename.endswith(".md"):
-            with open(os.path.join(directory, filename), 'r') as f:
-                content = f.read()
-                # YAML 헤더와 본문 분리
-                front_matter, body = content.split('---', 2)[1:]
-                metadata = yaml.safe_load(front_matter)
-                html_content = markdown.markdown(body)
-                metadata['content'] = html_content
-                posts.append(metadata)
-    return posts
+# Slug 생성 함수
+def create_slug(title):
+    return title.strip().lower().replace(" ", "-").replace("%20", "-")
 
-def create_post_pages(posts, template_file, output_dir):
-    # Jinja2 환경 설정
-    env = Environment(loader=FileSystemLoader('./'))
+# Markdown 파일 처리 함수
+def process_markdown(md_file):
+    with open(md_file, 'r', encoding='utf-8') as f:
+        post = frontmatter.load(f)
+    return post.metadata, post.content
+
+# TOC 헤더 추출 함수
+def extract_toc_headers(markdown_content):
+    # Convert Markdown to HTML
+    html_content = markdown(markdown_content)
+    soup = BeautifulSoup(html_content, "html.parser")
+
+    # Find all H1 and H2 elements
+    headers = []
+    for header in soup.find_all(["h1", "h2"]):
+        header_text = header.get_text()
+        header_id = re.sub(r'\s+', '-', header_text.lower())  # Slugify ID
+        header_level = 1 if header.name == "h1" else 2
+        headers.append({"id": header_id, "text": header_text, "level": header_level})
+
+        # Assign ID to the header (for linking)
+        header["id"] = header_id
+
+    return headers, str(soup)
+
+# JSON 업데이트 함수
+def update_json(metadata, json_file):
+    if os.path.exists(json_file):
+        with open(json_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    else:
+        data = []
+
+    # 중복 항목 확인 및 제거
+    data = [entry for entry in data if entry['title'] != metadata['title']]
+
+    # 새로운 메타데이터 추가
+    data.append(metadata)
+
+    # JSON 파일 저장
+    with open(json_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+# HTML 렌더링 함수
+def render_html(metadata, html_content, toc_headers, template_file, output_dir):
+    env = Environment(loader=FileSystemLoader(searchpath="./"))
     template = env.get_template(template_file)
-    
-    for post in posts:
-        slug = post.get('slug', post['title'].replace(' ', '-').lower())
-        post_dir = os.path.join(output_dir, slug)
-        os.makedirs(post_dir, exist_ok=True)
-        
-        # 템플릿 렌더링
-        output = template.render(metadata=post, content=post['content'])
-        
-        # index.html 생성
-        output_path = os.path.join(post_dir, 'index.html')
-        with open(output_path, 'w') as f:
-            f.write(output)
 
-def update_blog_page():
-    # 1. Markdown 데이터 로드
-    blog_posts = load_markdown_posts('./mdposts/blog/')
-    
-    # 2. JSON 업데이트
-    with open('./assets/js/blog-posts.json', 'w') as f:
-        json.dump(blog_posts, f, indent=4)
-    
-    # 3. Jinja2 환경 설정
-    env = Environment(loader=FileSystemLoader('./'))
-    template = env.get_template('temp-blog.html')
-    
-    # 4. 개별 게시물 페이지 생성
-    create_post_pages(blog_posts, 'temp-blog-post.html', './blog/')
-    
-    # 5. 블로그 목록 페이지 생성
-    output = template.render(posts=blog_posts)
-    output_path = './blog/index.html'
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, 'w') as f:
-        f.write(output)
+    # HTML 렌더링
+    rendered_html = template.render(
+        metadata=metadata,
+        content=html_content,
+        toc_headers=toc_headers
+    )
 
+    # 출력 디렉토리 생성
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, "index.html")
+
+    # HTML 파일 저장
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(rendered_html)
+
+    print(f"Generated HTML: {output_path}")
+
+# 모든 Markdown 파일 처리 함수
+def process_all_posts(md_root_dir, template_file, output_base_dir, json_file):
+    for root, _, files in os.walk(md_root_dir):
+        for file in files:
+            if file.endswith(".md"):
+                md_file = os.path.join(root, file)
+                metadata, markdown_content = process_markdown(md_file)
+
+                # TOC 및 HTML 콘텐츠 생성
+                toc_headers, html_content = extract_toc_headers(markdown_content)
+
+                # 슬러그 생성 및 출력 디렉토리 설정
+                slug = create_slug(metadata['title'])
+                output_dir = os.path.join(output_base_dir, slug)
+
+                # JSON 업데이트
+                update_json(metadata, json_file)
+
+                # HTML 렌더링
+                render_html(
+                    metadata,
+                    html_content,
+                    toc_headers,
+                    template_file,
+                    output_dir
+                )
+
+# 실행 예제
 if __name__ == "__main__":
-    update_blog_page()
+    # 블로그 포스트 처리
+    md_root_dir = "./mdposts/blog"
+    template_file = "./temp-blog-post.html"
+    output_base_dir = "./blog"
+    json_file = "./assets/js/blog-posts.json"
+    process_all_posts(md_root_dir, template_file, output_base_dir, json_file)
