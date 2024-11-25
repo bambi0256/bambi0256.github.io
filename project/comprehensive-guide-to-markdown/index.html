@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Guide to Markdown</title>
+    <link rel="stylesheet" href="/assets/css/post-style.css">
+    <link rel="stylesheet" href="/assets/css/header-footer-style.css">
+    <script src="/assets/js/toc.js"></script>
+</head>
+<body>
+    <header>
+    <div class="container header-content">
+        <!-- Logo and Navigation -->
+        <div class="logo-nav">
+            <div class="logo">
+                <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
+            </div>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/project/" class="nav-link">Projects</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
+                    <li><a href="/about/" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/_j256p" target="_blank">
+                <img src="/assets/image/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/bambi0256" target="_blank">
+                <img src="/assets/image/github-icon.png" alt="GitHub">
+            </a>
+        </div>
+
+        <!-- Hamburger Menu -->
+        <button class="hamburger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <!-- Full-Screen Overlay Menu -->
+    <div class="overlay-menu">
+        <div class="overlay-header">
+            <span class="overlay-title">Menu</span>
+            <button class="overlay-close" aria-label="Close Menu">X</button>
+        </div>
+        <nav class="overlay-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/project/">Projects</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+        </nav>
+        <div class="overlay-social-icons">
+            <a href="https://www.instagram.com/_j256p" target="_blank">
+                <img src="/assets/image/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/bambi0256" target="_blank">
+                <img src="/assets/image/github-icon.png" alt="GitHub">
+            </a>
+        </div>
+    </div>
+</header>
+<script src="/assets/js/hamburger.js" defer></script>
+<script src="/assets/js/set-current.js" defer></script>
+
+    <div class="post-container">
+        <!-- Image Section -->
+        <section class="post-image-section">
+            <img src="/assets/image/markdown-guide.jpg" alt="Comprehensive Guide to Markdown">
+            <div class="image-overlay">
+                <h1>Comprehensive Guide to Markdown</h1>
+            </div>
+        </section>
+
+        <!-- Metadata -->
+        <div class="post-metadata">
+            <span class="post-tags">markdown, guide, tutorial</span>
+            <span class="post-date">2024-11-20</span>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-container">
+            <article class="post-content">
+                <h1 id="introduction-to-markdown">Introduction to Markdown</h1>
+<p>Markdown is a lightweight markup language for creating formatted text using a plain-text editor. It is widely used for writing documentation, blogs, and even books!</p>
+<h2 id="why-use-markdown?">Why Use Markdown?</h2>
+<p>Markdown is:</p>
+<ul>
+<li><strong>Simple</strong>: Easy to learn and write.</li>
+<li><strong>Readable</strong>: Clear and human-friendly syntax.</li>
+<li><strong>Versatile</strong>: Can be converted to HTML, PDF, or other formats.</li>
+</ul>
+<blockquote>
+<p>"Markdown allows you to write using an easy-to-read, easy-to-write plain text format."<br/>
+– John Gruber, Creator of Markdown</p>
+</blockquote>
+<hr/>
+<h1 id="basic-syntax">Basic Syntax</h1>
+<p>Below are the basics of Markdown syntax.</p>
+<h2 id="headings">Headings</h2>
+<p>Use <code>#</code> for headings. The number of <code>#</code> indicates the heading level.</p>
+<p>```markdown</p>
+<h1 id="heading-1">Heading 1</h1>
+<h2 id="heading-2">Heading 2</h2>
+<h3>Heading 3</h3>
+<p>```</p>
+<h2 id="lists">Lists</h2>
+<h3>Unordered List</h3>
+<p>Use <code>-</code>, <code>*</code>, or <code>+</code> for unordered lists.</p>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Sub-item 1</li>
+<li>Sub-item 2</li>
+</ul>
+<h3>Ordered List</h3>
+<p>Use numbers for ordered lists.</p>
+<ol>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Sub-item 1</li>
+<li>Sub-item 2</li>
+</ol>
+<hr/>
+<h1 id="advanced-syntax">Advanced Syntax</h1>
+<h2 id="links-and-images">Links and Images</h2>
+<h3>Links</h3>
+<p>Create links using <code>[text](URL)</code>.</p>
+<p>Example: <a href="https://www.markdownguide.org">Visit Markdown Guide</a></p>
+<h3>Images</h3>
+<p>Add images using <code>![alt text](image URL)</code>.</p>
+<p>Example: <img alt="Markdown Logo" src="https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg"/></p>
+<hr/>
+<h1 id="#-code-blocks"># Code Blocks</h1>
+<p>Use backticks (```) for code blocks.</p>
+<p>```python</p>
+<h1 id="python-example">Python Example</h1>
+<p>def greet(name):
+    return f"Hello, {name}!"
+```</p>
+<p>```html</p>
+<!-- HTML Example -->
+<div>Hello, World!</div>
+<p>```</p>
+<hr/>
+<h1 id="tables">Tables</h1>
+<p>Create tables using pipes (<code>|</code>) and hyphens (<code>-</code>).</p>
+<p>| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |</p>
+<hr/>
+<h1 id="conclusion">Conclusion</h1>
+<p>Markdown is an essential tool for writers and developers. Its simplicity and versatility make it a popular choice for many use cases. Start using Markdown today and see how it transforms your writing process!</p>
+<p>```yaml</p>
+<hr/>
+<h3><strong>Highlights of this Post</strong></h3>
+<ol>
+<li><strong>Multiple Headings</strong>:</li>
+<li>
+<p>Includes a mix of <code>#</code> and <code>##</code> headings for TOC testing.</p>
+</li>
+<li>
+<p><strong>Special Elements</strong>:</p>
+</li>
+<li>
+<p>Code blocks, blockquotes, images, and tables to test alignment and styling.</p>
+</li>
+<li>
+<p><strong>Length</strong>:</p>
+</li>
+<li>
+<p>Content is long enough to ensure smooth scrolling and TOC interactions.</p>
+</li>
+<li>
+<p><strong>Markdown Features</strong>:</p>
+</li>
+<li>Comprehensive coverage of Markdown syntax to test various elements.</li>
+</ol>
+<hr/>
+<p>저장 후 <code>./mdposts/blog/long-sample-post.md</code> 경로에 추가하고 빌드하여 테스트하세요. 추가적인 샘플이 필요하면 언제든 말씀해주세요! 😊</p>
+<p>```</p>
+            </article>
+
+            <!-- TOC -->
+            <nav class="toc-container">
+                <h2>Table of Contents</h2>
+                <ul>
+                    
+                    <li class="toc-level-1">
+                        <a href="#introduction-to-markdown">Introduction to Markdown</a>
+                    </li>
+                    
+                    <li class="toc-level-2">
+                        <a href="#why-use-markdown?">Why Use Markdown?</a>
+                    </li>
+                    
+                    <li class="toc-level-1">
+                        <a href="#basic-syntax">Basic Syntax</a>
+                    </li>
+                    
+                    <li class="toc-level-2">
+                        <a href="#headings">Headings</a>
+                    </li>
+                    
+                    <li class="toc-level-1">
+                        <a href="#heading-1">Heading 1</a>
+                    </li>
+                    
+                    <li class="toc-level-2">
+                        <a href="#heading-2">Heading 2</a>
+                    </li>
+                    
+                    <li class="toc-level-2">
+                        <a href="#lists">Lists</a>
+                    </li>
+                    
+                    <li class="toc-level-1">
+                        <a href="#advanced-syntax">Advanced Syntax</a>
+                    </li>
+                    
+                    <li class="toc-level-2">
+                        <a href="#links-and-images">Links and Images</a>
+                    </li>
+                    
+                    <li class="toc-level-1">
+                        <a href="##-code-blocks"># Code Blocks</a>
+                    </li>
+                    
+                    <li class="toc-level-1">
+                        <a href="#python-example">Python Example</a>
+                    </li>
+                    
+                    <li class="toc-level-1">
+                        <a href="#tables">Tables</a>
+                    </li>
+                    
+                    <li class="toc-level-1">
+                        <a href="#conclusion">Conclusion</a>
+                    </li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <footer>
+    <div class="container footer-content">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/project/">Projects</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/_j256p" target="_blank">
+                <img src="/assets/image/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/bambi0256" target="_blank">
+                <img src="/assets/image/github-icon.png" alt="GitHub">
+            </a>
+        </div>
+        <p style="text-align: center;">2024 ⓒ B.Bee | Self-made</p>
+    </div>
+</footer>
+</body>
+</html>
