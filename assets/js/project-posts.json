@@ -11,5 +11,17 @@
         ],
         "excerpt": "A showcase of my personal portfolio website, built using HTML, CSS, and JavaScript to highlight my projects and skills.",
         "slug": "personal-portfolio-website"
+    },
+    {
+        "title": "Comprehensive Guide to Markdown",
+        "author": "Jane Doe",
+        "date": "2024-11-20",
+        "tags": [
+            "markdown",
+            "guide",
+            "tutorial"
+        ],
+        "excerpt": "A detailed and comprehensive guide to Markdown syntax and usage.",
+        "main_image": "/assets/image/markdown-guide.jpg"
     }
 ]
