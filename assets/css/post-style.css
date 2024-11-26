@@ -82,7 +82,6 @@ body {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #FFDE59;
-    font-style: italic;
 }
 
 /* Horizontal Divider */
@@ -93,57 +92,69 @@ body {
     background-color: #B4B4B4;
 }
 
-/* Content Section */
+/* Content Area Styling */
 .content-container {
     display: flex;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.post-content {
-    flex: 3;
-    max-width: 800px;
-    text-align: left;
-}
-
-.toc-container {
-    flex: 1;
-    position: sticky;
-    top: 20px;
-    background: #FFF;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    border: 1px solid #B4B4B4;
 }
 
-.toc-container h2 {
-    margin: 0 0 10px;
-    font-size: 1.2rem;
+/* Main Content */
+.post-content {
+    width: 75%;
+    padding-right: 20px;
 }
 
-.toc-container ul {
+/* TOC Styling */
+.toc-wrapper {
+    width: 20%;
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    background-color: #222;
+    padding: 10px 15px;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toc-wrapper h3 {
+    margin: 0;
+    padding: 10px 15px;
+    background-color: #222;
+    color: #FFF4C5; /* 노란색 텍스트 */
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.toc-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 15px 0 0 0;
 }
 
-.toc-container li {
-    margin: 5px 0;
+.toc-list li {
+    margin-bottom: 8px;
+    padding: 0 10px;
+    color: #B4B4B4;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.toc-container a {
-    text-decoration: none;
-    color: #222;
-    transition: all 0.3s;
-}
-
-.toc-container a:hover {
-    background: #222;
+.toc-list li.active {
     color: #FFDE59;
-    padding: 2px 4px;
+    background-color: transparent;
+    font-weight: bold;
+    padding-left: 0;
 }
 
-.toc-container a.active {
-    background: #FFDE59;
-    color: #222;
-    font-weight: bold;
+.toc-list li:hover {
+    color: #FFDE59;
+    padding-left: 0;
+    font-size: inherit;
 }

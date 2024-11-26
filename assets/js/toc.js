@@ -1,39 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const tocLinks = document.querySelectorAll(".toc-container a");
+    const tocItems = document.querySelectorAll(".toc-list li");
+    const headings = document.querySelectorAll("h1, h2");
+    const tocWrapper = document.querySelector(".toc-wrapper");
+    const contentContainer = document.querySelector(".content-container");
 
-    // Smooth scrolling to sections
-    tocLinks.forEach(link => {
-        link.addEventListener("click", event => {
-            event.preventDefault();
-            const targetId = link.getAttribute("href").substring(1);
-            const targetElement = document.getElementById(targetId);
+    // Get content bounds
+    const contentBounds = contentContainer.getBoundingClientRect();
 
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 20, // Adjust for spacing
-                    behavior: "smooth"
-                });
+    // Update TOC position on scroll
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        headings.forEach(heading => {
+            const headingTop = heading.getBoundingClientRect().top;
+            if (headingTop <= window.innerHeight / 2 && headingTop > -window.innerHeight / 2) {
+                current = heading.getAttribute("id");
             }
         });
+
+        // Activate corresponding TOC item
+        tocItems.forEach(item => {
+            item.classList.remove("active");
+            if (item.dataset.target === current) {
+                item.classList.add("active");
+            }
+        });
+
+        // Ensure TOC stays within content bounds
+        const contentTop = contentBounds.top + window.scrollY;
+        const contentBottom = contentBounds.bottom + window.scrollY - window.innerHeight;
+        const tocTop = Math.max(contentTop, window.scrollY + (window.innerHeight - tocWrapper.offsetHeight) / 2);
+        tocWrapper.style.top = `${Math.min(tocTop, contentBottom)}px`;
     });
 
-    // Highlight the current section in the TOC
-    const sections = Array.from(document.querySelectorAll("h1, h2"));
-    window.addEventListener("scroll", () => {
-        const scrollPosition = window.scrollY;
-
-        sections.forEach(section => {
-            const sectionId = section.getAttribute("id");
-            const link = document.querySelector(`.toc-container a[href="#${sectionId}"]`);
-
-            if (
-                section.offsetTop - 100 <= scrollPosition &&
-                section.offsetTop + section.offsetHeight > scrollPosition
-            ) {
-                link.classList.add("active");
-            } else {
-                link.classList.remove("active");
-            }
+    // Scroll to heading on TOC item click
+    tocItems.forEach(item => {
+        item.addEventListener("click", () => {
+            const targetId = item.dataset.target;
+            const targetElement = document.getElementById(targetId);
+            targetElement.scrollIntoView({ behavior: "smooth" });
         });
     });
 });
