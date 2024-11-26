@@ -110,14 +110,10 @@ body {
 /* TOC Styling */
 .toc-wrapper {
     width: 20%;
-    position: sticky;
-    top: 50%;
-    transform: translateY(-50%);
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
+    position: relative;
     background-color: #222;
     padding: 10px 15px;
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -125,7 +121,7 @@ body {
     margin: 0;
     padding: 10px 15px;
     background-color: #222;
-    color: #FFF4C5; /* 노란색 텍스트 */
+    color: #FFF4C5;
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
