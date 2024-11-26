@@ -1,14 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const tocItems = document.querySelectorAll(".toc-list li");
-    const headings = document.querySelectorAll("h1, h2");
     const tocWrapper = document.querySelector(".toc-wrapper");
-    const contentContainer = document.querySelector(".content-container");
+    const tocList = document.querySelector(".toc-list");
+    const headings = document.querySelectorAll("h1, h2");
+    const contentBounds = document.querySelector(".content-container").getBoundingClientRect();
 
-    // Get content bounds
-    const contentBounds = contentContainer.getBoundingClientRect();
+    // TOC 높이를 리스트 길이에 맞춤
+    tocWrapper.style.height = `${tocList.offsetHeight}px`;
 
-    // Update TOC position on scroll
-    window.addEventListener("scroll", () => {
+    // 스크롤 동작을 통해 TOC 위치 조정
+    const adjustTOCPosition = () => {
+        const viewportCenter = window.innerHeight / 2;
+        const tocHeight = tocList.offsetHeight;
+        const contentTop = contentBounds.top + window.scrollY;
+        const contentBottom = contentBounds.bottom + window.scrollY - tocHeight;
+
+        if (window.scrollY > contentTop && window.scrollY < contentBottom) {
+            tocWrapper.style.position = "fixed";
+            tocWrapper.style.top = `${viewportCenter - tocHeight / 2}px`;
+        } else if (window.scrollY <= contentTop) {
+            tocWrapper.style.position = "absolute";
+            tocWrapper.style.top = "0";
+        } else if (window.scrollY >= contentBottom) {
+            tocWrapper.style.position = "absolute";
+            tocWrapper.style.top = `${contentBounds.height - tocHeight}px`;
+        }
+    };
+
+    // 현재 스크롤 위치에 따라 TOC 활성화 상태 업데이트
+    const updateActiveTOCItem = () => {
         let current = "";
 
         headings.forEach(heading => {
@@ -18,27 +37,36 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Activate corresponding TOC item
-        tocItems.forEach(item => {
+        document.querySelectorAll(".toc-list li").forEach(item => {
             item.classList.remove("active");
             if (item.dataset.target === current) {
                 item.classList.add("active");
             }
         });
+    };
 
-        // Ensure TOC stays within content bounds
-        const contentTop = contentBounds.top + window.scrollY;
-        const contentBottom = contentBounds.bottom + window.scrollY - window.innerHeight;
-        const tocTop = Math.max(contentTop, window.scrollY + (window.innerHeight - tocWrapper.offsetHeight) / 2);
-        tocWrapper.style.top = `${Math.min(tocTop, contentBottom)}px`;
-    });
-
-    // Scroll to heading on TOC item click
-    tocItems.forEach(item => {
+    // TOC 항목 클릭 시 해당 헤더로 이동
+    tocList.querySelectorAll("li").forEach(item => {
         item.addEventListener("click", () => {
             const targetId = item.dataset.target;
             const targetElement = document.getElementById(targetId);
-            targetElement.scrollIntoView({ behavior: "smooth" });
+
+            const offset = window.innerHeight * 0.25; // 상단 25% 위치
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
         });
     });
+
+    // 스크롤 이벤트에 동작 연결
+    window.addEventListener("scroll", () => {
+        adjustTOCPosition();
+        updateActiveTOCItem();
+    });
+
+    // 초기 위치 조정
+    adjustTOCPosition();
 });
