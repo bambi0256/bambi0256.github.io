@@ -1,11 +1,11 @@
-import frontmatter
-from jinja2 import Environment, FileSystemLoader
-from markdown import markdown
-from bs4 import BeautifulSoup
-from pygments.formatters import HtmlFormatter
-from pygments.styles import solarizeddark
 import os
 import json
+import frontmatter
+from markdown import markdown
+from jinja2 import Environment, FileSystemLoader
+from bs4 import BeautifulSoup
+from pygments.formatters import HtmlFormatter
+from pygments.styles import solarized-dark
 import re
 
 # Slug 생성 함수
