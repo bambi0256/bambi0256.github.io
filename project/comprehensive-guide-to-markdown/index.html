@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprehensive Guide to Markdown</title>
+    <link rel="stylesheet" href="/assets/css/code-highlighting.css">
     <link rel="stylesheet" href="/assets/css/post-style.css">
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
     <script src="/assets/js/toc.js"></script>
@@ -82,9 +83,18 @@
 
         <!-- Metadata -->
         <div class="post-metadata">
-            <span class="post-tags">markdown, guide, tutorial</span>
-            <span class="post-date">2024-11-20</span>
+            <div class="tags">
+                
+                <span class="post-tags">markdown</span>
+                
+                <span class="post-tags">guide</span>
+                
+                <span class="post-tags">tutorial</span>
+                
+            </div>
+            <span class="post-date">작성일 | 2024-11-20</span>
         </div>
+        <div class="metadata-divider"></div>
 
         <!-- Content Section -->
         <div class="content-container">
@@ -107,11 +117,10 @@
 <p>Below are the basics of Markdown syntax.</p>
 <h2 id="headings">Headings</h2>
 <p>Use <code>#</code> for headings. The number of <code>#</code> indicates the heading level.</p>
-<p>```markdown</p>
-<h1 id="heading-1">Heading 1</h1>
-<h2 id="heading-2">Heading 2</h2>
-<h3>Heading 3</h3>
-<p>```</p>
+<div class="codehilite"><pre><span></span><code><span class="gh"># Heading 1</span>
+<span class="gu">## Heading 2</span>
+<span class="gu">### Heading 3</span>
+</code></pre></div>
 <h2 id="lists">Lists</h2>
 <h3>Unordered List</h3>
 <p>Use <code>-</code>, <code>*</code>, or <code>+</code> for unordered lists.</p>
@@ -141,15 +150,13 @@
 <hr/>
 <h1 id="#-code-blocks"># Code Blocks</h1>
 <p>Use backticks (```) for code blocks.</p>
-<p>```python</p>
-<h1 id="python-example">Python Example</h1>
-<p>def greet(name):
-    return f"Hello, {name}!"
-```</p>
-<p>```html</p>
-<!-- HTML Example -->
-<div>Hello, World!</div>
-<p>```</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Python Example</span>
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="cm">&lt;!-- HTML Example --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Hello, World!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr/>
 <h1 id="tables">Tables</h1>
 <p>Create tables using pipes (<code>|</code>) and hyphens (<code>-</code>).</p>
@@ -160,34 +167,26 @@
 <hr/>
 <h1 id="conclusion">Conclusion</h1>
 <p>Markdown is an essential tool for writers and developers. Its simplicity and versatility make it a popular choice for many use cases. Start using Markdown today and see how it transforms your writing process!</p>
-<p>```yaml</p>
-<hr/>
-<h3><strong>Highlights of this Post</strong></h3>
-<ol>
-<li><strong>Multiple Headings</strong>:</li>
-<li>
-<p>Includes a mix of <code>#</code> and <code>##</code> headings for TOC testing.</p>
-</li>
-<li>
-<p><strong>Special Elements</strong>:</p>
-</li>
-<li>
-<p>Code blocks, blockquotes, images, and tables to test alignment and styling.</p>
-</li>
-<li>
-<p><strong>Length</strong>:</p>
-</li>
-<li>
-<p>Content is long enough to ensure smooth scrolling and TOC interactions.</p>
-</li>
-<li>
-<p><strong>Markdown Features</strong>:</p>
-</li>
-<li>Comprehensive coverage of Markdown syntax to test various elements.</li>
-</ol>
-<hr/>
-<p>저장 후 <code>./mdposts/blog/long-sample-post.md</code> 경로에 추가하고 빌드하여 테스트하세요. 추가적인 샘플이 필요하면 언제든 말씀해주세요! 😊</p>
-<p>```</p>
+<div class="codehilite"><pre><span></span><code><span class="nn">---</span>
+
+<span class="c1">### **Highlights of this Post**</span>
+
+<span class="nt">1. **Multiple Headings**</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Includes a mix of `#` and `##` headings for TOC testing.</span>
+
+<span class="nt">2. **Special Elements**</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Code blocks, blockquotes, images, and tables to test alignment and styling.</span>
+
+<span class="nt">3. **Length**</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Content is long enough to ensure smooth scrolling and TOC interactions.</span>
+
+<span class="nt">4. **Markdown Features**</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Comprehensive coverage of Markdown syntax to test various elements.</span>
+
+<span class="nn">---</span>
+
+<span class="l l-Scalar l-Scalar-Plain">저장 후 `./mdposts/blog/long-sample-post.md` 경로에 추가하고 빌드하여 테스트하세요. 추가적인 샘플이 필요하면 언제든 말씀해주세요! 😊</span>
+</code></pre></div>
             </article>
 
             <!-- TOC -->
@@ -211,14 +210,6 @@
                         <a href="#headings">Headings</a>
                     </li>
                     
-                    <li class="toc-level-1">
-                        <a href="#heading-1">Heading 1</a>
-                    </li>
-                    
-                    <li class="toc-level-2">
-                        <a href="#heading-2">Heading 2</a>
-                    </li>
-                    
                     <li class="toc-level-2">
                         <a href="#lists">Lists</a>
                     </li>
@@ -233,10 +224,6 @@
                     
                     <li class="toc-level-1">
                         <a href="##-code-blocks"># Code Blocks</a>
-                    </li>
-                    
-                    <li class="toc-level-1">
-                        <a href="#python-example">Python Example</a>
                     </li>
                     
                     <li class="toc-level-1">
