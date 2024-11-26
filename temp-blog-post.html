@@ -34,21 +34,23 @@
 
         <!-- Content Section -->
         <div class="content-container">
-            <article class="post-content">
+
+            <!-- Main Content -->
+            <main class="post-content">
                 {{ content | safe }}
-            </article>
+            </main>
 
             <!-- TOC -->
-            <nav class="toc-container">
-                <h2>Table of Contents</h2>
-                <ul>
+            <aside class="toc-wrapper">
+                <h3>Table of Contents</h3>
+                <ul class="toc-list">
                     {% for header in toc_headers %}
-                    <li class="{% if header.level == 1 %}toc-level-1{% else %}toc-level-2{% endif %}">
-                        <a href="#{{ header.id }}">{{ header.text }}</a>
+                    <li data-target="{{ header.id }}" style="margin-left: {{ header.level * 10 }}px;">
+                        {{ header.text }}
                     </li>
                     {% endfor %}
                 </ul>
-            </nav>
+            </aside>
         </div>
     </div>
 
