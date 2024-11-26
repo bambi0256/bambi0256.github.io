@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ metadata.title }}</title>
+    <link rel="stylesheet" href="/assets/css/code-highlighting.css">
     <link rel="stylesheet" href="/assets/css/post-style.css">
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
     <script src="/assets/js/toc.js"></script>
@@ -22,9 +23,14 @@
 
         <!-- Metadata -->
         <div class="post-metadata">
-            <span class="post-tags">{{ metadata.tags | join(', ') }}</span>
-            <span class="post-date">{{ metadata.date }}</span>
+            <div class="tags">
+                {% for tag in metadata.tags %}
+                <span class="post-tags">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            <span class="post-date">작성일 | {{ metadata.date }}</span>
         </div>
+        <div class="metadata-divider"></div>
 
         <!-- Content Section -->
         <div class="content-container">

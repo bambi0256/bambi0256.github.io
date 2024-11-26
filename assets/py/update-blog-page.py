@@ -2,6 +2,8 @@ import frontmatter
 from jinja2 import Environment, FileSystemLoader
 from markdown import markdown
 from bs4 import BeautifulSoup
+from pygments.formatters import HtmlFormatter
+from pygments.styles import solarizeddark
 import os
 import json
 import re
@@ -16,23 +18,19 @@ def process_markdown(md_file):
         post = frontmatter.load(f)
     return post.metadata, post.content
 
-# TOC 헤더 추출 함수
+# TOC 생성 함수
 def extract_toc_headers(markdown_content):
-    # Convert Markdown to HTML
-    html_content = markdown(markdown_content)
+    html_content = markdown(
+        markdown_content, extensions=["fenced_code", "codehilite"]
+    )
     soup = BeautifulSoup(html_content, "html.parser")
-
-    # Find all H1 and H2 elements
     headers = []
     for header in soup.find_all(["h1", "h2"]):
         header_text = header.get_text()
-        header_id = re.sub(r'\s+', '-', header_text.lower())  # Slugify ID
+        header_id = re.sub(r'\s+', '-', header_text.lower())
         header_level = 1 if header.name == "h1" else 2
         headers.append({"id": header_id, "text": header_text, "level": header_level})
-
-        # Assign ID to the header (for linking)
         header["id"] = header_id
-
     return headers, str(soup)
 
 # JSON 업데이트 함수
@@ -94,17 +92,10 @@ def process_all_posts(md_root_dir, template_file, output_base_dir, json_file):
                 update_json(metadata, json_file)
 
                 # HTML 렌더링
-                render_html(
-                    metadata,
-                    html_content,
-                    toc_headers,
-                    template_file,
-                    output_dir
-                )
+                render_html(metadata, html_content, toc_headers, template_file, output_dir)
 
-# 실행 예제
+# 실행
 if __name__ == "__main__":
-    # 블로그 포스트 처리
     md_root_dir = "./mdposts/blog"
     template_file = "./temp-blog-post.html"
     output_base_dir = "./blog"
