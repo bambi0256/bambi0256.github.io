@@ -1,3 +1,25 @@
+/* Code Block (pre) Styling */
+pre {
+    background-color: #222; /* Dark background */
+    color: #FFF4C5;        /* Light text */
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    overflow-x: auto;      /* Allow horizontal scrolling for long code */
+    line-height: 1.6;
+}
+
+/* Inline Code (code) Styling */
+code {
+    font-family: "Courier New", monospace;
+    background-color: #343434; /* Slightly lighter dark background */
+    color: #FFDE59;            /* Yellow text */
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
 /* General Styling */
 body {
     font-family: "Noto Sans", sans-serif;
@@ -44,6 +66,35 @@ body {
     padding: 10px 20px;
     color: #B4B4B4;
     font-size: 0.9rem;
+}
+
+/* Tag Styling */
+.post-metadata .post-tags {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px 5px 0;
+    background-color: #FFDE59;
+    color: #222;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Date Styling */
+.post-metadata .post-date {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #FFDE59;
+    font-style: italic;
+}
+
+/* Horizontal Divider */
+.metadata-divider {
+    width: 100%;
+    height: 1px;
+    margin: 20px 0;
+    background-color: #B4B4B4;
 }
 
 /* Content Section */

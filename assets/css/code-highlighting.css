@@ -1,0 +1,227 @@
+.codehilite pre {
+    background: #002b36;
+    color: #839496;
+    padding: 5px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.codehilite .hll {
+    background-color: #073642;
+}
+
+.codehilite .c {
+    color: #586e75; /* Comment */
+    font-style: italic;
+}
+
+.codehilite .err {
+    color: #dc322f; /* Error */
+    background-color: #002b36;
+}
+
+.codehilite .k {
+    color: #859900; /* Keyword */
+}
+
+.codehilite .l {
+    color: #b58900; /* Literal */
+}
+
+.codehilite .n {
+    color: #839496; /* Normal text */
+}
+
+.codehilite .o {
+    color: #cb4b16; /* Operator */
+}
+
+.codehilite .cm {
+    color: #586e75; /* Comment multiline */
+}
+
+.codehilite .cp {
+    color: #6c71c4; /* Preprocessor */
+}
+
+.codehilite .cpf {
+    color: #dc322f; /* Preprocessor File */
+}
+
+.codehilite .c1 {
+    color: #586e75; /* Comment Single Line */
+}
+
+.codehilite .cs {
+    color: #2aa198; /* String in Comment */
+}
+
+.codehilite .gd {
+    color: #dc322f; /* Diff Deleted */
+}
+
+.codehilite .ge {
+    font-style: italic; /* Emphasis */
+}
+
+.codehilite .gr {
+    color: #dc322f; /* Generic Error */
+}
+
+.codehilite .gh {
+    color: #93a1a1; /* Generic Heading */
+    font-weight: bold;
+}
+
+.codehilite .gi {
+    color: #859900; /* Diff Inserted */
+}
+
+.codehilite .go {
+    color: #839496; /* Generic Output */
+}
+
+.codehilite .gp {
+    color: #6c71c4; /* Generic Prompt */
+}
+
+.codehilite .gs {
+    font-weight: bold; /* Strong */
+}
+
+.codehilite .gu {
+    color: #839496; /* Generic Subheading */
+}
+
+.codehilite .gt {
+    color: #cb4b16; /* Diff Changed */
+}
+
+.codehilite .kc {
+    color: #859900; /* Keyword Constant */
+}
+
+.codehilite .kd {
+    color: #268bd2; /* Keyword Declaration */
+}
+
+.codehilite .kn {
+    color: #cb4b16; /* Keyword Namespace */
+}
+
+.codehilite .kp {
+    color: #268bd2; /* Keyword Pseudo */
+}
+
+.codehilite .kr {
+    color: #268bd2; /* Keyword Reserved */
+}
+
+.codehilite .kt {
+    color: #b58900; /* Keyword Type */
+}
+
+.codehilite .m {
+    color: #d33682; /* Literal Number */
+}
+
+.codehilite .s {
+    color: #2aa198; /* Literal String */
+}
+
+.codehilite .na {
+    color: #93a1a1; /* Name Attribute */
+}
+
+.codehilite .nb {
+    color: #6c71c4; /* Name Builtin */
+}
+
+.codehilite .nc {
+    color: #93a1a1; /* Name Class */
+    font-weight: bold;
+}
+
+.codehilite .no {
+    color: #839496; /* Name Constant */
+}
+
+.codehilite .nd {
+    color: #cb4b16; /* Name Decorator */
+}
+
+.codehilite .ni {
+    color: #839496; /* Name Entity */
+}
+
+.codehilite .ne {
+    color: #dc322f; /* Name Exception */
+}
+
+.codehilite .nf {
+    color: #268bd2; /* Name Function */
+}
+
+.codehilite .nl {
+    color: #839496; /* Name Label */
+}
+
+.codehilite .nn {
+    color: #b58900; /* Name Namespace */
+}
+
+.codehilite .nt {
+    color: #93a1a1; /* Name Tag */
+}
+
+.codehilite .nv {
+    color: #268bd2; /* Name Variable */
+}
+
+.codehilite .ow {
+    color: #cb4b16; /* Operator Word */
+}
+
+.codehilite .w {
+    color: #839496; /* Whitespace */
+}
+
+.codehilite .mb {
+    color: #b58900; /* Literal Number Bin */
+}
+
+.codehilite .mf {
+    color: #d33682; /* Literal Number Float */
+}
+
+.codehilite .mh {
+    color: #b58900; /* Literal Number Hex */
+}
+
+.codehilite .mi {
+    color: #d33682; /* Literal Number Integer */
+}
+
+.codehilite .mo {
+    color: #cb4b16; /* Literal Number Oct */
+}
+
+.codehilite .sa {
+    color: #2aa198; /* Literal String Affix */
+}
+
+.codehilite .sb {
+    color: #2aa198; /* Literal String Backtick */
+}
+
+.codehilite .sc {
+    color: #2aa198; /* Literal String Char */
+}
+
+.codehilite .dl {
+    color: #839496; /* Generic Deleted Line */
+}
+
+.codehilite .il {
+    color: #d33682; /* Literal Number Integer Long */
+}
