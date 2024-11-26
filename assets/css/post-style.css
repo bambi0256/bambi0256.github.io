@@ -1,21 +1,17 @@
-/* Code Block (pre) Styling */
-pre {
-    background-color: #222; /* Dark background */
-    color: #FFF4C5;        /* Light text */
+/* Block Elements */
+blockquote, .codehilite pre {
+    margin: 20px 0;
     padding: 10px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    overflow-x: auto;      /* Allow horizontal scrolling for long code */
-    line-height: 1.6;
+    background: #222;
+    text-align: left;
+    border-left: 5px solid #FFDE59;
 }
 
 /* Inline Code (code) Styling */
 code {
     font-family: "Courier New", monospace;
-    background-color: #343434; /* Slightly lighter dark background */
-    color: #FFDE59;            /* Yellow text */
+    color: #FFDE59;
     padding: 2px 4px;
-    border-radius: 4px;
     font-size: 0.9rem;
     line-height: 1.4;
 }
@@ -150,14 +146,4 @@ body {
     background: #FFDE59;
     color: #222;
     font-weight: bold;
-}
-
-/* Block Elements */
-blockquote, pre {
-    margin: 20px 0;
-    padding: 10px;
-    background: #222;
-    color: #FFF4C5;
-    text-align: left;
-    border-left: 5px solid #FFDE59;
 }
