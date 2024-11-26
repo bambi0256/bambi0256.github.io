@@ -99,8 +99,8 @@ def process_project_posts(md_root_dir, template_file, output_base_dir, json_file
 # 실행
 if __name__ == "__main__":
     process_project_posts(
-        md_root_dir = "./mdposts/project"
-        template_file = "./temp-project-post.html"
-        output_base_dir = "./project"
-        json_file = "./assets/js/project-posts.json"
+        md_root_dir="./mdposts/project",
+        template_file="./temp-project-post.html",
+        output_base_dir="./project",
+        json_file="./assets/js/project-posts.json"
     )
