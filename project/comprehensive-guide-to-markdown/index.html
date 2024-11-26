@@ -98,7 +98,9 @@
 
         <!-- Content Section -->
         <div class="content-container">
-            <article class="post-content">
+
+            <!-- Main Content -->
+            <main class="post-content">
                 <h1 id="introduction-to-markdown">Introduction to Markdown</h1>
 <p>Markdown is a lightweight markup language for creating formatted text using a plain-text editor. It is widely used for writing documentation, blogs, and even books!</p>
 <h2 id="why-use-markdown?">Why Use Markdown?</h2>
@@ -187,55 +189,55 @@
 
 <span class="l l-Scalar l-Scalar-Plain">저장 후 `./mdposts/blog/long-sample-post.md` 경로에 추가하고 빌드하여 테스트하세요. 추가적인 샘플이 필요하면 언제든 말씀해주세요! 😊</span>
 </code></pre></div>
-            </article>
+            </main>
 
             <!-- TOC -->
-            <nav class="toc-container">
-                <h2>Table of Contents</h2>
-                <ul>
+            <aside class="toc-wrapper">
+                <h3>Table of Contents</h3>
+                <ul class="toc-list">
                     
-                    <li class="toc-level-1">
-                        <a href="#introduction-to-markdown">Introduction to Markdown</a>
+                    <li data-target="introduction-to-markdown" style="margin-left: 10px;">
+                        Introduction to Markdown
                     </li>
                     
-                    <li class="toc-level-2">
-                        <a href="#why-use-markdown?">Why Use Markdown?</a>
+                    <li data-target="why-use-markdown?" style="margin-left: 20px;">
+                        Why Use Markdown?
                     </li>
                     
-                    <li class="toc-level-1">
-                        <a href="#basic-syntax">Basic Syntax</a>
+                    <li data-target="basic-syntax" style="margin-left: 10px;">
+                        Basic Syntax
                     </li>
                     
-                    <li class="toc-level-2">
-                        <a href="#headings">Headings</a>
+                    <li data-target="headings" style="margin-left: 20px;">
+                        Headings
                     </li>
                     
-                    <li class="toc-level-2">
-                        <a href="#lists">Lists</a>
+                    <li data-target="lists" style="margin-left: 20px;">
+                        Lists
                     </li>
                     
-                    <li class="toc-level-1">
-                        <a href="#advanced-syntax">Advanced Syntax</a>
+                    <li data-target="advanced-syntax" style="margin-left: 10px;">
+                        Advanced Syntax
                     </li>
                     
-                    <li class="toc-level-2">
-                        <a href="#links-and-images">Links and Images</a>
+                    <li data-target="links-and-images" style="margin-left: 20px;">
+                        Links and Images
                     </li>
                     
-                    <li class="toc-level-1">
-                        <a href="##-code-blocks"># Code Blocks</a>
+                    <li data-target="#-code-blocks" style="margin-left: 10px;">
+                        # Code Blocks
                     </li>
                     
-                    <li class="toc-level-1">
-                        <a href="#tables">Tables</a>
+                    <li data-target="tables" style="margin-left: 10px;">
+                        Tables
                     </li>
                     
-                    <li class="toc-level-1">
-                        <a href="#conclusion">Conclusion</a>
+                    <li data-target="conclusion" style="margin-left: 10px;">
+                        Conclusion
                     </li>
                     
                 </ul>
-            </nav>
+            </aside>
         </div>
     </div>
 
