@@ -13,21 +13,29 @@ document.addEventListener("DOMContentLoaded", () => {
         const scrollY = window.scrollY;
         const viewportHeight = window.innerHeight;
 
+        // 화면 중앙 기준 계산
         let desiredTop = scrollY + (viewportHeight - tocWrapperHeight) / 2;
 
+        // 영역 제한
         if (desiredTop < tocAreaTop) {
             desiredTop = tocAreaTop;
         } else if (desiredTop + tocWrapperHeight > tocAreaTop + tocAreaHeight) {
             desiredTop = tocAreaTop + tocAreaHeight - tocWrapperHeight;
         }
 
+        // TOC 위치 업데이트
         tocWrapper.style.top = `${desiredTop - tocAreaTop}px`;
+    }
+
+    // 활성화 기준 계산
+    function calculateTargetPoint() {
+        return window.scrollY + (window.innerHeight * 0.2); // 뷰포트 상단에서 20% 지점
     }
 
     // 가장 가까운 헤더 탐색 및 TOC 강조
     function highlightActiveTOC() {
         let activeIndex = -1;
-        const targetPoint = window.scrollY + (window.innerHeight * 0.2);
+        const targetPoint = calculateTargetPoint();
 
         headers.forEach((header, index) => {
             const headerPosition = header.offsetTop;
@@ -50,12 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener("click", () => {
             const targetHeader = headers[index];
             if (targetHeader) {
-                const headerOffset = 80;
-                const targetPosition = targetHeader.getBoundingClientRect().top + window.scrollY - headerOffset;
+                const targetPoint = targetHeader.offsetTop - (window.innerHeight * 0.2);
 
+                // 부드럽게 스크롤
                 window.scrollTo({
-                    top: targetPosition,
-                    behavior: "smooth"
+                    top: targetPoint,
+                    behavior: "smooth",
                 });
             }
         });
