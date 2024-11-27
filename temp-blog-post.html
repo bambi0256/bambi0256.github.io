@@ -36,21 +36,23 @@
         <div class="content-container">
 
             <!-- Main Content -->
-            <main class="post-content">
+            <div class="post-content">
                 {{ content | safe }}
-            </main>
+            </div>
 
             <!-- TOC -->
-            <aside class="toc-wrapper">
-                <h3>Table of Contents</h3>
-                <ul class="toc-list">
-                    {% for header in toc_headers %}
-                    <li data-target="{{ header.id }}" style="margin-left: {{ header.level * 10 }}px;">
-                        {{ header.text }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </aside>
+            <div class ="toc-area">
+                <div class="toc-wrapper">
+                    <h3>Table of Contents</h3>
+                    <ul class="toc-list">
+                        {% for header in toc_headers %}
+                        <li data-target="{{ header.id }}" style="margin-left: {{ header.level * 10 }}px;">
+                            {{ header.text }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
