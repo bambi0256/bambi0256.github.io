@@ -110,15 +110,17 @@ body {
 /* TOC Styling */
 .toc-area {
     width: 20%;
+    position: relative;
 }
 
 .toc-wrapper {
     width: 100%;
-    display: sticky;
+    position: absolute;
     background-color: #222;
-    padding: 10px 15px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: top 0.2s ease;
 }
 
 .toc-wrapper h3 {
@@ -148,13 +150,10 @@ body {
 
 .toc-list li.active {
     color: #FFDE59;
-    background-color: transparent;
-    font-weight: bold;
     padding-left: 0;
 }
 
 .toc-list li:hover {
     color: #FFDE59;
     padding-left: 0;
-    font-size: inherit;
 }
