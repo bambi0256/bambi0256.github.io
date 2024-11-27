@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 가장 가까운 헤더 탐색 및 TOC 강조
     function highlightActiveTOC() {
         let activeIndex = -1;
-        const targetPoint = window.scrollY + (window.innerHeight * 0.8);
+        const targetPoint = window.scrollY + (window.innerHeight * 0.2);
 
         headers.forEach((header, index) => {
             const headerPosition = header.offsetTop;
