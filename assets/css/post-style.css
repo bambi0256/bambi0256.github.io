@@ -108,9 +108,13 @@ body {
 }
 
 /* TOC Styling */
-.toc-wrapper {
+.toc-area {
     width: 20%;
-    position: relative;
+}
+
+.toc-wrapper {
+    width: 100%;
+    display: sticky;
     background-color: #222;
     padding: 10px 15px;
     border-radius: 8px;
