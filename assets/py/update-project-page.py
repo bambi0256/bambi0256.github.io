@@ -43,17 +43,11 @@ def extract_toc_headers(markdown_content):
 # JSON 업데이트 함수
 def update_json(metadata, json_file):
     if os.path.exists(json_file):
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-    else:
         data = []
+        data.append(metadata)
 
-    # 중복 항목 제거 후 추가
-    data = [entry for entry in data if entry['title'] != metadata['title']]
-    data.append(metadata)
-
-    with open(json_file, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
+        with open(json_file, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
 
 # HTML 렌더링 함수
 def render_html(metadata, html_content, toc_headers, pygments_css, template_file, output_dir):
@@ -74,8 +68,6 @@ def render_html(metadata, html_content, toc_headers, pygments_css, template_file
 
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(rendered_html)
-
-    print(f"Generated HTML: {output_path}")
 
 # 프로젝트 포스트 처리 함수
 def process_project_posts(md_root_dir, template_file, output_base_dir, json_file):
