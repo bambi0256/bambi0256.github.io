@@ -42,7 +42,7 @@
 
 .intro .text{
     flex: 1 45%;
-    text-align: left;
+    text-align: center;
 }
 
 .intro .image {
@@ -59,20 +59,31 @@
     height: 100%;
 }
 
-.intro .text {
-    order: 1;
-}
-
-.intro .image {
-    order: 2;
-}
-
 @media (max-width: 768px) {
     .intro .text,
     .intro .image {
         flex: 1 1 100%;
         max-width: 480px;
     }
+}
+
+/* Buttons */
+button {
+    background-color: #FFDE59;
+    color: #343434;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #343434;
+    color: #FFDE59;
+    transform: scale(1.05);
 }
 
 /* Post Grid */
