@@ -42,12 +42,11 @@ def extract_toc_headers(markdown_content):
 
 # JSON 업데이트 함수
 def update_json(metadata, json_file):
-    if os.path.exists(json_file):
-        data = []
-        data.append(metadata)
+    data = []
+    data.append(metadata)
 
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
+    with open(json_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
 
 # HTML 렌더링 함수
 def render_html(metadata, html_content, toc_headers, pygments_css, template_file, output_dir):
