@@ -42,6 +42,7 @@
 
 .intro .text{
     flex: 1 45%;
+    text-align: center;
 }
 
 .intro .image {
@@ -68,15 +69,18 @@
 
 /* Buttons */
 button-group {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
 }
 
 button {
     background-color: #FFDE59;
     color: #343434;
     border: none;
-    padding: 15px 30px;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-family: 'CookieRun-Regular', sans-serif;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
