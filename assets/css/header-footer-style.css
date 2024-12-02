@@ -1,5 +1,13 @@
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* General Background Color */
 body {
+    font-family: 'CookieRun-Regular', sans-serif;
     background-color: #343434;
     color: #FFDE59;
 }
@@ -70,7 +78,6 @@ header .header-content {
 .nav-list a {
     color: #FFDE59;
     text-decoration: none;
-    font-weight: bold;
     transition: color 0.3s;
 }
 
@@ -98,114 +105,6 @@ header .header-content {
 }
 
 .social-icons img:hover {
-    transform: scale(1.1);
-}
-
-/* Hamburger Menu */
-.hamburger-menu {
-    display: none;
-    color: #FFDE59;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.hamburger-menu span {
-    width: 25px;
-    height: 3px;
-    background-color: #FFDE59;
-    transition: transform 0.3s;
-}
-
-/* Responsive: Screen Width ≤ 768px */
-@media (max-width: 768px) {
-    .nav-menu,
-    .social-icons {
-        display: none;
-    }
-
-    .hamburger-menu {
-        display: flex;
-    }
-}
-
-/* Full-Screen Overlay Menu */
-.overlay-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: #FFDE59;
-    z-index: 9999;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-.overlay-menu.active {
-    display: block;
-}
-
-.overlay-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.overlay-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.overlay-close {
-    background: none;
-    border: none;
-    color: #FFDE59;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.overlay-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.overlay-nav ul li {
-    margin: 10px 0;
-}
-
-.overlay-nav ul li a {
-    color: #FFDE59;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s;
-}
-
-.overlay-nav ul li a:hover {
-    color: #FFFFFF;
-}
-
-.overlay-social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.overlay-social-icons img {
-    max-width: 24px;
-    transition: transform 0.3s;
-}
-
-.overlay-social-icons img:hover {
     transform: scale(1.1);
 }
 
