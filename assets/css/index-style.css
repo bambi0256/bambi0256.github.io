@@ -42,7 +42,6 @@
 
 .intro .text{
     flex: 1 45%;
-    text-align: center;
 }
 
 .intro .image {
@@ -68,6 +67,10 @@
 }
 
 /* Buttons */
+button-group {
+    text-align: center;
+}
+
 button {
     background-color: #FFDE59;
     color: #343434;
