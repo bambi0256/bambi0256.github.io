@@ -96,6 +96,20 @@ def process_blog_posts(md_root_dir, template_file, output_base_dir, json_file):
                 # HTML 렌더링
                 render_html(metadata, html_content, toc_headers, pygments_css, template_file, output_dir)
 
+#블로그 페이지 갱신 함수
+def update_blog_page():
+    # 1. Jinja2 환경 설정
+    env = Environment(loader=FileSystemLoader('./'))
+    template = env.get_template('temp-blog.html')
+    
+    # 2. 템플릿 렌더링
+    output = template.render()
+    
+    # 3. 파일 생성
+    output_path = './blog/index.html'
+    with open(output_path, 'w') as f:
+        f.write(output)
+
 if __name__ == "__main__":
     process_blog_posts(
         md_root_dir="./mdposts/blog",
@@ -103,3 +117,4 @@ if __name__ == "__main__":
         output_base_dir="./blog",
         json_file="./assets/js/blog-posts.json"
     )
+    update_blog_page()

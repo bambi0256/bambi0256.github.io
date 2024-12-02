@@ -77,7 +77,7 @@ def render_html(metadata, html_content, toc_headers, pygments_css, template_file
 
     print(f"Generated HTML: {output_path}")
 
-# 블로그 포스트 처리 함수
+# 프로젝트 포스트 처리 함수
 def process_project_posts(md_root_dir, template_file, output_base_dir, json_file):
     for root, _, files in os.walk(md_root_dir):
         for file in files:
@@ -96,6 +96,22 @@ def process_project_posts(md_root_dir, template_file, output_base_dir, json_file
                 # HTML 렌더링
                 render_html(metadata, html_content, toc_headers, pygments_css, template_file, output_dir)
 
+#Project 페이지 갱신 함수
+def update_project_page():
+    # 1. Jinja2 환경 설정
+    env = Environment(loader=FileSystemLoader('./'))
+    template = env.get_template('temp-project.html')
+    
+    # 2. 템플릿 렌더링
+    output = template.render()
+    
+    # 3. 파일 생성
+    output_path = './project/index.html'
+    with open(output_path, 'w') as f:
+        f.write(output)
+    
+    print(f"Updated {output_path}")
+
 # 실행
 if __name__ == "__main__":
     process_project_posts(
@@ -104,3 +120,4 @@ if __name__ == "__main__":
         output_base_dir="./project",
         json_file="./assets/js/project-posts.json"
     )
+    update_project_page()
