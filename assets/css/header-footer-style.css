@@ -5,30 +5,15 @@
     font-style: normal;
 }
 
+html {
+    font-size: 18px;
+}
+
 /* General Background Color */
 body {
     font-family: 'CookieRun-Regular', sans-serif;
     background-color: #343434;
     color: #FFDE59;
-}
-
-/* Buttons */
-button, .btn {
-    background-color: #FFDE59;
-    color: #343434;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-button:hover, .btn:hover {
-    background-color: #343434;
-    color: #FFDE59;
-    transform: scale(1.05);
 }
 
 /* Plain Text */
@@ -87,7 +72,6 @@ header .header-content {
 
 .nav-list .current-page a {
     font-weight: bold;
-    text-decoration: underline;
 }
 
 /* Social Icons */
