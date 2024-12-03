@@ -9,6 +9,17 @@ html {
     font-size: 18px;
 }
 
+/* Scrollbar Style */
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #343434;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FFDE59;
+    border-radius: 8px;
+}
+
 /* General Background Color */
 body {
     font-family: 'CookieRun-Regular', sans-serif;
