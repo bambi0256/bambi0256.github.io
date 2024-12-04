@@ -1,0 +1,78 @@
+/* 프로필 섹션 */
+.profile-section {
+    margin-bottom: 100px; /* 아래 공간 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.profile-container {
+    display: flex;
+    gap: 20px;
+}
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.profile-details {
+    font-family: 'Open Sans', sans-serif;
+    color: #FFDE59; /* 노란색 텍스트 */
+}
+
+/* About 섹션 */
+.about-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.about-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.about-row.reverse {
+    flex-direction: row-reverse; /* 그림-텍스트 순서 */
+}
+
+.text-content {
+    flex: 2;
+    color: #FFDE59; /* 노란색 텍스트 */
+    font-family: 'Open Sans', sans-serif;
+}
+
+.text-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.text-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.text-content .quote {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.image-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-content img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
