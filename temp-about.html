@@ -8,34 +8,7 @@
     <link rel="stylesheet" href="/assets/css/about-style.css">
 </head>
 <body>
-    <header>
-    <div class="container header-content">
-        <!-- Logo and Navigation -->
-        <div class="logo-nav">
-            <div class="logo">
-                <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
-            </div>
-            <nav class="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Home</a></li>
-                    <li><a href="/project/" class="nav-link">Projects</a></li>
-                    <li><a href="/blog/" class="nav-link">Blog</a></li>
-                    <li><a href="/about/" class="nav-link">About</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <!-- Social Icons -->
-        <div class="social-icons">
-            <a href="https://www.instagram.com/_j256p" target="_blank">
-                <img src="/assets/image/instagram-icon.png" alt="Instagram">
-            </a>
-            <a href="https://github.com/bambi0256" target="_blank">
-                <img src="/assets/image/github-icon.png" alt="GitHub">
-            </a>
-        </div>
-    </div>
-<script src="/assets/js/set-current.js" defer></script>
+    {% include './header.html' %}
 
     <main>
         <section class="profile-section">
@@ -83,27 +56,7 @@
         </section>
     </main>
 
-    <footer>
-    <div class="container footer-content">
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/project/">Projects</a></li>
-                <li><a href="/blog/">Blog</a></li>
-                <li><a href="/about/">About</a></li>
-            </ul>
-        </nav>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/_j256p" target="_blank">
-                <img src="/assets/image/instagram-icon.png" alt="Instagram">
-            </a>
-            <a href="https://github.com/bambi0256" target="_blank">
-                <img src="/assets/image/github-icon.png" alt="GitHub">
-            </a>
-        </div>
-        <p style="text-align: center;">2024 ⓒ B.Bee | (Font: 데브시스터즈)</p>
-    </div>
-</footer>
+    {% include './footer.html' %}
 
 </body>
 </html>
