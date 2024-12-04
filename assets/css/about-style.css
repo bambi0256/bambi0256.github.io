@@ -8,19 +8,20 @@
 }
 .profile-container {
     display: flex;
-    gap: 100px;
+    gap: 40px;
 }
 .profile-image {
     width: 150px;
     height: 150px;
     margin: auto;
+    border: 2px solid #FFDE59;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .profile-details {
     background-color: #fff4c5;
-    padding: 15px;
+    padding: 10px 40px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 8px #fff4c55c;
@@ -72,6 +73,6 @@
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 3px solid #FFDE59;
+    border-radius: 50%;
 }
