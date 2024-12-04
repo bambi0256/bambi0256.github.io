@@ -1,6 +1,6 @@
 /* 프로필 섹션 */
 .profile-section {
-    margin-bottom: 100px; /* 아래 공간 */
+    margin-bottom: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,8 +17,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .profile-details {
-    font-family: 'Open Sans', sans-serif;
-    color: #FFDE59; /* 노란색 텍스트 */
+    color: #FFDE59;
 }
 
 /* About 섹션 */
@@ -36,13 +35,12 @@
 }
 
 .about-row.reverse {
-    flex-direction: row-reverse; /* 그림-텍스트 순서 */
+    flex-direction: row-reverse;
 }
 
 .text-content {
     flex: 2;
-    color: #FFDE59; /* 노란색 텍스트 */
-    font-family: 'Open Sans', sans-serif;
+    color: #FFDE59;
 }
 
 .text-content h3 {
