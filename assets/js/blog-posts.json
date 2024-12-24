@@ -1,16 +1,13 @@
 [
     {
-        "title": "Exploring the World of AI",
-        "date": "2024-11-08",
-        "author": "Jane Doe",
-        "author_image": "/assets/image/author.jpg",
-        "main_image": "/assets/image/ai-world.jpg",
+        "title": "바다가 들리는 편의점",
+        "date": "2024-12-23",
+        "main_image": "/assets/image/blog/book/bada_store.jpg",
         "tags": [
-            "AI",
-            "Technology",
-            "Future"
+            "책",
+            "힐링"
         ],
-        "excerpt": "A deep dive into the fascinating world of artificial intelligence and what it means for our future.",
-        "slug": "exploring-the-world-of-ai"
+        "excerpt": "텐더리스, 다정함이라는 수식어가 가장 잘 어울리는 공간",
+        "slug": "bada-store"
     }
 ]
