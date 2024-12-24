@@ -5,6 +5,7 @@ date: "2024-11-20"
 tags: ["markdown", "guide", "tutorial"]
 excerpt: "A detailed and comprehensive guide to Markdown syntax and usage."
 main_image: "/assets/image/markdown-guide.jpg"
+slug: comprehensive-guide-to-markdown
 ---
 
 # Introduction to Markdown
