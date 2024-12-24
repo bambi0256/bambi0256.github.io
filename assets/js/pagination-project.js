@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         postCard.appendChild(cardText);
 
                         // Add click event listener
-                        const slug = convertToSlug(post.title);
+                        const slug = convertToSlug(post.slug);
                         postCard.addEventListener("click", () => {
                             window.location.href = `/project/${slug}`;
                         });
