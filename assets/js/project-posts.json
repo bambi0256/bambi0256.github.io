@@ -9,6 +9,7 @@
             "tutorial"
         ],
         "excerpt": "A detailed and comprehensive guide to Markdown syntax and usage.",
-        "main_image": "/assets/image/markdown-guide.jpg"
+        "main_image": "/assets/image/markdown-guide.jpg",
+        "slug": "comprehensive-guide-to-markdown"
     }
 ]
