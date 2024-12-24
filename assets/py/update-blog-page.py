@@ -80,7 +80,7 @@ def process_blog_posts(md_root_dir, template_file, output_base_dir, json_file):
                 toc_headers, html_content, pygments_css = extract_toc_headers(markdown_content)
 
                 # 출력 디렉토리와 JSON 업데이트
-                slug = create_slug(metadata['title'])
+                slug = create_slug(metadata['slug'])
                 output_dir = os.path.join(output_base_dir, slug)
                 update_json(metadata, json_file)
 
