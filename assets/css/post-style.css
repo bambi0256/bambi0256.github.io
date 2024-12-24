@@ -51,7 +51,7 @@ body {
     left: 0px;
     right: 0px;
     color: #FFF4C5;
-    background: linear-gradient(to bottom, transparent, #222);
+    background: linear-gradient(to bottom, #00000000 0%, #525252c2 40%, #343434 100%);
     font-size: 2rem;
 }
 
