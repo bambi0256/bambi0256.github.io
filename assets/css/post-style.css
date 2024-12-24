@@ -47,11 +47,11 @@ body {
 
 .image-overlay {
     position: absolute;
-    bottom: 10px;
-    left: 20px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
     color: #FFF4C5;
     background: linear-gradient(to bottom, transparent, #222);
-    padding: 10px 20px;
     font-size: 2rem;
 }
 
