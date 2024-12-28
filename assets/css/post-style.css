@@ -50,8 +50,9 @@ body {
     bottom: 0px;
     left: 0px;
     right: 0px;
+    padding-left: 20px;
     color: #FFF4C5;
-    background: linear-gradient(to bottom, #00000000 0%, #525252c2 40%, #343434 100%);
+    background: linear-gradient(to bottom, #00000000, #343434);
     font-size: 2rem;
 }
 
