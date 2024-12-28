@@ -20,9 +20,7 @@ def process_markdown(md_file):
 
 # TOC 생성 함수
 def extract_toc_headers(markdown_content):
-    html_content = markdown(
-        markdown_content, extensions=["fenced_code", "codehilite"]
-    )
+    html_content = markdown(markdown_content, extensions=["fenced_code", "codehilite"])
     soup = BeautifulSoup(html_content, "html.parser")
 
     # TOC Headers 생성
@@ -40,11 +38,21 @@ def extract_toc_headers(markdown_content):
 
     return headers, str(soup), pygments_css
 
+# JSON 초기화 함수
+def initialize_json(json_file):
+    with open(json_file, 'w', encoding='utf-8') as f:
+        json.dump([], f, ensure_ascii=False, indent=4)
+
 # JSON 업데이트 함수
 def update_json(metadata, json_file):
-    data = []
+    #기존 메타데이터 읽기
+    with open(json_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    #메타데이터 추가
     data.append(metadata)
-
+    
+    #JSON 업데이트
     with open(json_file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
@@ -102,10 +110,17 @@ def update_blog_page():
         f.write(output)
 
 if __name__ == "__main__":
+    #JSON 파일 초기화
+    json_file = "./assets/js/blog-posts.json"
+    initialize_json(json_file)
+    
+    #블로그 포스트 처리
     process_blog_posts(
         md_root_dir="./mdposts/blog",
         template_file="./temp-blog-post.html",
         output_base_dir="./blog",
         json_file="./assets/js/blog-posts.json"
     )
+    
+    #블로그 페이지 갱신
     update_blog_page()
