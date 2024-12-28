@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 활성화 기준 계산
     function calculateTargetPoint() {
-        return window.scrollY + (window.innerHeight * 0.2); // 뷰포트 상단에서 20% 지점
+        return window.scrollY + (window.innerHeight * 0.5); // 뷰포트 상단에서 50% 지점
     }
 
     // 가장 가까운 헤더 탐색 및 TOC 강조
