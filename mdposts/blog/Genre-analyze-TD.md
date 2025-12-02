@@ -1,10 +1,10 @@
 ﻿---
-title: "장르 분석: 타워 디펜스"
+title: "Genre Analysis: Tower Defense"
 date: "2025-12-02"
-main_image: "/assets/image/blog/genre-analyze/Rampart TD.jpg"
-tags: ["타워 디펜스", "TD"]
-excerpt: "우리는 왜 '수비'하는 것에 빠져드는가"
-slug: genre-analyze-td
+main_image: "/assets/images/posts/Rampart_TD.jpg"
+tags: ["Genre", "TD"]
+excerpt: "우리를 수비하도록 만드는 것들"
+slug: "genre-analyze-td"
 ---
 
 ## 1. 장르의 정의
