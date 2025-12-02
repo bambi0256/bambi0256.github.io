@@ -5,7 +5,7 @@ main_image: "/assets/image/blog/genre-analyze/Rampart TD.jpg"
 tags:
   - 타워 디펜스
 excerpt: "우리는 왜 '수비'하는 것에 빠져드는가"
-slug: "genre-analyze-td"
+slug: genre-analyze-td
 ---
 
 ## 1. 장르의 정의
