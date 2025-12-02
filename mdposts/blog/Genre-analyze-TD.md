@@ -1,10 +1,10 @@
 ﻿---
 title: "Genre Analysis: Tower Defense"
 date: "2025-12-02"
+slug: "genre-analyze-td"
 main_image: "/assets/images/posts/Rampart_TD.jpg"
 tags: ["Genre", "TD"]
 excerpt: "우리를 수비하도록 만드는 것들"
-slug: "genre-analyze-td"
 ---
 
 ## 1. 장르의 정의
