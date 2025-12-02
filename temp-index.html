@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
     <link rel="stylesheet" href="/assets/css/index-style.css">
 </head>
+
 <body>
     {% include './header.html' %}
 
@@ -28,37 +30,34 @@
             </div>
         </section>
 
-        <!-- Latest Works Section -->
-        <section class="latest-works section" id="latest-works">
+        <!-- Project Categories Sections (Dynamically Generated) -->
+        {% for category in projects_categories %}
+        <section class="project-category section"
+            id="{% if loop.first %}latest-works{% else %}{{ category.config.slug }}{% endif %}">
             <div class="container">
                 <div class="section-header">
                     <div class="text">
-                        <h2 class="section-title">Recent Project</h2>
-                        <p class="section-description">프로젝트, 열정, 그리고 배움</p>
+                        <h2 class="section-title">{{ category.config.title }}</h2>
+                        <p class="section-description">{{ category.config.description }}</p>
                     </div>
                     <div class="button">
-                        <a href="/project/" class="view-more">View More</a>
+                        <a href="/{{ category.config.output_dir }}/" class="view-more">View More</a>
                     </div>
                 </div>
-                <div id="latest-work-posts-container" class="post-grid"></div>
-            </div>
-        </section>
-
-        <!-- Recent Posts Section -->
-        <section class="recent-posts section">
-            <div class="container">
-                <div class="section-header">
-                    <div class="text">
-                        <h2 class="section-title">Recent Post</h2>
-                        <p class="section-description">일상, 생각, 그리고 디저트</p>
-                    </div>
-                    <div class="button">
-                        <a href="/blog/" class="view-more">View More</a>
-                    </div>
+                <div class="post-grid three-columns">
+                    {% for post in category.recent_posts %}
+                    <a href="/{{ category.config.output_dir }}/{{ post.slug }}/" class="project-post-card">
+                        <img src="{{ post.main_image }}" alt="{{ post.title }}">
+                        <div class="card-text">
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.excerpt }}</p>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
-                <div id="recent-posts-container" class="post-grid"></div>
             </div>
         </section>
+        {% endfor %}
     </main>
 
     {% include './footer.html' %}
@@ -72,8 +71,7 @@
             }
         }
     </script>
-    <script src="/assets/js/pagination-project.js" defer></script>
-    <script src="/assets/js/pagination-blog.js" defer></script>
     <script src="/assets/js/set-current.js" defer></script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
     <link rel="stylesheet" href="/assets/css/index-style.css">
 </head>
+
 <body>
     <header>
     <div class="container header-content">
@@ -15,11 +17,18 @@
             <div class="logo">
                 <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
             </div>
+
+            <!-- Hamburger Menu Button (Mobile) -->
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <nav class="nav-menu">
                 <ul class="nav-list">
                     <li><a href="/" class="nav-link">Home</a></li>
-                    <li><a href="/project/" class="nav-link">Projects</a></li>
-                    <li><a href="/blog/" class="nav-link">Blog</a></li>
+                    <li><a href="/project1/" class="nav-link">Projects</a></li>
                     <li><a href="/about/" class="nav-link">About</a></li>
                 </ul>
             </nav>
@@ -35,7 +44,8 @@
             </a>
         </div>
     </div>
-<script src="/assets/js/set-current.js" defer></script>
+    <script src="/assets/js/set-current.js" defer></script>
+    <script src="/assets/js/hamburger.js" defer></script>
 
     <main>
         <!-- Intro Section -->
@@ -55,37 +65,34 @@
             </div>
         </section>
 
-        <!-- Latest Works Section -->
-        <section class="latest-works section" id="latest-works">
+        <!-- Project Categories Sections (Dynamically Generated) -->
+        
+        <section class="project-category section"
+            id="latest-works">
             <div class="container">
                 <div class="section-header">
                     <div class="text">
-                        <h2 class="section-title">Recent Project</h2>
-                        <p class="section-description">프로젝트, 열정, 그리고 배움</p>
+                        <h2 class="section-title">프로젝트 1: 디펜스</h2>
+                        <p class="section-description">타워 디펜스 게임 프로젝트</p>
                     </div>
                     <div class="button">
-                        <a href="/project/" class="view-more">View More</a>
+                        <a href="/project1/" class="view-more">View More</a>
                     </div>
                 </div>
-                <div id="latest-work-posts-container" class="post-grid"></div>
-            </div>
-        </section>
-
-        <!-- Recent Posts Section -->
-        <section class="recent-posts section">
-            <div class="container">
-                <div class="section-header">
-                    <div class="text">
-                        <h2 class="section-title">Recent Post</h2>
-                        <p class="section-description">일상, 생각, 그리고 디저트</p>
-                    </div>
-                    <div class="button">
-                        <a href="/blog/" class="view-more">View More</a>
-                    </div>
+                <div class="post-grid three-columns">
+                    
+                    <a href="/project1/comprehensive-guide-to-markdown/" class="project-post-card">
+                        <img src="/assets/image/markdown-guide.jpg" alt="Comprehensive Guide to Markdown">
+                        <div class="card-text">
+                            <h3>Comprehensive Guide to Markdown</h3>
+                            <p>A detailed and comprehensive guide to Markdown syntax and usage.</p>
+                        </div>
+                    </a>
+                    
                 </div>
-                <div id="recent-posts-container" class="post-grid"></div>
             </div>
         </section>
+        
     </main>
 
     <footer>
@@ -93,8 +100,7 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/project/">Projects</a></li>
-                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/project1/">Projects</a></li>
                 <li><a href="/about/">About</a></li>
             </ul>
         </nav>
@@ -119,8 +125,7 @@
             }
         }
     </script>
-    <script src="/assets/js/pagination-project.js" defer></script>
-    <script src="/assets/js/pagination-blog.js" defer></script>
     <script src="/assets/js/set-current.js" defer></script>
 </body>
+
 </html>
