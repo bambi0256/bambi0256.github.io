@@ -12,44 +12,63 @@ def load_projects_metadata():
     with open(metadata_path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-def get_recent_posts_per_category(projects_data, limit=3):
-    """Get top N recent posts for each project category"""
-    recent_by_category = []
+def get_all_recent_posts(projects_data, limit=9):
+    """Get most recent posts from ALL categories combined"""
+    all_posts = []
     
     for project_data in projects_data:
         config = project_data['config']
         posts = project_data['posts']
         
-        # Get top N posts (already sorted by date in update-all-projects.py)
-        recent_posts = posts[:limit] if len(posts) >= limit else posts
-        
-        recent_by_category.append({
-            'config': config,
-            'recent_posts': recent_posts
-        })
+        # Add category info to each post
+        for post in posts:
+            post['category_slug'] = config['slug']
+            post['category_output_dir'] = config['output_dir']
+            all_posts.append(post)
     
-    return recent_by_category
+    # Sort all posts by date (newest first)
+    all_posts.sort(key=lambda x: x.get('date', ''), reverse=True)
+    
+    # Return top N posts
+    return all_posts[:limit]
 
 def update_homepage():
-    """Generate homepage with recent posts from all project categories"""
-    # Load projects data
+    """Generate homepage with recent posts from all categories"""
     projects_data = load_projects_metadata()
     
-    # Get 3 recent posts per category
-    recent_by_category = get_recent_posts_per_category(projects_data, limit=3)
+    # Get 9 most recent posts across all categories
+    recent_posts = get_all_recent_posts(projects_data, limit=9)
     
     # Jinja2 environment
     env = Environment(loader=FileSystemLoader(searchpath="./"))
     template = env.get_template('./temp-index.html')
     
     # Render template
-    output = template.render(projects_categories=recent_by_category)
+    output = template.render(recent_posts=recent_posts)
     
     # Write to index.html
     with open('./index.html', 'w', encoding='utf-8') as f:
         f.write(output)
     
     print("✅ Homepage updated successfully!")
+
+def update_projects_page():
+    """Generate unified Projects page with all categories"""
+    projects_data = load_projects_metadata()
+    
+    # Jinja2 environment
+    env = Environment(loader=FileSystemLoader(searchpath="./"))
+    template = env.get_template('./temp-projects.html')
+    
+    # Render template
+    output = template.render(all_projects=projects_data)
+    
+    # Create projects directory and write index.html
+    os.makedirs('./projects', exist_ok=True)
+    with open('./projects/index.html', 'w', encoding='utf-8') as f:
+        f.write(output)
+    
+    print("✅ Projects page updated successfully!")
 
 def update_about_page():
     """Generate about page"""
@@ -66,4 +85,5 @@ def update_about_page():
 
 if __name__ == "__main__":
     update_homepage()
+    update_projects_page()
     update_about_page()
