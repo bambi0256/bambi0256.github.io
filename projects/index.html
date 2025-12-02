@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.Bee</title>
+    <title>B.Bee | Projects</title>
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
-    <link rel="stylesheet" href="/assets/css/index-style.css">
+    <link rel="stylesheet" href="/assets/css/project-style.css">
 </head>
 
 <body>
@@ -48,33 +48,25 @@
     <script src="/assets/js/hamburger.js" defer></script>
 
     <main>
-        <!-- Intro Section -->
-        <section class="intro section">
+        <!-- Projects Overview Section -->
+        <section class="projects-overview section">
             <div class="container">
-                <div class="text">
-                    <h1 class="section-title">일상과 일 사이</h1>
-                    <p class="section-description">고양이, 케이크, 그리고 게임 개발</p>
-                    <div class="button-group">
-                        <button class="my-works" onclick="scrollToWorks()">My Works ↓</button>
-                        <button class="about-me" onclick="window.location.href='/about/'">About Me →</button>
-                    </div>
-                </div>
-                <div class="image">
-                    <img src="/assets/image/intro-image.jpg" alt="Intro">
-                </div>
+                <h1 class="section-title">All Projects</h1>
+                <p class="section-description">다양한 프로젝트 카테고리를 탐색해보세요</p>
             </div>
         </section>
 
-        <!-- Recent Posts Section (All Categories) -->
-        <section class="recent-posts section" id="latest-works">
+        <!-- Each Project Category -->
+        
+        <section class="project-category section">
             <div class="container">
                 <div class="section-header">
                     <div class="text">
-                        <h2 class="section-title">Recent Works</h2>
-                        <p class="section-description">모든 프로젝트의 최신 업데이트</p>
+                        <h2 class="section-title">프로젝트 1: 디펜스</h2>
+                        <p class="section-description">타워 디펜스 게임 프로젝트</p>
                     </div>
                     <div class="button">
-                        <a href="/projects/" class="view-more">View All Projects</a>
+                        <a href="/project1/" class="view-more">Learn More</a>
                     </div>
                 </div>
                 <div class="post-grid">
@@ -82,6 +74,7 @@
                 </div>
             </div>
         </section>
+        
     </main>
 
     <footer>
@@ -104,17 +97,6 @@
         <p style="text-align: center;">2024 ⓒ B.Bee | (Font: 데브시스터즈)</p>
     </div>
 </footer>
-
-    <!-- JavaScript for Scroll -->
-    <script>
-        function scrollToWorks() {
-            const worksSection = document.querySelector('#latest-works');
-            if (worksSection) {
-                worksSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
-    <script src="/assets/js/set-current.js" defer></script>
 </body>
 
 </html>
