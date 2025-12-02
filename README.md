@@ -2,8 +2,8 @@
 
 ## 개요
 
-이 프로젝트는 개인 블로그를 제작해 보는 프로젝트입니다.
-구성 페이지의 생성을 위해 Python 스크립트와 JavaScript를 활용하며, 페이지들은 작성한 포스트 내용에 따라 동적으로 생성됩니다.
+이 프로젝트는 개인 블로그를 제작해 보기 위해 진행되었습니다.
+페이지 관리에 Python과 JavaScript를 활용하며, 작성한 포스트 내용에 따라 동적으로 생성됩니다.
 
 ---
 
@@ -14,18 +14,18 @@
 |
 ├── ./.github/workflows/            # GitHub Actions 워크플로우 파일
 |
-├── assets/                        # 자산 파일들 (이미지, CSS, JS, Python)
-|   ├── css/                       # 스타일시트
-|   ├── js/                        # 자바스크립트 파일들
-|   ├── py/                        # Python 스크립트 파일들
-|   └── image/                     # 이미지 파일들
+├── assets/                        
+|   ├── css/                       # CSS 스타일시트
+|   ├── js/                        # JavaScript 스크립트
+|   ├── py/                        # Python 스크립트
+|   └── image/                     # Image
 |
-├── mdposts/                       # Markdown 파일들 (프로젝트 카테고리별)
-|   ├── project1/                  # 프로젝트 1 Markdown 파일들
-|   └── project2/                  # 프로젝트 2 Markdown 파일들 (확장 가능)
+├── mdposts/                       # Markdown (프로젝트 카테고리별 확장)
+|   ├── project1/                  # 프로젝트 1 Markdown
+|   └── project2/                  # 프로젝트 2 Markdown
 |
-├── project1/                      # 프로젝트 1 생성된 HTML 페이지들
-├── project2/                      # 프로젝트 2 생성된 HTML 페이지들
+├── project1/                      # 프로젝트 1 하위 HTML 페이지
+├── project2/                      # 프로젝트 2 하위 HTML 페이지
 |
 ├── index.html                     # 홈페이지 HTML
 ├── header.html                    # 공통 헤더 템플릿
@@ -34,7 +34,7 @@
 ├── requirements.txt               # 프로젝트 의존성
 ├── README.md                      # 프로젝트 설명 파일
 |
-├── temp-*                          # 템플릿 파일들 (홈페이지, 프로젝트용)
+├── temp-*                         # 페이지 템플릿 파일
 └── . . .
 ```
 
@@ -48,31 +48,27 @@
 ### 2. **`/assets/`**
 - **`/css/`**: 프로젝트의 스타일을 정의한 `style.css`가 포함됩니다. 블로그의 스타일을 정의합니다.
 - **`/js/`**
-  - **`pagination-blog.js`**: 블로그 페이지를 동적으로 업데이트하고 Pagination을 관리합니다.
   - **`pagination-project.js`**: 프로젝트 페이지를 동적으로 업데이트하고 Pagination을 관리합니다.
   - **`hamburger.js`**: 반응형 햄버거 메뉴 관리 및 작은 화면에서 메뉴를 토글하는 기능입니다.
   - **`set-current.js`**: 헤더의 현재 페이지 링크를 강조하는 기능입니다.
+  - **`toc.js`**: 각 포스트에 동적 Table of Content를 생성하는 기능입니다.
 - **`/py/`**
-  - **`update-blog-page.py`**: 블로그 Markdown 파일을 HTML로 변환하고, 블로그 페이지를 업데이트합니다.
-  - **`update-project-page.py`**: 프로젝트 Markdown 파일을 HTML로 변환하고, 프로젝트 페이지를 업데이트합니다.
+  - **`update-all-projects.py`**: 프로젝트 Markdown 파일을 HTML로 변환하고, 프로젝트 페이지를 업데이트합니다.
   - **`update-home-page.py`**: 홈페이지를 생성하는 Python 스크립트로, `temp-index.html` 템플릿을 사용하여 정적 HTML 페이지를 만듭니다.
 - **`/image/`**
 
 ### 3. **`/mdposts/`**
-이 디렉토리는 두 개의 서브 디렉토리, `blog/`와 `project/`를 포함하며, 각각 블로그와 프로젝트 콘텐츠의 Markdown 파일들이 포함됩니다.
-- **`/blog/`**: 블로그 Markdown 파일들.
-- **`/project/`**: 프로젝트 Markdown 파일들.
+이 디렉토리는 각 프로젝트를 서브 디렉토리(`project1/`, `project2/`등)를 포함하며 각 프로젝트 하위의 Markdown 파일들을 직접 작성하는 공간입니다.
+해당 디렉토리 하위에 변경이 생기면 자동으로 블로그에 업데이트됩니다.
 
 ### 4. **`/temp-*` 템플릿 파일들**
 템플릿 파일들은 HTML 페이지를 생성할 때 Jinja2 템플릿 엔진을 사용하여 동적으로 렌더링됩니다. 이를 통해 각 페이지에 필요한 데이터를 동적으로 삽입하고, 최종적인 HTML을 생성합니다.
 - **`temp-index.html`**: 홈페이지 템플릿. Jinja2 템플릿 엔진을 통해 `index.html` 파일을 생성합니다.
-- **`temp-blog.html`**: 블로그 페이지 템플릿. 블로그 포스트들을 리스트 형식으로 출력합니다.
-- **`temp-project.html`**: 프로젝트 페이지 템플릿. 프로젝트 포스트들을 리스트 형식으로 출력합니다.
-- **`temp-blog-post.html`**: 개별 블로그 포스트 템플릿. 각 블로그 포스트의 내용과 메타데이터를 렌더링합니다.
+- **`temp-projects.html`**: 프로젝트 페이지 템플릿. 프로젝트 포스트들을 리스트 형식으로 출력합니다.
 - **`temp-project-post.html`**: 개별 프로젝트 포스트 템플릿. 각 프로젝트 포스트의 내용과 메타데이터를 렌더링합니다.
+- **`temp-about.html`**: 자기소개 페이지 템플릿. 동적 변동사항은 없으나 통일성을 위해 존재합니다.
 
-### 5. **`index.html`, `header.html`, `footer.html`**
-- **`index.html`**: 홈페이지를 구성하는 HTML 파일. 이 파일은 `temp-index.html` 템플릿을 사용하여 동적으로 생성됩니다.
+### 5. **`header.html`, `footer.html`**
 - **`header.html`**: 모든 페이지에 공통으로 사용되는 헤더 템플릿. 로고, 네비게이션 메뉴 및 소셜 아이콘이 포함됩니다.
 - **`footer.html`**: 모든 페이지에 공통으로 사용되는 푸터 템플릿. 사이트에 대한 간단한 정보와 네비게이션 링크가 포함됩니다.
 
@@ -85,14 +81,6 @@
 실제 사용을 고려하여 모든 html 파일을 해당하는 디렉토리를 생성하여 index.html로 제작하고, 링크를 깔끔하게 했습니다.
 
 블로그의 디자인은 자체적인 기획과 Chat-GPT를 활용한 스크립트 제작을 기반으로 합니다.
-
----
-
-### **프로젝트 관리 및 유지보수**
-
-1. Markdown 파일을 추가하거나 수정하면 자동으로 블로그에 업데이트됩니다.
-2. Markdown 파일의 추가/수정 없이 디자인, 템플릿에 변경을 주는 경우 Github Actions에서 직접 Workflow를 실행해야 합니다.
-3. 향후 css 파일을 해당하는 html 템플릿 별로 분리하여 수정 및 로드를 용이하게 할 것입니다.
 
 ---
 
@@ -115,8 +103,8 @@
        },
        {
          "slug": "project2",
-         "title": "프로젝트 2: 새 프로젝트",
-         "description": "새로운 프로젝트 설명",
+         "title": "프로젝트 2: 퍼즐",
+         "description": "퍼즐 게임 프로젝트",
          "mdposts_dir": "mdposts/project2",
          "output_dir": "project2"
        }

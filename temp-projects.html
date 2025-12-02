@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.Bee | Projects</title>
+    <link rel="stylesheet" href="/assets/css/header-footer-style.css">
+    <link rel="stylesheet" href="/assets/css/project-style.css">
+</head>
+
+<body>
+    {% include './header.html' %}
+
+    <main>
+        <!-- Projects Overview Section -->
+        <section class="projects-overview section">
+            <div class="container">
+                <h1 class="section-title">All Projects</h1>
+                <p class="section-description">다양한 프로젝트 카테고리를 탐색해보세요</p>
+            </div>
+        </section>
+
+        <!-- Each Project Category -->
+        {% for project_data in all_projects %}
+        <section class="project-category section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="text">
+                        <h2 class="section-title">{{ project_data.config.title }}</h2>
+                        <p class="section-description">{{ project_data.config.description }}</p>
+                    </div>
+                    <div class="button">
+                        <a href="/{{ project_data.config.output_dir }}/" class="view-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="post-grid">
+                    {% for post in project_data.posts[:6] %}
+                    <a href="/{{ project_data.config.output_dir }}/{{ post.slug }}/" class="post-card">
+                        <img src="{{ post.main_image }}" alt="{{ post.title }}">
+                        <div class="card-text">
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.excerpt }}</p>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endfor %}
+    </main>
+
+    {% include './footer.html' %}
+</body>
+
+</html>

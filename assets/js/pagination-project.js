@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     const pagePosts = data.slice(start, end);
 
                     pagePosts.forEach(post => {
-    		// Create elements dynamically
+                        // Create elements dynamically
                         const postCard = document.createElement("div");
-                        postCard.classList.add("project-post-card");
+                        postCard.classList.add("post-card");
 
                         const postImage = document.createElement("img");
                         postImage.src = post.main_image;
@@ -72,9 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     const latestWorks = data.slice(0, postsPerPage);
 
                     latestWorks.forEach(post => {
-    		// Create elements dynamically
+                        // Create elements dynamically
                         const postCard = document.createElement("div");
-                        postCard.classList.add("project-post-card");
+                        postCard.classList.add("post-card");
 
                         const postImage = document.createElement("img");
                         postImage.src = post.main_image;

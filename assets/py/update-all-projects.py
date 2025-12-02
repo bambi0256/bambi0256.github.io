@@ -64,7 +64,7 @@ def render_post_html(metadata, html_content, toc_headers, pygments_css, template
 # Render project listing page
 def render_project_listing(project_config, posts_metadata):
     env = Environment(loader=FileSystemLoader('./'))
-    template = env.get_template('temp-project.html')
+    template = env.get_template('temp-projects.html')
     
     output = template.render(
         project_title=project_config['title'],
