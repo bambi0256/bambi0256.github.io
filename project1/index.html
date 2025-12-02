@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.Bee</title>
+    <title>B.Bee | 프로젝트 1: 디펜스</title>
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
-    <link rel="stylesheet" href="/assets/css/index-style.css">
+    <link rel="stylesheet" href="/assets/css/project-style.css">
 </head>
 
 <body>
@@ -48,51 +48,14 @@
     <script src="/assets/js/hamburger.js" defer></script>
 
     <main>
-        <!-- Intro Section -->
-        <section class="intro section">
+        <section class="project-list section">
             <div class="container">
-                <div class="text">
-                    <h1 class="section-title">일상과 일 사이</h1>
-                    <p class="section-description">고양이, 케이크, 그리고 게임 개발</p>
-                    <div class="button-group">
-                        <button class="my-works" onclick="scrollToWorks()">My Works ↓</button>
-                        <button class="about-me" onclick="window.location.href='/about/'">About Me →</button>
-                    </div>
-                </div>
-                <div class="image">
-                    <img src="/assets/image/intro-image.jpg" alt="Intro">
-                </div>
+                <h1 class="section-title">프로젝트 1: 디펜스</h1>
+                <p class="section-description">타워 디펜스 게임 프로젝트</p>
+                <div id="project-posts-container" class="post-grid"></div>
+                <div id="pagination-controls" class="pagination-controls"></div>
             </div>
         </section>
-
-        <!-- Project Categories Sections (Dynamically Generated) -->
-        
-        <section class="project-category section"
-            id="latest-works">
-            <div class="container">
-                <div class="section-header">
-                    <div class="text">
-                        <h2 class="section-title">프로젝트 1: 디펜스</h2>
-                        <p class="section-description">타워 디펜스 게임 프로젝트</p>
-                    </div>
-                    <div class="button">
-                        <a href="/project1/" class="view-more">View More</a>
-                    </div>
-                </div>
-                <div class="post-grid three-columns">
-                    
-                    <a href="/project1/comprehensive-guide-to-markdown/" class="project-post-card">
-                        <img src="/assets/image/markdown-guide.jpg" alt="Comprehensive Guide to Markdown">
-                        <div class="card-text">
-                            <h3>Comprehensive Guide to Markdown</h3>
-                            <p>A detailed and comprehensive guide to Markdown syntax and usage.</p>
-                        </div>
-                    </a>
-                    
-                </div>
-            </div>
-        </section>
-        
     </main>
 
     <footer>
@@ -115,17 +78,7 @@
         <p style="text-align: center;">2024 ⓒ B.Bee | (Font: 데브시스터즈)</p>
     </div>
 </footer>
-
-    <!-- JavaScript for Scroll -->
-    <script>
-        function scrollToWorks() {
-            const worksSection = document.querySelector('#latest-works');
-            if (worksSection) {
-                worksSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
-    <script src="/assets/js/set-current.js" defer></script>
+    <script src="/assets/js/pagination-project.js" defer></script>
 </body>
 
 </html>

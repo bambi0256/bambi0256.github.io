@@ -3,12 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - B.Bee</title>
+    <title>B.Bee | About</title>
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
     <link rel="stylesheet" href="/assets/css/about-style.css">
 </head>
 <body>
-    {% include './header.html' %}
+    <header>
+    <div class="container header-content">
+        <!-- Logo and Navigation -->
+        <div class="logo-nav">
+            <div class="logo">
+                <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
+            </div>
+
+            <!-- Hamburger Menu Button (Mobile) -->
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/project1/" class="nav-link">Projects</a></li>
+                    <li><a href="/about/" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/_j256p" target="_blank">
+                <img src="/assets/image/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/bambi0256" target="_blank">
+                <img src="/assets/image/github-icon.png" alt="GitHub">
+            </a>
+        </div>
+    </div>
+    <script src="/assets/js/set-current.js" defer></script>
+    <script src="/assets/js/hamburger.js" defer></script>
 
     <main>
         <section class="profile-section">
@@ -17,7 +52,7 @@
                 <div class="profile-details">
                     <h2>지홍</h2>
                     <p>남 | 2002.06.15 | Cis-AB</p>
-                    <p>INTP-A | 🐝 🍫 🐱 🎮</p>
+                    <p>INTP-A | 🍫 🐱 🎮</p>
                 </div>
             </div>
         </section>
@@ -25,16 +60,16 @@
         <section class="about-section">
             <div class="about-row">
                 <div class="text-content">
-                    <p>한 아이는 어려서부터 무언가 새로운 것을 만드는 것을 좋아했습니다. 매번 다른 레고와 도미노를 만들었고, 기계가 있으면 분해하고 조립해 봤으며(그래서 저는 DIY 가구를 좋아합니다.) 과학상자를 들고 다니며 툭 하면 로봇을 만들겠다고 했죠. 무엇이든 만들 수 있다면 다 좋았기에 꿈도 다양했습니다. 요리사, 로봇 공학자, 물리학자, 건축가... 요리를, 로봇을, 진리와 법칙을, 건물과 도시를 만들고 싶어 했죠.</p>
+                    <p>한 아이는 어려서부터 무언가 새로운 것을 만드는 것을 좋아했습니다. 매번 다른 레고와 도미노를 만들었고, 기계가 있으면 분해하고 조립해 봤으며(그래서 저는 DIY 가구를 좋아합니다.) 과학상자를 들고 다니며 툭 하면 로봇을 만들겠다고 했죠. 무엇이든 만들 수 있다면 다 좋았기에 꿈도 다양했습니다. 요리사, 로봇 공학자, 물리학자, 건축가... 요리를, 로봇을, 건물과 도시를 만들고 싶어 했죠.</p>
                 </div>
                 <div class="image-content">
-                    <img src="/assets/image/lego-image.jpg" alt="Lego">
+                    <img src="/assets/image/about/lego-image.jpg" alt="Lego">
                 </div>
             </div>
 
-            <div class="about-row reverse">
+            <div class="about-row">
                 <div class="image-content">
-                    <img src="/assets/image/minecraft-logo.png" alt="Minecraft">
+                    <img src="/assets/image/about/minecraft-logo.png" alt="Minecraft">
                 </div>
                 <div class="text-content">
                     <p>그러던 아이는 인터넷 방송을 만나게 되었습니다. 스마트폰이 처음 생기고, 유튜브라는 사이트를 통해 말이죠. 마인크래프트 동영상이었습니다. 방송인이 크루들과 게임을 통해 즐거움을 나누고, 또 그것이 화면을 통해 방송을 보는 다른 사람들에게까지 연결되는 것이 너무나 좋았죠. 그리고 그 아이는 이런 꿈을 꾸게 됩니다.</p>
@@ -46,17 +81,36 @@
 
             <div class="about-row">
                 <div class="text-content">
-                    <p>아이의 게임 개발에 대한 꿈이 시작되는 순간이었습니다...</p>
+                    <p>아이의 게임 개발에 대한 꿈이 시작되는 순간이었습니다. 세상의 규칙과 생명을 만들고 그를 통해 사람들을 즐겁게 할 수 있다니, 내가 좋아하는 것을 하면서 다른 사람들에게도 좋은 것을 줄 수 있는 길을 찾은 것이죠. 그리고 시간이 지나 아이는 꿈에 대해 좋은 정의를 내릴 수 있게 되었습니다.</p>
                     <p class="quote">"창조, 그리고 즐거움."</p>
                 </div>
                 <div class="image-content">
-                    <img src="/assets/image/type-image.jpg" alt="Nothing Yet">
+                    <img src="/assets/image/about/dream-image.jpg" alt="Dream">
                 </div>
             </div>
         </section>
     </main>
 
-    {% include './footer.html' %}
+    <footer>
+    <div class="container footer-content">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/project1/">Projects</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/_j256p" target="_blank">
+                <img src="/assets/image/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/bambi0256" target="_blank">
+                <img src="/assets/image/github-icon.png" alt="GitHub">
+            </a>
+        </div>
+        <p style="text-align: center;">2024 ⓒ B.Bee | (Font: 데브시스터즈)</p>
+    </div>
+</footer>
 
 </body>
 </html>
