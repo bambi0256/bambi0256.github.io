@@ -2,8 +2,7 @@
 title: "장르 분석: 타워 디펜스"
 date: "2025-12-02"
 main_image: "/assets/image/blog/genre-analyze/Rampart TD.jpg"
-tags:
-  - 타워 디펜스
+tags: ["타워 디펜스", "TD"]
 excerpt: "우리는 왜 '수비'하는 것에 빠져드는가"
 slug: genre-analyze-td
 ---
