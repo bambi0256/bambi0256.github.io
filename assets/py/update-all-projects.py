@@ -7,11 +7,128 @@ from bs4 import BeautifulSoup
 from pygments.formatters import HtmlFormatter
 from pygments.styles import get_style_by_name
 import re
+import shutil
 
-# Load project configurations
+
+# Scan mdposts directory for all project folders
+def scan_mdposts_directories():
+    """Automatically discover all project directories in mdposts/"""
+    mdposts_base = 'mdposts'
+    discovered_projects = []
+    
+    if not os.path.exists(mdposts_base):
+        print(f"Warning: {mdposts_base} directory does not exist")
+        return discovered_projects
+    
+    # Find all subdirectories in mdposts/
+    for item in os.listdir(mdposts_base):
+        item_path = os.path.join(mdposts_base, item)
+        if os.path.isdir(item_path):
+            # Use directory name as slug
+            slug = item
+            
+            # Try to get title and description from first MD file
+            title = slug  # default to slug
+            description = f"{slug} project"
+            
+            # Look for MD files to extract metadata
+            md_files = [f for f in os.listdir(item_path) if f.endswith('.md')]
+            if md_files:
+                try:
+                    first_md = os.path.join(item_path, md_files[0])
+                    with open(first_md, 'r', encoding='utf-8') as f:
+                        post = frontmatter.load(f)
+                        # Try to get project info from frontmatter
+                        title = post.metadata.get('project_title', slug)
+                        description = post.metadata.get('project_description', f"{slug} project")
+                except Exception as e:
+                    print(f"Warning: Could not read metadata from {first_md}: {e}")
+            
+            discovered_projects.append({
+                'slug': slug,
+                'title': title,
+                'description': description,
+                'mdposts_dir': item_path,
+                'output_dir': slug
+            })
+    
+    return discovered_projects
+
+# Load project configurations from config file
+def load_config_projects():
+    """Load manually configured projects from projects-config.json"""
+    config_path = 'projects-config.json'
+    if not os.path.exists(config_path):
+        return []
+    
+    try:
+        with open(config_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            return data.get('projects', [])
+    except Exception as e:
+        print(f"Warning: Could not load {config_path}: {e}")
+        return []
+
+# Merge configured and discovered projects
 def load_projects_config():
-    with open('projects-config.json', 'r', encoding='utf-8') as f:
-        return json.load(f)['projects']
+    """Merge manually configured projects with auto-discovered ones"""
+    config_projects = load_config_projects()
+    discovered_projects = scan_mdposts_directories()
+    
+    # Create a map of configured projects by slug
+    config_map = {p['slug']: p for p in config_projects}
+    
+    # Merge: prioritize config settings, add discovered projects not in config
+    all_projects = list(config_projects)  # Start with configured projects
+    
+    for discovered in discovered_projects:
+        if discovered['slug'] not in config_map:
+            all_projects.append(discovered)
+            print(f"Auto-discovered project: {discovered['slug']}")
+    
+    return all_projects
+
+# Clean up old project files that no longer exist
+def cleanup_old_projects(current_projects):
+    """Remove output files for projects that no longer exist"""
+    metadata_path = './assets/js/projects-metadata.json'
+    
+    # Load previous metadata to find old projects
+    old_projects = []
+    if os.path.exists(metadata_path):
+        try:
+            with open(metadata_path, 'r', encoding='utf-8') as f:
+                old_data = json.load(f)
+                old_projects = [p['config']['slug'] for p in old_data]
+        except Exception as e:
+            print(f"Warning: Could not load previous metadata: {e}")
+    
+    current_slugs = {p['slug'] for p in current_projects}
+    
+    # Find removed projects
+    removed_projects = [slug for slug in old_projects if slug not in current_slugs]
+    
+    for slug in removed_projects:
+        print(f"Cleaning up removed project: {slug}")
+        
+        # Remove output directory
+        output_dir = slug  # Assuming output_dir matches slug
+        if os.path.exists(output_dir):
+            try:
+                shutil.rmtree(output_dir)
+                print(f"  - Removed directory: {output_dir}/")
+            except Exception as e:
+                print(f"  - Error removing {output_dir}: {e}")
+        
+        # Remove JSON file
+        json_path = f"./assets/js/{slug}-posts.json"
+        if os.path.exists(json_path):
+            try:
+                os.remove(json_path)
+                print(f"  - Removed JSON: {json_path}")
+            except Exception as e:
+                print(f"  - Error removing {json_path}: {e}")
+
 
 # Slug generation
 def create_slug(title):
@@ -121,6 +238,10 @@ def process_project_posts(project_config):
 # Main function
 def main():
     projects = load_projects_config()
+    
+    # Clean up old projects first
+    cleanup_old_projects(projects)
+    
     all_projects_data = []
     
     for project in projects:
@@ -151,3 +272,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
