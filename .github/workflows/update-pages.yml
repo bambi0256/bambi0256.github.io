@@ -3,9 +3,10 @@ name: Update Project Pages
 on:
   push:
     paths:
-      - 'mdposts/project*/**'
+      - 'mdposts/**'
       - 'projects-config.json'
   workflow_dispatch:
+
 
 jobs:
   build:
@@ -28,7 +29,6 @@ jobs:
       - name: Update All Project Pages
         run: |
           python assets/py/update-all-projects.py
-          python assets/py/update-home-page.py
           git add project*/ projects/ assets/js/ index.html about/
 
       - name: Commit changes
