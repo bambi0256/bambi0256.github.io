@@ -75,8 +75,8 @@
     color: #343434;
 }
 
-/* Project Post Card */
-.project-post-card {
+/* Post Card */
+.post-card {
     position: relative;
     height: 560px;
     overflow: hidden;
