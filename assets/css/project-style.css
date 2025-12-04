@@ -1,3 +1,47 @@
+/* Section Header */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.section-header .text {
+    text-align: left;
+    max-width: 60%;
+}
+
+.section-header .button {
+    text-align: right;
+}
+
+.section-header .view-more {
+    background-color: #FFDE59;
+    color: #343434;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.section-header .view-more:hover {
+    color: #FFFFFF;
+}
+
+/* Project Category */
+.project-category .container {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+}
+
+/* Projects Overview */
+.projects-overview .container {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
 /* Post Grid */
 .post-grid {
     margin: 100px 0;

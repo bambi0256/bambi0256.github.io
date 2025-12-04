@@ -1,7 +1,7 @@
 ---
 title: "타워 디펜스 프로젝트 개요"
 date: "2025-12-03"
-slug: "tdproject-1"
+slug: "2025120301"
 main_image: "/assets/image/post-image.jpg"
 tags: ["타워 디펜스", "게임 개발", "기획 킥오프"]
 excerpt: "출시를 위한 첫 발걸음"
