@@ -5,7 +5,7 @@ const MAX_POSTS_PER_PROJECT = 6; // 각 프로젝트당 표시할 최대 포스�
 // 프로젝트 메타데이터 로드 및 렌더링
 async function loadAllProjects() {
     try {
-        const response = await fetch('/assets/js/projects-metadata.json');
+        const response = await fetch('/json/projects-metadata.json');
         if (!response.ok) {
             throw new Error(`Failed to load projects metadata: ${response.status}`);
         }

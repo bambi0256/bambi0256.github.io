@@ -57,7 +57,7 @@ def scan_mdposts_directories():
 # Load project configurations from config file
 def load_config_projects():
     """Load manually configured projects from projects-config.json"""
-    config_path = 'projects-config.json'
+    config_path = 'json/projects-config.json'
     if not os.path.exists(config_path):
         return []
     
@@ -91,7 +91,7 @@ def load_projects_config():
 # Clean up old project files that no longer exist
 def cleanup_old_projects(current_projects):
     """Remove output files for projects that no longer exist"""
-    metadata_path = './assets/js/projects-metadata.json'
+    metadata_path = './json/projects-metadata.json'
     
     # Load previous metadata to find old projects
     old_projects = []
@@ -121,7 +121,7 @@ def cleanup_old_projects(current_projects):
                 print(f"  - Error removing {output_dir}: {e}")
         
         # Remove JSON file
-        json_path = f"./assets/js/{slug}-posts.json"
+        json_path = f"./json/{slug}-posts.json"
         if os.path.exists(json_path):
             try:
                 os.remove(json_path)
@@ -253,7 +253,7 @@ def main():
         posts_metadata = process_project_posts(project)
         
         # Save project-specific JSON
-        project_json_path = f"./assets/js/{project['slug']}-posts.json"
+        project_json_path = f"./json/{project['slug']}-posts.json"
         with open(project_json_path, 'w', encoding='utf-8') as f:
             json.dump(posts_metadata, f, ensure_ascii=False, indent=4)
         
@@ -267,7 +267,7 @@ def main():
         })
     
     # Save global projects metadata
-    with open('./assets/js/projects-metadata.json', 'w', encoding='utf-8') as f:
+    with open('./json/projects-metadata.json', 'w', encoding='utf-8') as f:
         json.dump(all_projects_data, f, ensure_ascii=False, indent=4)
     
     print("\n✅ All projects processed successfully!")
