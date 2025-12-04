@@ -15,13 +15,13 @@
             "title": "TD-project",
             "description": "TD-project project",
             "mdposts_dir": "mdposts/TD-project",
-            "output_dir": "TD-project"
+            "output_dir": "projects/TD-project"
         },
         "posts": [
             {
                 "title": "타워 디펜스 프로젝트 개요",
                 "date": "2025-12-03",
-                "slug": "tdproject-1",
+                "slug": "2025120301",
                 "main_image": "/assets/image/post-image.jpg",
                 "tags": [
                     "타워 디펜스",

@@ -11,41 +11,42 @@
 
 <body>
     <header>
-    <div class="container header-content">
-        <!-- Logo and Navigation -->
-        <div class="logo-nav">
-            <div class="logo">
-                <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
+        <div class="container header-content">
+            <!-- Logo and Navigation -->
+            <div class="logo-nav">
+                <div class="logo">
+                    <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
+                </div>
+
+                <!-- Hamburger Menu Button (Mobile) -->
+                <button class="hamburger-menu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="/" class="nav-link">Home</a></li>
+                        <li><a href="/projects/" class="nav-link">Projects</a></li>
+                        <li><a href="/about/" class="nav-link">About</a></li>
+                    </ul>
+                </nav>
             </div>
 
-            <!-- Hamburger Menu Button (Mobile) -->
-            <button class="hamburger-menu" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <nav class="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Home</a></li>
-                    <li><a href="/projects/" class="nav-link">Projects</a></li>
-                    <li><a href="/about/" class="nav-link">About</a></li>
-                </ul>
-            </nav>
+            <!-- Social Icons -->
+            <div class="social-icons">
+                <a href="https://www.instagram.com/_j256p" target="_blank">
+                    <img src="/assets/image/instagram-icon.png" alt="Instagram">
+                </a>
+                <a href="https://github.com/bambi0256" target="_blank">
+                    <img src="/assets/image/github-icon.png" alt="GitHub">
+                </a>
+            </div>
         </div>
-
-        <!-- Social Icons -->
-        <div class="social-icons">
-            <a href="https://www.instagram.com/_j256p" target="_blank">
-                <img src="/assets/image/instagram-icon.png" alt="Instagram">
-            </a>
-            <a href="https://github.com/bambi0256" target="_blank">
-                <img src="/assets/image/github-icon.png" alt="GitHub">
-            </a>
-        </div>
-    </div>
-    <script src="/assets/js/set-current.js" defer></script>
-    <script src="/assets/js/hamburger.js" defer></script>
+        <script src="/assets/js/set-current.js" defer></script>
+        <script src="/assets/js/hamburger.js" defer></script>
+    </header>
 
     <main>
         <!-- Projects Overview Section -->
@@ -56,47 +57,36 @@
             </div>
         </section>
 
-        <!-- Each Project Category -->
-        
-        <section class="project-category section">
-            <div class="container">
-                <div class="section-header">
-                    <div class="text">
-                        <h2 class="section-title">프로젝트 1: 디펜스</h2>
-                        <p class="section-description">타워 디펜스 게임 프로젝트</p>
-                    </div>
-                    <div class="button">
-                        <a href="/project1/" class="view-more">Learn More</a>
-                    </div>
-                </div>
-                <div class="post-grid">
-                    
-                </div>
-            </div>
-        </section>
-        
+        <!-- 각 프로젝트 카테고리 (JavaScript로 동적 로드) -->
+        <div id="projects-container">
+            <!-- JavaScript로 프로젝트 목록이 여기에 추가됩니다 -->
+        </div>
+
     </main>
 
     <footer>
-    <div class="container footer-content">
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/projects/">Projects</a></li>
-                <li><a href="/about/">About</a></li>
-            </ul>
-        </nav>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/_j256p" target="_blank">
-                <img src="/assets/image/instagram-icon.png" alt="Instagram">
-            </a>
-            <a href="https://github.com/bambi0256" target="_blank">
-                <img src="/assets/image/github-icon.png" alt="GitHub">
-            </a>
+        <div class="container footer-content">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/projects/">Projects</a></li>
+                    <li><a href="/about/">About</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/_j256p" target="_blank">
+                    <img src="/assets/image/instagram-icon.png" alt="Instagram">
+                </a>
+                <a href="https://github.com/bambi0256" target="_blank">
+                    <img src="/assets/image/github-icon.png" alt="GitHub">
+                </a>
+            </div>
+            <p style="text-align: center;">2024 ⓒ B.Bee | (Font: 데브시스터즈)</p>
         </div>
-        <p style="text-align: center;">2024 ⓒ B.Bee | (Font: 데브시스터즈)</p>
-    </div>
-</footer>
+
+        <!-- 프로젝트 동적 로딩 스크립트 -->
+        <script src="/assets/js/projects-page.js" defer></script>
+    </footer>
 </body>
 
 </html>

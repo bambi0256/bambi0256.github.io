@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.Bee | Projects</title>
+    <title>B.Bee | 프로젝트 1: 디펜스</title>
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
     <link rel="stylesheet" href="/assets/css/project-style.css">
 </head>
@@ -48,17 +48,40 @@
     <script src="/assets/js/hamburger.js" defer></script>
 
     <main>
-        <!-- Projects Overview Section -->
+        <!-- 프로젝트 개요 섹션 -->
         <section class="projects-overview section">
             <div class="container">
-                <h1 class="section-title">All Projects</h1>
-                <p class="section-description">다양한 프로젝트 카테고리를 탐색해보세요</p>
+                <div class="breadcrumb" style="margin-bottom: 20px; font-size: 0.9em; color: #666;">
+                    <a href="/projects/" style="color: #FFDE59; text-decoration: none;">All Projects</a>
+                    <span style="margin: 0 10px;">/</span>
+                    <span>프로젝트 1: 디펜스</span>
+                </div>
+                <h1 class="section-title">프로젝트 1: 디펜스</h1>
+                <p class="section-description">타워 디펜스 게임 프로젝트</p>
             </div>
         </section>
 
-        <!-- Each Project Category -->
-        
+        <!-- 프로젝트 포스트 목록 -->
+        <section class="project-posts section">
+            <div class="container">
+                <div class="post-grid" id="project-posts-grid">
+                    <!-- JavaScript로 동적 로드 -->
+                </div>
+
+                <!-- 페이지네이션 컨트롤 -->
+                <div class="pagination-controls">
+                    <button id="prev-page">← Previous</button>
+                    <button id="next-page">Next →</button>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- 프로젝트별 포스트 로딩 스크립트 -->
+    <script>
+        const projectSlug = 'project1';
+    </script>
+    <script src="/assets/js/project-posts.js" defer></script>
 
     <footer>
     <div class="container footer-content">
