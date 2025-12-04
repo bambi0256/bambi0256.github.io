@@ -1,19 +1,9 @@
 [
     {
         "config": {
-            "slug": "project1",
-            "title": "프로젝트 1: 디펜스",
-            "description": "타워 디펜스 게임 프로젝트",
-            "mdposts_dir": "mdposts/project1",
-            "output_dir": "project1"
-        },
-        "posts": []
-    },
-    {
-        "config": {
             "slug": "TD-project",
             "title": "TD-project",
-            "description": "TD-project project",
+            "description": "타워 디펜스 게임 프로젝트",
             "mdposts_dir": "mdposts/TD-project",
             "output_dir": "projects/TD-project"
         },

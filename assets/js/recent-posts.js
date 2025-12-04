@@ -3,7 +3,7 @@
 async function loadRecentPosts() {
     try {
         // Load projects metadata
-        const response = await fetch('/assets/js/projects-metadata.json');
+        const response = await fetch('/json/projects-metadata.json');
         const projectsData = await response.json();
 
         // Collect all posts from all projects
