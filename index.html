@@ -7,114 +7,116 @@
     <title>B.Bee</title>
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
     <link rel="stylesheet" href="/assets/css/index-style.css">
+    <link rel="stylesheet" href="/assets/css/project-style.css">
 </head>
 
 <body>
     <header>
-    <div class="container header-content">
-        <!-- Logo and Navigation -->
-        <div class="logo-nav">
-            <div class="logo">
-                <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
+        <div class="container header-content">
+            <!-- Logo and Navigation -->
+            <div class="logo-nav">
+                <div class="logo">
+                    <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
+                </div>
+
+                <!-- Hamburger Menu Button (Mobile) -->
+                <button class="hamburger-menu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="/" class="nav-link">Home</a></li>
+                        <li><a href="/projects/" class="nav-link">Projects</a></li>
+                        <li><a href="/about/" class="nav-link">About</a></li>
+                    </ul>
+                </nav>
             </div>
 
-            <!-- Hamburger Menu Button (Mobile) -->
-            <button class="hamburger-menu" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <nav class="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Home</a></li>
-                    <li><a href="/projects/" class="nav-link">Projects</a></li>
-                    <li><a href="/about/" class="nav-link">About</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <!-- Social Icons -->
-        <div class="social-icons">
-            <a href="https://www.instagram.com/_j256p" target="_blank">
-                <img src="/assets/image/instagram-icon.png" alt="Instagram">
-            </a>
-            <a href="https://github.com/bambi0256" target="_blank">
-                <img src="/assets/image/github-icon.png" alt="GitHub">
-            </a>
-        </div>
-    </div>
-    <script src="/assets/js/set-current.js" defer></script>
-    <script src="/assets/js/hamburger.js" defer></script>
-
-    <main>
-        <!-- Intro Section -->
-        <section class="intro section">
-            <div class="container">
-                <div class="text">
-                    <h1 class="section-title">일상과 일 사이</h1>
-                    <p class="section-description">고양이, 케이크, 그리고 게임 개발</p>
-                    <div class="button-group">
-                        <button class="my-works" onclick="scrollToWorks()">My Works ↓</button>
-                        <button class="about-me" onclick="window.location.href='/about/'">About Me →</button>
-                    </div>
-                </div>
-                <div class="image">
-                    <img src="/assets/image/intro-image.jpg" alt="Intro">
-                </div>
+            <!-- Social Icons -->
+            <div class="social-icons">
+                <a href="https://www.instagram.com/_j256p" target="_blank">
+                    <img src="/assets/image/instagram-icon.png" alt="Instagram">
+                </a>
+                <a href="https://github.com/bambi0256" target="_blank">
+                    <img src="/assets/image/github-icon.png" alt="GitHub">
+                </a>
             </div>
-        </section>
+        </div>
+        <script src="/assets/js/set-current.js" defer></script>
+        <script src="/assets/js/hamburger.js" defer></script>
 
-        <!-- Recent Posts Section (All Categories) -->
-        <section class="recent-posts section" id="latest-works">
-            <div class="container">
-                <div class="section-header">
+        <main>
+            <!-- Intro Section -->
+            <section class="intro section">
+                <div class="container">
                     <div class="text">
-                        <h2 class="section-title">Recent Works</h2>
-                        <p class="section-description">모든 프로젝트의 최신 업데이트</p>
+                        <h1 class="section-title">일상과 일 사이</h1>
+                        <p class="section-description">고양이, 케이크, 그리고 게임 개발</p>
+                        <div class="button-group">
+                            <button class="my-works" onclick="scrollToWorks()">My Works ↓</button>
+                            <button class="about-me" onclick="window.location.href='/about/'">About Me →</button>
+                        </div>
                     </div>
-                    <div class="button">
-                        <a href="/projects/" class="view-more">View All Projects</a>
+                    <div class="image">
+                        <img src="/assets/image/intro-image.jpg" alt="Intro">
                     </div>
                 </div>
-                <div class="post-grid">
-                    
+            </section>
+
+            <!-- Recent Posts Section (All Categories) -->
+            <section class="recent-posts section" id="latest-works">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="text">
+                            <h2 class="section-title">Recent Works</h2>
+                            <p class="section-description">최근 업데이트</p>
+                        </div>
+                        <div class="button">
+                            <a href="/projects/" class="view-more">View All Projects</a>
+                        </div>
+                    </div>
+                    <div class="post-grid">
+
+                    </div>
                 </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                        <li><a href="/about/">About</a></li>
+                    </ul>
+                </nav>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/_j256p" target="_blank">
+                        <img src="/assets/image/instagram-icon.png" alt="Instagram">
+                    </a>
+                    <a href="https://github.com/bambi0256" target="_blank">
+                        <img src="/assets/image/github-icon.png" alt="GitHub">
+                    </a>
+                </div>
+                <p style="text-align: center;">2024 ⓒ B.Bee | (Font: 데브시스터즈)</p>
             </div>
-        </section>
-    </main>
+        </footer>
 
-    <footer>
-    <div class="container footer-content">
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/projects/">Projects</a></li>
-                <li><a href="/about/">About</a></li>
-            </ul>
-        </nav>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/_j256p" target="_blank">
-                <img src="/assets/image/instagram-icon.png" alt="Instagram">
-            </a>
-            <a href="https://github.com/bambi0256" target="_blank">
-                <img src="/assets/image/github-icon.png" alt="GitHub">
-            </a>
-        </div>
-        <p style="text-align: center;">2024 ⓒ B.Bee | (Font: 데브시스터즈)</p>
-    </div>
-</footer>
-
-    <!-- JavaScript for Scroll -->
-    <script>
-        function scrollToWorks() {
-            const worksSection = document.querySelector('#latest-works');
-            if (worksSection) {
-                worksSection.scrollIntoView({ behavior: 'smooth' });
+        <!-- JavaScript for Scroll -->
+        <script>
+            function scrollToWorks() {
+                const worksSection = document.querySelector('#latest-works');
+                if (worksSection) {
+                    worksSection.scrollIntoView({ behavior: 'smooth' });
+                }
             }
-        }
-    </script>
-    <script src="/assets/js/set-current.js" defer></script>
+        </script>
+        <script src="/assets/js/set-current.js" defer></script>
+        <script src="/assets/js/recent-posts.js"></script>
 </body>
 
 </html>
