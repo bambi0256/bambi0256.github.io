@@ -7,20 +7,29 @@
             "mdposts_dir": "mdposts/TD-project",
             "output_dir": "projects/TD-project"
         },
+        "posts": []
+    },
+    {
+        "config": {
+            "slug": "Project A",
+            "title": "Project A",
+            "description": "Project A project",
+            "mdposts_dir": "mdposts/Project A",
+            "output_dir": "projects/Project A"
+        },
         "posts": [
             {
-                "title": "타워 디펜스 프로젝트 개요",
-                "date": "2025-12-03",
-                "slug": "2025120301",
-                "main_image": "/assets/image/post-image.jpg",
+                "title": "첫 프로젝트: 프로젝트 A",
+                "date": "2025-12-07",
+                "slug": "2025120701",
+                "main_image": "/assets/image/tdproject-1.png",
                 "tags": [
-                    "타워 디펜스",
                     "게임 개발",
                     "기획 킥오프"
                 ],
                 "excerpt": "출시를 위한 첫 발걸음",
-                "category": "TD-project",
-                "category_title": "TD-project"
+                "category": "Project A",
+                "category_title": "Project A"
             }
         ]
     }
