@@ -11,11 +11,11 @@
     },
     {
         "config": {
-            "slug": "Project A",
-            "title": "Project A",
-            "description": "Project A project",
-            "mdposts_dir": "mdposts/Project A",
-            "output_dir": "projects/Project A"
+            "slug": "ProjectA",
+            "title": "ProjectA",
+            "description": "ProjectA project",
+            "mdposts_dir": "mdposts/ProjectA",
+            "output_dir": "projects/ProjectA"
         },
         "posts": [
             {
@@ -28,8 +28,8 @@
                     "기획 킥오프"
                 ],
                 "excerpt": "출시를 위한 첫 발걸음",
-                "category": "Project A",
-                "category_title": "Project A"
+                "category": "ProjectA",
+                "category_title": "ProjectA"
             }
         ]
     }
