@@ -1,15 +1,15 @@
 [
     {
         "config": {
-            "slug": "Project A",
-            "title": "Project A",
-            "description": "Project A",
-            "mdposts_dir": "mdposts/Project A",
-            "output_dir": "projects/Project A"
+            "slug": "ProjectA",
+            "title": "ProjectA",
+            "description": "ProjectA",
+            "mdposts_dir": "mdposts/ProjectA",
+            "output_dir": "projects/ProjectA"
         },
         "posts": [
             {
-                "title": "타워 디펜스 프로젝트 개요",
+                "title": "프로젝트 A 개요",
                 "date": "2025-12-07",
                 "slug": "2025120701",
                 "main_image": "/assets/image/post-image.jpg",
@@ -18,8 +18,8 @@
                     "기획 킥오프"
                 ],
                 "excerpt": "출시를 위한 첫 발걸음",
-                "category": "Project A",
-                "category_title": "Project A"
+                "category": "ProjectA",
+                "category_title": "ProjectA"
             }
         ]
     }
