@@ -10,9 +10,9 @@
         "posts": [
             {
                 "title": "첫 프로젝트: 프로젝트 A",
-                "date": "2025-12-07",
-                "slug": "2025120701",
-                "main_image": "/assets/image/tdproject-1.png",
+                "date": "2025-12-12",
+                "slug": "2025121201",
+                "main_image": "/assets/image/2025121201.png",
                 "tags": [
                     "게임 개발",
                     "기획 킥오프"
