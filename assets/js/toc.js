@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tocWrapper = document.querySelector(".toc-wrapper");
     const tocArea = document.querySelector(".toc-area");
     const tocItems = document.querySelectorAll(".toc-list li");
-    const headers = document.querySelectorAll(".post-content h1, .post-content h2");
+    const headers = document.querySelectorAll(".post-content h2, .post-content h3");
 
     const tocAreaTop = tocArea.offsetTop;
     const tocAreaHeight = tocArea.offsetHeight;
