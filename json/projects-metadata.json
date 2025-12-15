@@ -1,25 +1,25 @@
 [
     {
         "config": {
-            "slug": "ProjectA",
-            "title": "ProjectA",
-            "description": "프로젝트 A",
-            "mdposts_dir": "mdposts/ProjectA",
-            "output_dir": "projects/ProjectA"
+            "slug": "Spell_Unlock_TCG",
+            "title": "Spell Unlock TCG",
+            "description": "",
+            "mdposts_dir": "mdposts/Spell_Unlock_TCG",
+            "output_dir": "projects/Spell_Unlock_TCG"
         },
         "posts": [
             {
-                "title": "첫 프로젝트: 프로젝트 A",
-                "date": "2025-12-12",
-                "slug": "2025121201",
-                "main_image": "/assets/image/2025121201.png",
+                "title": "프로젝트: TCG",
+                "date": "2025-12-15",
+                "slug": "2025121501",
+                "main_image": "/assets/image/2025121501.png",
                 "tags": [
                     "게임 개발",
                     "기획 킥오프"
                 ],
-                "excerpt": "출시를 위한 첫 발걸음",
-                "category": "ProjectA",
-                "category_title": "ProjectA"
+                "excerpt": "TCG 게임 개발 프로젝트",
+                "category": "Spell_Unlock_TCG",
+                "category_title": "Spell Unlock TCG"
             }
         ]
     }

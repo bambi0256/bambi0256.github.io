@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener("click", () => {
             const targetHeader = headers[index];
             if (targetHeader) {
-                const targetPoint = targetHeader.offsetTop - (window.innerHeight * 0.2);
+                const targetPoint = targetHeader.offsetTop - (window.innerHeight * 0.5);
 
                 // 부드럽게 스크롤
                 window.scrollTo({
