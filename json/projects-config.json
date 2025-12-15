@@ -1,11 +1,11 @@
 {
   "projects": [
     {
-      "slug": "ProjectA",
-      "title": "ProjectA",
-      "description": "프로젝트 A",
-      "mdposts_dir": "mdposts/ProjectA",
-      "output_dir": "projects/ProjectA"
+      "slug": "Spell_Unlock_TCG",
+      "title": "Spell Unlock TCG",
+      "description": "",
+      "mdposts_dir": "mdposts/Spell_Unlock_TCG",
+      "output_dir": "projects/Spell_Unlock_TCG"
     }
   ]
 }
