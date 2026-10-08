@@ -22,7 +22,7 @@ B.Bee 개인 블로그(`bambi0256.github.io`)의 작업 지침. 목표와 범위
 
 | 경로 | 역할 | 편집 |
 |---|---|---|
-| `mdposts/<project>/*.md` | 글 원본 (Front Matter + Markdown) | 사람/작성 툴 |
+| `mdposts/<project>/*.md`, `mdposts/<project>/<slug>/index.md` + 이미지 | 글 원본 (Front Matter + Markdown). 폴더 글은 이미지를 같은 폴더에 둔다 | 사람/작성 툴(`/write/`) |
 | `templates/*.html` | Jinja2 페이지 템플릿 (index/about/projects/project-page/project-post) | 직접 |
 | `templates/partials/` | 공통 header/footer (템플릿에서 include) | 직접 |
 | `assets/py/` | 빌드 스크립트 (`config.py`에 경로 상수) | 직접 |
@@ -54,6 +54,7 @@ python -m http.server 8000                # http://localhost:8000
 ## 글 Front Matter 규격
 
 필수: `title`, `date`(YYYY-MM-DD), `slug`(영문 소문자·숫자·하이픈), `main_image`, `tags`(배열), `excerpt`.
+`main_image` 는 `/assets/image/...` 절대경로 또는 폴더 글의 이미지 파일명(빌드가 절대경로로 변환).
 선택: `project_title`, `project_description` (프로젝트 첫 md에서 자동 발견 시 사용).
 H1은 본문에서 쓰지 않고, 목차는 H2/H3만 포함된다.
 

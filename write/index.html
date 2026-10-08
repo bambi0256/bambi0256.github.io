@@ -65,9 +65,64 @@
 
             <!-- 작성 영역 (검증 통과 시 표시) -->
             <div id="editor-area" hidden>
-                <h1>글 작성</h1>
-                <p class="description"><span id="auth-user"></span> 계정으로 인증되었습니다.</p>
-                <button type="button" id="logout-button">로그아웃</button>
+                <div class="editor-header">
+                    <h1>글 작성</h1>
+                    <div class="editor-user">
+                        <span><span id="auth-user"></span> 계정</span>
+                        <button type="button" id="logout-button">로그아웃</button>
+                    </div>
+                </div>
+
+                <div class="editor-layout">
+                    <form id="post-form" class="editor-form" novalidate>
+                        <label>프로젝트
+                            <select id="field-project" required></select>
+                        </label>
+                        <label>제목
+                            <input type="text" id="field-title" required>
+                        </label>
+                        <div class="field-row">
+                            <label>날짜
+                                <input type="date" id="field-date" required>
+                            </label>
+                            <label>slug
+                                <input type="text" id="field-slug" required autocomplete="off">
+                            </label>
+                        </div>
+                        <label>태그 (쉼표로 구분)
+                            <input type="text" id="field-tags" placeholder="게임 개발, 기획">
+                        </label>
+                        <label>요약 (카드에 표시)
+                            <input type="text" id="field-excerpt" required>
+                        </label>
+
+                        <fieldset class="image-box">
+                            <legend>이미지</legend>
+                            <p class="hint">jpg, png, gif, webp / 파일당 5MB 이하. 게시 전에는 이 브라우저 메모리에만 있으며, 새로고침하면 사라집니다.</p>
+                            <input type="file" id="image-input" accept=".jpg,.jpeg,.png,.gif,.webp" multiple>
+                            <ul id="image-list"></ul>
+                            <label>대표 이미지
+                                <select id="field-cover"></select>
+                            </label>
+                            <input type="text" id="field-cover-path" placeholder="/assets/image/example.png" hidden>
+                        </fieldset>
+
+                        <label>본문 (Markdown)
+                            <textarea id="field-body" rows="18" required></textarea>
+                        </label>
+
+                        <ul id="validation-messages" class="validation"></ul>
+                        <div class="publish-row">
+                            <button type="submit" id="publish-button">게시</button>
+                            <span id="publish-status" role="status"></span>
+                        </div>
+                    </form>
+
+                    <div class="editor-preview">
+                        <h2>미리보기 <small>(서버 빌드와 약간 다를 수 있습니다)</small></h2>
+                        <iframe id="preview-frame" sandbox="" title="미리보기"></iframe>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -93,7 +148,11 @@
     </div>
 </footer>
 
+    <script src="/assets/js/vendor/marked.min.js"></script>
     <script src="/assets/js/auth.js"></script>
+    <script src="/assets/js/post-lib.js"></script>
+    <script src="/assets/js/publisher.js"></script>
+    <script src="/assets/js/editor.js"></script>
     <script src="/assets/js/write.js"></script>
 </body>
 </html>

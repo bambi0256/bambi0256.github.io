@@ -38,9 +38,9 @@ def scan_mdposts_directories():
         # 첫 번째 md의 Front Matter에서 프로젝트 정보를 읽는다
         title = slug
         description = f"{slug} project"
-        md_files = [f for f in os.listdir(item_path) if f.endswith('.md')]
+        md_files = find_markdown_files(item_path)
         if md_files:
-            first_md = os.path.join(item_path, md_files[0])
+            first_md = md_files[0]
             try:
                 metadata, _ = process_markdown(first_md)
                 title = metadata.get('project_title', slug)
@@ -56,6 +56,16 @@ def scan_mdposts_directories():
             'output_dir': f'{config.PROJECTS_DIR}/{slug}'
         })
     return discovered
+
+
+def find_markdown_files(md_dir):
+    """md_dir 하위의 모든 .md 파일 경로 (평면 글 `<slug>.md`, 폴더 글 `<slug>/index.md` 모두)"""
+    found = []
+    for root, _, files in os.walk(md_dir):
+        for file in sorted(files):
+            if file.endswith(".md"):
+                found.append(os.path.join(root, file))
+    return found
 
 
 def load_projects_config():
@@ -139,6 +149,21 @@ def render_post_html(metadata, html_content, toc_headers, pygments_css, output_d
     config.write_html(os.path.join(output_dir, "index.html"), html)
 
 
+def resolve_main_image(main_image, post_output_dir):
+    """파일명만 적힌 main_image 를 게시물 폴더 기준 절대경로로 변환 (절대경로·URL 은 그대로)"""
+    if not main_image or main_image.startswith(('/', 'http://', 'https://')):
+        return main_image
+    return f"/{post_output_dir.replace(os.sep, '/')}/{main_image}"
+
+
+def copy_post_assets(source_dir, output_dir):
+    """폴더 글의 이미지 등 .md 이외 파일을 출력 폴더로 복사"""
+    for file in os.listdir(source_dir):
+        source = os.path.join(source_dir, file)
+        if os.path.isfile(source) and not file.endswith(".md"):
+            shutil.copy2(source, os.path.join(output_dir, file))
+
+
 def render_project_listing(project_config, posts_metadata):
     html = config.get_template(config.TEMPLATE_PROJECT_PAGE).render(
         project_title=project_config['title'],
@@ -158,22 +183,30 @@ def process_project_posts(project_config):
         print(f"Warning: Directory {md_dir} does not exist. Skipping.")
         return posts_metadata
 
-    for root, _, files in os.walk(md_dir):
-        for file in files:
-            if not file.endswith(".md"):
-                continue
+    for md_file in find_markdown_files(md_dir):
+        metadata, markdown_content = process_markdown(md_file)
+        toc_headers, html_content, pygments_css = extract_toc_headers(markdown_content)
 
-            metadata, markdown_content = process_markdown(os.path.join(root, file))
-            toc_headers, html_content, pygments_css = extract_toc_headers(markdown_content)
+        metadata['category'] = project_config['slug']
+        metadata['category_title'] = project_config['title']
 
-            metadata['category'] = project_config['slug']
-            metadata['category_title'] = project_config['title']
+        post_slug = create_slug(metadata['slug'])
+        if not re.fullmatch(r'[a-z0-9][a-z0-9_-]*', post_slug):
+            raise ValueError(f"Invalid slug '{metadata['slug']}' in {md_file}")
+        output_dir = os.path.join(project_config['output_dir'], post_slug)
+        metadata['main_image'] = resolve_main_image(metadata.get('main_image'), output_dir)
 
-            output_dir = os.path.join(project_config['output_dir'], create_slug(metadata['slug']))
-            render_post_html(metadata, html_content, toc_headers, pygments_css, output_dir)
+        # 삭제된 파일이 남지 않도록 출력 폴더를 비운 뒤 다시 생성
+        shutil.rmtree(output_dir, ignore_errors=True)
+        render_post_html(metadata, html_content, toc_headers, pygments_css, output_dir)
 
-            posts_metadata.append(metadata)
-            print(f"Processed: {metadata['title']}")
+        # 폴더 글(`<slug>/index.md`)이면 같은 폴더의 이미지를 함께 복사
+        post_dir = os.path.dirname(md_file)
+        if os.path.basename(md_file) == "index.md" and os.path.normpath(post_dir) != os.path.normpath(md_dir):
+            copy_post_assets(post_dir, output_dir)
+
+        posts_metadata.append(metadata)
+        print(f"Processed: {metadata['title']}")
 
     posts_metadata.sort(key=lambda x: x.get('date', ''), reverse=True)
     return posts_metadata

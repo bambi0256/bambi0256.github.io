@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         editor.hidden = !authorized;
         if (authorized) {
             document.getElementById('auth-user').textContent = login;
+            Editor.init();
         }
     }
 
