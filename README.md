@@ -20,7 +20,7 @@ mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python �
 
 ```
 /
-├── mdposts/<project>/        # [소스] 글 원본 (Front Matter + Markdown)
+├── mdposts/<project>/        # [소스] 글 원본 — `<slug>.md` 또는 `<slug>/index.md` + 이미지
 ├── templates/                # [소스] Jinja2 템플릿
 │   ├── index.html            #   홈
 │   ├── about.html            #   소개
@@ -34,7 +34,8 @@ mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python �
 │   │   ├── config.py                #   경로 상수·공통 함수
 │   │   ├── update-all-projects.py   #   md → 포스트/프로젝트 HTML + JSON
 │   │   └── update-home-page.py      #   홈 / Projects / About 페이지
-│   ├── js/                   # [소스] hamburger, set-current, toc, project-posts, auth, write
+│   ├── js/                   # [소스] hamburger, set-current, toc, project-posts,
+│   │                         #        auth, write, editor, post-lib, publisher, vendor/marked
 │   ├── css/                  # [소스] 스타일
 │   └── image/                # [소스] 이미지
 ├── json/
@@ -53,7 +54,17 @@ mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python �
 
 ## 글 작성
 
-`mdposts/<project>/<파일>.md` 에 아래 Front Matter를 포함합니다.
+### 웹에서 작성 (`/write/`, 주인 전용)
+
+1. 저장소 한정 Fine-grained 토큰(Contents: Read and write)을 입력해 검증합니다. 토큰은 탭이 열려 있는 동안만 보관됩니다.
+2. 프로젝트·제목·날짜·slug(기본 `YYYYMMDDNN` 자동 제안)·태그·요약·본문을 입력하고, 이미지를 올려 본문에 삽입하거나 대표 이미지로 선택합니다.
+3. 게시하면 글과 이미지가 `mdposts/<project>/<slug>/` 에 **한 커밋**으로 올라가고, Actions가 빌드·배포합니다(1~2분).
+
+게시 전 이미지는 브라우저 메모리에만 있으며 새로고침하면 사라집니다. 이미지는 jpg/png/gif/webp, 파일당 5MB 이하입니다.
+
+### 직접 작성
+
+`mdposts/<project>/<파일>.md` (또는 이미지가 있으면 `mdposts/<project>/<slug>/index.md` + 같은 폴더에 이미지)에 아래 Front Matter를 포함합니다. 폴더 글의 이미지는 빌드 시 포스트 페이지로 복사되어 본문에서 `![설명](cover.png)` 처럼 상대경로로 쓸 수 있고, `main_image: "cover.png"` 처럼 파일명만 적으면 카드용 절대경로로 변환됩니다.
 
 ```markdown
 ---

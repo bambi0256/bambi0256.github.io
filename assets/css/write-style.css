@@ -58,3 +58,197 @@
 [hidden] {
     display: none !important;
 }
+
+/* 작성 영역 */
+.write-section:has(#editor-area:not([hidden])) {
+    max-width: 1400px;
+}
+
+.editor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.editor-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #343434;
+}
+
+.editor-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.editor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.editor-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: #343434;
+    font-weight: bold;
+}
+
+.editor-form input[type="text"],
+.editor-form input[type="date"],
+.editor-form select,
+.editor-form textarea {
+    padding: 8px 10px;
+    border: 2px solid #343434;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: normal;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.editor-form textarea {
+    resize: vertical;
+    font-family: monospace;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.image-box {
+    border: 2px solid #FFDE59;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.image-box legend {
+    font-weight: bold;
+    color: #343434;
+    padding: 0 6px;
+}
+
+.hint {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+#image-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#image-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#image-list img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+#image-list span {
+    flex: 1;
+    word-break: break-all;
+    color: #343434;
+}
+
+#image-list button {
+    padding: 4px 10px;
+    font-size: 0.9rem;
+}
+
+.validation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.validation .error {
+    color: #c0392b;
+}
+
+.validation .warning {
+    color: #8a6d00;
+}
+
+.publish-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+#publish-status {
+    color: #343434;
+}
+
+#publish-status.error {
+    color: #c0392b;
+}
+
+.write-section button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.editor-preview {
+    position: sticky;
+    top: 20px;
+}
+
+.editor-preview h2 {
+    margin: 0 0 8px;
+    color: #343434;
+}
+
+.editor-preview small {
+    font-weight: normal;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+#preview-frame {
+    width: 100%;
+    height: 80vh;
+    border: 2px solid #343434;
+    border-radius: 8px;
+    background: #fff;
+}
+
+@media (max-width: 900px) {
+    .editor-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-preview {
+        position: static;
+    }
+
+    #preview-frame {
+        height: 60vh;
+    }
+}
