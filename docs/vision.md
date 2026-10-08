@@ -59,12 +59,12 @@ GitHub Pages 위에서 동작하는 **개인 블로그 겸 포트폴리오**를,
 **목표**: 브라우저에서 글(Front Matter + Markdown)을 쓰고 게시하면, 기존 파이프라인(`mdposts/` push → Actions 빌드)으로 사이트에 반영된다.
 
 완료 기준:
-- [ ] 작성 페이지(`/write/`): 프로젝트 선택, Front Matter 입력(title/date/slug/main_image/tags/excerpt), Markdown 본문 입력, 미리보기 — 구현·모의 API 검증 완료, **실제 게시 확인 대기**
-- [ ] 이미지 업로드: 게시물 단위 폴더(`mdposts/<project>/<slug>/`)에 저장, 본문 삽입, 썸네일 선택, 게시 전에는 브라우저 메모리에만 보관 ([D-012](decisions.md)) — 구현·모의 검증 완료, **실제 게시 확인 대기**
-- [ ] 게시 = 글(`mdposts/<project>/<slug>/index.md`)과 이미지를 저장소에 **한 커밋**으로 올림 (기존 빌드 흐름 재사용, 별도 저장소/DB 없음) — 구현·모의 검증 완료, **실제 게시 확인 대기**
+- [x] 작성 페이지(`/write/`): 프로젝트 선택, Front Matter 입력(title/date/slug/main_image/tags/excerpt), Markdown 본문 입력, 미리보기
+- [x] 이미지 업로드: 게시물 단위 폴더(`mdposts/<project>/<slug>/`)에 저장, 본문 삽입, 썸네일 선택, 게시 전에는 브라우저 메모리에만 보관 ([D-012](decisions.md))
+- [x] 게시 = 글(`mdposts/<project>/<slug>/index.md`)과 이미지를 저장소에 **한 커밋**으로 올림 (기존 빌드 흐름 재사용, 별도 저장소/DB 없음)
 - [x] 2번의 주인 검증을 통과한 경우에만 사용 가능 (`/write/` 게이트, 로그아웃 시 작성 영역 숨김 확인)
 - [x] 필수 필드 누락/slug 중복 시 게시 전 오류 표시 (클라이언트 검증 + 게시 직전 저장소 중복 확인)
-- [ ] 수정/삭제, 임시저장, WYSIWYG, 이미지 리사이즈 등은 **범위 밖** (필요 시 승인 요청)
+- [x] 수정/삭제, 임시저장, WYSIWYG, 이미지 리사이즈 등은 **범위 밖** (필요 시 승인 요청)
 
 ### 4. 페이지 인사이트 확인 페이지 — 블로그 주인 전용 (⏸ MVP 이후로 연기, [D-002](decisions.md))
 
