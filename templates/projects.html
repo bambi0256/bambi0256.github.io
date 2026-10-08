@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B.Bee | Projects</title>
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
-    <link rel="stylesheet" href="/assets/css/project-style.css">
+    <link rel="stylesheet" href="/assets/css/list-style.css">
 </head>
 
 <body>
     {% include 'partials/header.html' %}
+    {% from 'partials/post-item.html' import post_item %}
 
     <main>
         <!-- Projects Overview Section -->
@@ -21,36 +22,52 @@
             </div>
         </section>
 
-        <!-- Each Project Category -->
-        {% for project_data in all_projects %}
-        <section class="project-category section">
+        <!-- 프로젝트별 탭 (최근 포스트가 있는 프로젝트 순) -->
+        <section class="list-section section">
             <div class="container">
-                <div class="section-header">
-                    <div class="text">
-                        <h2 class="section-title">{{ project_data.config.title }}</h2>
-                        <p class="section-description">{{ project_data.config.description }}</p>
-                    </div>
-                    <div class="button">
-                        <a href="/{{ project_data.config.output_dir }}/" class="view-more">Learn More</a>
-                    </div>
-                </div>
-                <div class="post-grid">
-                    {% for post in project_data.posts[:6] %}
-                    <a href="/{{ project_data.config.output_dir }}/{{ post.slug }}/" class="post-card">
-                        <img src="{{ post.main_image }}" alt="{{ post.title }}">
-                        <div class="card-text">
-                            <h3>{{ post.title }}</h3>
-                            <p>{{ post.excerpt }}</p>
+                {% if all_projects %}
+                <div class="tabs" data-tabs>
+                    <div class="tab-bar">
+                        <div class="tab-list" role="tablist">
+                            {% for project_data in all_projects %}
+                            <button type="button" class="tab" role="tab" id="tab-{{ project_data.config.slug }}"
+                                aria-controls="panel-{{ project_data.config.slug }}"
+                                aria-selected="{{ 'true' if loop.first else 'false' }}"
+                                data-slug="{{ project_data.config.slug }}"
+                                data-href="/{{ project_data.config.output_dir }}/">{{ project_data.config.title }}</button>
+                            {% endfor %}
                         </div>
-                    </a>
+                        <a class="view-more" id="tab-more" href="/{{ all_projects[0].config.output_dir }}/">Learn More</a>
+                    </div>
+
+                    {% for project_data in all_projects %}
+                    <div class="tab-panel" role="tabpanel" id="panel-{{ project_data.config.slug }}"
+                        aria-labelledby="tab-{{ project_data.config.slug }}">
+                        {% if project_data.config.description %}
+                        <p class="section-description">{{ project_data.config.description }}</p>
+                        {% endif %}
+                        {% if project_data.posts %}
+                        <ul class="post-list">
+                            {% for post in project_data.posts[:tab_posts_limit] %}
+                            {{ post_item('/' ~ project_data.config.output_dir ~ '/' ~ post.slug ~ '/', post.title, post.date, post.preview) }}
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p class="post-list-empty">아직 포스트가 없습니다.</p>
+                        {% endif %}
+                    </div>
                     {% endfor %}
                 </div>
+                {% else %}
+                <p class="post-list-empty">프로젝트가 없습니다.</p>
+                {% endif %}
             </div>
         </section>
-        {% endfor %}
     </main>
 
     {% include 'partials/footer.html' %}
+
+    <script src="/assets/js/project-tabs.js" defer></script>
 </body>
 
 </html>

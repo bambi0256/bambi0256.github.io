@@ -4,9 +4,6 @@ on:
   push:
     paths:
       - 'mdposts/**'
-      - 'json/projects-config.json'
-      - 'templates/**'
-      - 'assets/py/**'
   workflow_dispatch:
 
 

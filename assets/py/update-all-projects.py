@@ -11,6 +11,8 @@ from pygments.styles import get_style_by_name
 
 import config
 
+PREVIEW_LENGTH = 120
+
 
 def load_config_projects():
     """json/projects-config.json 에 수동 설정된 프로젝트"""
@@ -35,18 +37,20 @@ def scan_mdposts_directories():
         if not os.path.isdir(item_path):
             continue
 
-        # 첫 번째 md의 Front Matter에서 프로젝트 정보를 읽는다
+        # md 의 Front Matter(project_title, project_description)에서 프로젝트 정보를 읽는다.
+        # 파일 순서에 의존하지 않도록 project_title 이 있는 첫 번째 파일을 사용한다.
         title = slug
-        description = f"{slug} project"
-        md_files = find_markdown_files(item_path)
-        if md_files:
-            first_md = md_files[0]
+        description = ""
+        for md_file in find_markdown_files(item_path):
             try:
-                metadata, _ = process_markdown(first_md)
-                title = metadata.get('project_title', slug)
-                description = metadata.get('project_description', description)
+                metadata, _ = process_markdown(md_file)
             except Exception as e:
-                print(f"Warning: Could not read metadata from {first_md}: {e}")
+                print(f"Warning: Could not read metadata from {md_file}: {e}")
+                continue
+            if 'project_title' in metadata:
+                title = metadata['project_title']
+                description = metadata.get('project_description', "")
+                break
 
         discovered.append({
             'slug': slug,
@@ -122,7 +126,7 @@ def process_markdown(md_file):
 
 def extract_toc_headers(markdown_content):
     """Markdown → (TOC 헤더 목록(H2/H3), 본문 HTML, Pygments CSS)"""
-    html_content = markdown(markdown_content, extensions=["fenced_code", "codehilite"])
+    html_content = markdown(markdown_content, extensions=["fenced_code", "codehilite", "tables"])
     soup = BeautifulSoup(html_content, "html.parser")
 
     headers = []
@@ -137,6 +141,15 @@ def extract_toc_headers(markdown_content):
     pygments_css = HtmlFormatter(style=style).get_style_defs('.codehilite')
 
     return headers, str(soup), pygments_css
+
+
+def make_preview(html_content, limit=PREVIEW_LENGTH):
+    """본문 HTML에서 앞부분 텍스트(목록 미리보기용)를 추출. 코드 블록은 제외하고 문단·목록만 사용"""
+    soup = BeautifulSoup(html_content, "html.parser")
+    for tag in soup.find_all(["pre", "h1", "h2", "h3", "h4", "h5", "h6"]):
+        tag.decompose()
+    text = re.sub(r'\s+', ' ', soup.get_text(" ")).strip()
+    return text if len(text) <= limit else text[:limit].rstrip() + "…"
 
 
 def render_post_html(metadata, html_content, toc_headers, pygments_css, output_dir):
@@ -189,6 +202,7 @@ def process_project_posts(project_config):
 
         metadata['category'] = project_config['slug']
         metadata['category_title'] = project_config['title']
+        metadata['preview'] = make_preview(html_content)
 
         post_slug = create_slug(metadata['slug'])
         if not re.fullmatch(r'[a-z0-9][a-z0-9_-]*', post_slug):

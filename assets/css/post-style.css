@@ -158,3 +158,87 @@ body {
     color: #FFDE59;
     padding-left: 0;
 }
+
+/* Table */
+.post-content table {
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.post-content th,
+.post-content td {
+    border: 1px solid rgba(255, 222, 89, 0.4);
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.post-content th {
+    background-color: #222;
+}
+
+/* Mobile: 본문 한 단으로, 목차는 본문 위에 고정 위치 없이 표시 */
+@media (max-width: 768px) {
+    .post-container {
+        padding: 0 12px;
+    }
+
+    .post-image-section {
+        height: 22vh;
+    }
+
+    .image-overlay {
+        padding: 8px 12px;
+    }
+
+    .image-overlay h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .post-metadata {
+        flex-direction: column;
+        gap: 6px;
+        padding: 10px 4px;
+    }
+
+    .content-container {
+        flex-direction: column;
+        padding: 12px 4px;
+    }
+
+    .toc-area {
+        order: -1;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .toc-wrapper {
+        position: static;
+        box-sizing: border-box;
+        max-height: 40vh;
+        overflow-y: auto;
+        transition: none;
+    }
+
+    .post-content {
+        width: 100%;
+        padding-right: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .post-content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .post-content pre,
+    .post-content .codehilite {
+        overflow-x: auto;
+    }
+
+    .post-content table {
+        display: block;
+        overflow-x: auto;
+    }
+}

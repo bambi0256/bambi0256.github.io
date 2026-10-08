@@ -42,6 +42,19 @@
                         <label>프로젝트
                             <select id="field-project" required></select>
                         </label>
+                        <fieldset class="image-box" id="new-project-box" hidden>
+                            <legend>새 프로젝트</legend>
+                            <p class="hint">첫 글과 함께 프로젝트가 만들어집니다. 프로젝트 주소는 /projects/&lt;slug&gt;/ 입니다.</p>
+                            <label>프로젝트 slug (영문 소문자·숫자·-·_)
+                                <input type="text" id="field-project-slug" autocomplete="off" placeholder="my-project">
+                            </label>
+                            <label>프로젝트 이름
+                                <input type="text" id="field-project-title">
+                            </label>
+                            <label>프로젝트 설명 (선택)
+                                <input type="text" id="field-project-description">
+                            </label>
+                        </fieldset>
                         <label>제목
                             <input type="text" id="field-title" required>
                         </label>

@@ -64,12 +64,15 @@ const Publisher = (() => {
             throw await failure(res, '중복 확인');
         }
 
-        // post: { project, slug, title, markdown, images: [{ name, base64 }] }
+        // post: { project, isNewProject, slug, title, markdown, images: [{ name, base64 }] }
         async function publish(post, onProgress = () => {}) {
             const repo = await call('저장소 조회', repoPath);
             const branch = repo.default_branch;
 
             onProgress('중복 확인 중...');
+            if (post.isNewProject && await exists(`mdposts/${post.project}`, branch)) {
+                throw new PublishError(`이미 같은 slug(${post.project})의 프로젝트가 저장소에 있습니다.`, 422);
+            }
             const dirPath = `mdposts/${post.project}/${post.slug}`;
             if (await exists(dirPath, branch) || await exists(`${dirPath}.md`, branch)) {
                 throw new PublishError(`이미 같은 slug(${post.slug})의 글이 저장소에 있습니다.`, 422);

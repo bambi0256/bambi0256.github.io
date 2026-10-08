@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B.Bee | {{ project_title }}</title>
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
-    <link rel="stylesheet" href="/assets/css/project-style.css">
+    <link rel="stylesheet" href="/assets/css/list-style.css">
 </head>
 
 <body>
@@ -16,9 +16,9 @@
         <!-- 프로젝트 개요 섹션 -->
         <section class="projects-overview section">
             <div class="container">
-                <div class="breadcrumb" style="margin-bottom: 20px; font-size: 0.9em; color: #666;">
-                    <a href="/projects/" style="color: #FFDE59; text-decoration: none;">All Projects</a>
-                    <span style="margin: 0 10px;">/</span>
+                <div class="breadcrumb">
+                    <a href="/projects/">All Projects</a>
+                    <span class="separator">/</span>
                     <span>{{ project_title }}</span>
                 </div>
                 <h1 class="section-title">{{ project_title }}</h1>
@@ -27,11 +27,11 @@
         </section>
 
         <!-- 프로젝트 포스트 목록 -->
-        <section class="project-posts section">
+        <section class="project-posts list-section section">
             <div class="container">
-                <div class="post-grid" id="project-posts-grid">
+                <ul class="post-list" id="project-posts-list">
                     <!-- JavaScript로 동적 로드 -->
-                </div>
+                </ul>
 
                 <!-- 페이지네이션 컨트롤 -->
                 <div class="pagination-controls">

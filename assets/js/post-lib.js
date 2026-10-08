@@ -84,13 +84,23 @@ const PostLib = (() => {
     }
 
     // 게시 전 검증: { errors: [], warnings: [] }
-    // post: { project, title, date, slug, mainImage, tags, excerpt, body }
+    // post: { project, newProject, title, date, slug, mainImage, tags, excerpt, body }
+    //   newProject: 새 프로젝트를 만들 때 { title, description }, 기존 프로젝트면 null (이때 project 는 새 프로젝트의 slug)
     // context: { projects: [slug], existingSlugs: [slug], imageNames: [name] }
     function validatePost(post, context) {
         const errors = [];
         const warnings = [];
 
-        if (!post.project || !context.projects.includes(post.project)) errors.push('프로젝트를 선택하세요.');
+        if (post.newProject) {
+            if (!SLUG_PATTERN.test(post.project)) {
+                errors.push('프로젝트 slug는 영문 소문자·숫자·하이픈(-)·밑줄(_)만 쓸 수 있고, 영문/숫자로 시작해야 합니다.');
+            } else if (context.projects.includes(post.project)) {
+                errors.push(`이미 같은 slug(${post.project})의 프로젝트가 있습니다.`);
+            }
+            if (!post.newProject.title.trim()) errors.push('프로젝트 이름을 입력하세요.');
+        } else if (!post.project || !context.projects.includes(post.project)) {
+            errors.push('프로젝트를 선택하세요.');
+        }
         if (!post.title.trim()) errors.push('제목을 입력하세요.');
         if (!post.excerpt.trim()) errors.push('요약(excerpt)을 입력하세요.');
         if (post.tags.length === 0) errors.push('태그를 하나 이상 입력하세요.');
@@ -138,12 +148,16 @@ const PostLib = (() => {
             `slug: ${JSON.stringify(post.slug)}`,
             `main_image: ${JSON.stringify(post.mainImage)}`,
             `tags: ${JSON.stringify(post.tags)}`,
-            `excerpt: ${JSON.stringify(post.excerpt.trim())}`,
-            '---',
-            '',
-            post.body.replace(/\r\n/g, '\n').trim(),
-            ''
+            `excerpt: ${JSON.stringify(post.excerpt.trim())}`
         ];
+        // 새 프로젝트의 첫 글에는 프로젝트 이름·설명을 함께 기록한다 (빌드가 이 값으로 프로젝트를 만든다)
+        if (post.newProject) {
+            lines.push(`project_title: ${JSON.stringify(post.newProject.title.trim())}`);
+            if (post.newProject.description.trim()) {
+                lines.push(`project_description: ${JSON.stringify(post.newProject.description.trim())}`);
+            }
+        }
+        lines.push('---', '', post.body.replace(/\r\n/g, '\n').trim(), '');
         return lines.join('\n');
     }
 

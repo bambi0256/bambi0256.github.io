@@ -20,7 +20,7 @@ mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python �
 
 ```
 /
-├── mdposts/<project>/        # [소스] 글 원본 — `<slug>.md` 또는 `<slug>/index.md` + 이미지
+├── mdposts/<project>/        # [소스] 글 원본 — `<slug>.md` 또는 `<slug>/index.md` + 이미지 (처음엔 비어 있음)
 ├── templates/                # [소스] Jinja2 템플릿
 │   ├── index.html            #   홈
 │   ├── about.html            #   소개
@@ -36,8 +36,8 @@ mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python �
 │   │   └── update-home-page.py      #   홈 / Projects / About 페이지
 │   ├── js/                   # [소스] hamburger, set-current, toc, project-posts,
 │   │                         #        auth, write, editor, post-lib, publisher, vendor/marked
-│   ├── css/                  # [소스] 스타일
-│   └── image/                # [소스] 이미지
+│   ├── css/                  # [소스] 스타일 (list-style.css: 홈·Projects·프로젝트 페이지의 목록형/탭 공통)
+│   └── image/                # [소스] 이미지 — common(로고·아이콘) / home / about / blog/<주제>
 ├── json/
 │   ├── projects-config.json  # [설정] 프로젝트 카테고리 수동 설정
 │   ├── projects-metadata.json        # [생성물]
@@ -56,6 +56,7 @@ mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python �
 
 ### 웹에서 작성 (`/write/`, 주인 전용)
 
+0. **빈 블로그에서 시작**하면 프로젝트가 없으므로 프로젝트 선택에서 "새 프로젝트"의 slug·이름·설명을 입력하며 첫 글을 올립니다.
 1. 저장소 한정 Fine-grained 토큰(Contents: Read and write)을 입력해 검증합니다. 토큰은 탭이 열려 있는 동안만 보관됩니다.
 2. 프로젝트·제목·날짜·slug(기본 `YYYYMMDDNN` 자동 제안)·태그·요약·본문을 입력하고, 이미지를 올려 본문에 삽입하거나 대표 이미지로 선택합니다.
 3. 게시하면 글과 이미지가 `mdposts/<project>/<slug>/` 에 **한 커밋**으로 올라가고, Actions가 빌드·배포합니다(1~2분).
@@ -92,17 +93,17 @@ excerpt: "카드에 표시될 짧은 설명"
 
 - 선택: `project_title`, `project_description` — 프로젝트 첫 글에서 프로젝트 이름/설명으로 사용됩니다.
 - H1은 쓰지 않습니다. 목차는 H2/H3만 포함되며 포스트 우측에 자동 생성됩니다.
-- 새 프로젝트는 `mdposts/` 하위에 디렉토리를 만들면 자동 발견됩니다. 제목·설명을 직접 지정하려면 `json/projects-config.json` 에 추가합니다.
+- 새 프로젝트는 `/write/` 에서 "+ 새 프로젝트 만들기"로 첫 글과 함께 만들거나, `mdposts/` 하위에 디렉토리를 만들어도 자동 발견됩니다. 프로젝트 이름·설명은 글의 `project_title`/`project_description` Front Matter(또는 `json/projects-config.json`)에서 읽습니다.
 
 ```json
 {
   "projects": [
     {
-      "slug": "Spell_Unlock_TCG",
-      "title": "Spell Unlock TCG",
+      "slug": "my-project",
+      "title": "My Project",
       "description": "",
-      "mdposts_dir": "mdposts/Spell_Unlock_TCG",
-      "output_dir": "projects/Spell_Unlock_TCG"
+      "mdposts_dir": "mdposts/my-project",
+      "output_dir": "projects/my-project"
     }
   ]
 }
@@ -123,9 +124,9 @@ Windows 콘솔에서 이모지 출력 오류가 나면 `PYTHONIOENCODING=utf-8` 
 
 ## 배포
 
-- `mdposts/**`, `json/projects-config.json`, `templates/**`, `assets/py/**` 를 push하면 Actions가 자동 실행됩니다.
+- **새 글 게시**(`mdposts/**` push)와 **수동 실행**으로만 Actions가 실행됩니다. 템플릿·스크립트·CSS·JS·`json/projects-config.json` 변경 push로는 실행되지 않습니다.
 - 수동 실행: GitHub → Actions → "Update Project Pages" → Run workflow.
-- JS/CSS만 수정한 경우에는 생성물이 바뀌지 않으므로 빌드가 필요 없습니다.
+- 템플릿·스크립트·프로젝트 설정을 바꿨다면 로컬에서 빌드한 생성물(`index.html`, `projects/`, `json/` 등)을 함께 커밋하거나, 푸시 후 Actions를 수동 실행해 반영합니다. CSS·JS만 바꾼 경우에는 생성물이 바뀌지 않으므로 빌드가 필요 없습니다.
 
 ## 디자인
 
