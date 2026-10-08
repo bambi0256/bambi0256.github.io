@@ -76,3 +76,46 @@
     border: 3px solid #FFDE59;
     border-radius: 50%;
 }
+
+/* Mobile: 프로필과 각 행을 세로로 쌓고, 이미지를 글 위에 둔다 */
+@media (max-width: 768px) {
+    .profile-section {
+        margin-bottom: 50px;
+        padding: 0 20px;
+    }
+
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .profile-details {
+        padding: 10px 28px;
+    }
+
+    .about-section {
+        padding: 0 20px;
+    }
+
+    .about-row {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 50px;
+    }
+
+    .about-row .image-content {
+        order: -1;
+        flex: none;
+        margin: 0 auto;
+    }
+
+    .text-content {
+        flex: none;
+        width: 100%;
+    }
+
+    .text-content p {
+        margin: 16px 0;
+    }
+}

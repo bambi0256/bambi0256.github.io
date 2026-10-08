@@ -61,6 +61,18 @@ const Auth = (() => {
                 return { ok: false, login: user.login, reason: '저장소 쓰기 권한이 없는 토큰입니다.' };
             }
 
+            // permissions.push 는 계정의 권한이라 토큰의 Contents 쓰기 권한을 보장하지 않는다.
+            // 내용이 비어 있는 blob(저장소에 남지 않는 고정 객체) 생성으로 토큰의 쓰기 권한을 확인한다.
+            const probeRes = await apiFetch(`/repos/${OWNER}/${REPO}/git/blobs`, {
+                method: 'POST',
+                body: JSON.stringify({ content: '', encoding: 'utf-8' }),
+                headers: { 'Content-Type': 'application/json' }
+            }, token);
+            if (probeRes.status === 403 || probeRes.status === 404) {
+                return { ok: false, login: user.login, reason: '토큰에 이 저장소의 Contents: Read and write 권한이 없습니다. 토큰 설정을 확인하세요.' };
+            }
+            if (!probeRes.ok) return { ok: false, login: user.login, reason: `쓰기 권한 확인 실패 (${probeRes.status})` };
+
             return { ok: true, login: user.login };
         } catch (e) {
             return { ok: false, reason: '네트워크 오류로 검증하지 못했습니다.' };

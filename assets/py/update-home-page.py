@@ -3,7 +3,8 @@ import os
 
 import config
 
-RECENT_POSTS_LIMIT = 9
+RECENT_POSTS_LIMIT = 3  # 홈에 노출할 최신 포스트 수
+PROJECT_TAB_POSTS_LIMIT = 3  # Projects 탭마다 노출할 포스트 수
 
 
 def load_projects_metadata():
@@ -28,6 +29,15 @@ def get_all_recent_posts(projects_data, limit=RECENT_POSTS_LIMIT):
     return all_posts[:limit]
 
 
+def latest_post_date(project_data):
+    return max((str(post.get('date', '')) for post in project_data['posts']), default='')
+
+
+def sort_projects_by_recent(projects_data):
+    """최근 작성된 포스트가 있는 프로젝트 순 (포스트가 없는 프로젝트는 뒤)"""
+    return sorted(projects_data, key=latest_post_date, reverse=True)
+
+
 def update_homepage(projects_data):
     html = config.get_template(config.TEMPLATE_HOME).render(
         recent_posts=get_all_recent_posts(projects_data)
@@ -37,7 +47,10 @@ def update_homepage(projects_data):
 
 
 def update_projects_page(projects_data):
-    html = config.get_template(config.TEMPLATE_PROJECTS).render(all_projects=projects_data)
+    html = config.get_template(config.TEMPLATE_PROJECTS).render(
+        all_projects=sort_projects_by_recent(projects_data),
+        tab_posts_limit=PROJECT_TAB_POSTS_LIMIT
+    )
     config.write_html(os.path.join(config.PROJECTS_DIR, 'index.html'), html)
     print("✅ Projects page updated successfully!")
 

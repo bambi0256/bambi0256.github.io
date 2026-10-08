@@ -1,0 +1,13 @@
+{# 게시물 목록 항목. assets/js/project-posts.js 의 렌더링과 같은 구조를 유지한다. #}
+{% macro post_item(href, title, date, preview, project=None) %}
+<li>
+    <a class="post-item" href="{{ href }}">
+        {% if project %}<span class="post-item-project">{{ project }}</span>{% endif %}
+        <div class="post-item-head">
+            <h3 class="post-item-title">{{ title }}</h3>
+            <time class="post-item-date">{{ date | string | replace('-', '.') }}</time>
+        </div>
+        <p class="post-item-preview">{{ preview }}</p>
+    </a>
+</li>
+{% endmacro %}

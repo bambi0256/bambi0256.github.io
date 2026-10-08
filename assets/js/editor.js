@@ -2,6 +2,7 @@
 
 const Editor = (() => {
     const CUSTOM_COVER = '__custom__';
+    const NEW_PROJECT = '__new__';
     const PREVIEW_STYLE = `
         body { font-family: sans-serif; line-height: 1.7; color: #343434; padding: 0 12px; }
         img { max-width: 100%; }
@@ -35,6 +36,11 @@ const Editor = (() => {
             projectsData = [];
         }
 
+        renderProjectOptions();
+    }
+
+    // 프로젝트 선택 목록: 기존 프로젝트 + "새 프로젝트". 프로젝트가 없으면 새 프로젝트가 기본 선택
+    function renderProjectOptions(selected) {
         el.project.innerHTML = '';
         projectsData.forEach(({ config }) => {
             const option = document.createElement('option');
@@ -42,6 +48,22 @@ const Editor = (() => {
             option.textContent = config.title;
             el.project.appendChild(option);
         });
+
+        const create = document.createElement('option');
+        create.value = NEW_PROJECT;
+        create.textContent = '+ 새 프로젝트 만들기';
+        el.project.appendChild(create);
+
+        el.project.value = selected || (projectsData.length > 0 ? projectsData[0].config.slug : NEW_PROJECT);
+        updateNewProjectBox();
+    }
+
+    function isNewProject() {
+        return el.project.value === NEW_PROJECT;
+    }
+
+    function updateNewProjectBox() {
+        el.newProjectBox.hidden = !isNewProject();
     }
 
     function existingSlugs(project) {
@@ -51,7 +73,7 @@ const Editor = (() => {
 
     function refreshSlugSuggestion() {
         if (slugEdited) return;
-        el.slug.value = PostLib.suggestSlug(el.date.value, existingSlugs(el.project.value));
+        el.slug.value = PostLib.suggestSlug(el.date.value, isNewProject() ? [] : existingSlugs(el.project.value));
     }
 
     // ---------- 이미지 ----------
@@ -148,8 +170,12 @@ const Editor = (() => {
 
     function getPost() {
         const cover = el.cover.value === CUSTOM_COVER ? el.coverPath.value.trim() : el.cover.value;
+        const creating = isNewProject();
         return {
-            project: el.project.value,
+            project: creating ? el.newProjectSlug.value.trim() : el.project.value,
+            newProject: creating
+                ? { title: el.newProjectTitle.value, description: el.newProjectDescription.value }
+                : null,
             title: el.title.value,
             date: el.date.value,
             slug: el.slug.value.trim(),
@@ -229,6 +255,7 @@ const Editor = (() => {
 
     function resetForm() {
         el.form.reset();
+        renderProjectOptions(el.project.value);
         images = [];
         slugEdited = false;
         el.date.value = PostLib.formatDate(new Date());
@@ -250,6 +277,7 @@ const Editor = (() => {
         try {
             const result = await Publisher.create().publish({
                 project: post.project,
+                isNewProject: Boolean(post.newProject),
                 slug: post.slug,
                 title: post.title.trim(),
                 markdown: PostLib.buildMarkdown(post),
@@ -261,7 +289,22 @@ const Editor = (() => {
 
             published = true;
             const url = PostLib.postUrl(post.project, post.slug);
+            const created = post.newProject ? post : null;
+            if (created) {
+                // 빌드 전이라도 다음 글에서 같은 프로젝트를 고를 수 있도록 목록에 추가
+                projectsData.push({
+                    config: { slug: created.project, title: created.newProject.title.trim() },
+                    posts: [{ slug: created.slug }]
+                });
+            } else {
+                const data = projectsData.find(p => p.config.slug === post.project);
+                if (data) data.posts.push({ slug: post.slug });
+            }
             resetForm();
+            if (created) {
+                renderProjectOptions(created.project);
+                refreshSlugSuggestion();
+            }
             showMessages([], []);
             setStatus(`게시했습니다. 빌드·배포 후(보통 1~2분) ${url} 에 반영됩니다.`, false);
             console.info('Published:', result.commitUrl);
@@ -285,6 +328,8 @@ const Editor = (() => {
 
         Object.assign(el, {
             form: $('post-form'), project: $('field-project'), title: $('field-title'),
+            newProjectBox: $('new-project-box'), newProjectSlug: $('field-project-slug'),
+            newProjectTitle: $('field-project-title'), newProjectDescription: $('field-project-description'),
             date: $('field-date'), slug: $('field-slug'), tags: $('field-tags'),
             excerpt: $('field-excerpt'), body: $('field-body'),
             imageInput: $('image-input'), imageList: $('image-list'),
@@ -299,7 +344,10 @@ const Editor = (() => {
         refreshSlugSuggestion();
         updatePreview();
 
-        el.project.addEventListener('change', refreshSlugSuggestion);
+        el.project.addEventListener('change', () => {
+            updateNewProjectBox();
+            refreshSlugSuggestion();
+        });
         el.date.addEventListener('change', refreshSlugSuggestion);
         el.slug.addEventListener('input', () => { slugEdited = true; });
         el.cover.addEventListener('change', () => {

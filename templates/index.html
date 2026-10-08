@@ -7,10 +7,12 @@
     <title>B.Bee</title>
     <link rel="stylesheet" href="/assets/css/header-footer-style.css">
     <link rel="stylesheet" href="/assets/css/index-style.css">
+    <link rel="stylesheet" href="/assets/css/list-style.css">
 </head>
 
 <body>
     {% include 'partials/header.html' %}
+    {% from 'partials/post-item.html' import post_item %}
 
     <main>
         <!-- Intro Section -->
@@ -25,34 +27,30 @@
                     </div>
                 </div>
                 <div class="image">
-                    <img src="/assets/image/intro-image.jpg" alt="Intro">
+                    <img src="/assets/image/home/intro-image.jpg" alt="Intro">
                 </div>
             </div>
         </section>
 
         <!-- Recent Posts Section (All Categories) -->
-        <section class="recent-posts section" id="latest-works">
+        <section class="recent-posts list-section section" id="latest-works">
             <div class="container">
                 <div class="section-header">
                     <div class="text">
                         <h2 class="section-title">Recent Works</h2>
                         <p class="section-description">모든 프로젝트의 최신 업데이트</p>
                     </div>
-                    <div class="button">
-                        <a href="/projects/" class="view-more">View All Projects</a>
-                    </div>
+                    <a href="/projects/" class="view-more">View All Projects</a>
                 </div>
-                <div class="post-grid">
+                {% if recent_posts %}
+                <ul class="post-list">
                     {% for post in recent_posts %}
-                    <a href="/{{ post.category_output_dir }}/{{ post.slug }}/" class="post-card">
-                        <img src="{{ post.main_image }}" alt="{{ post.title }}">
-                        <div class="card-text">
-                            <h3>{{ post.title }}</h3>
-                            <p>{{ post.excerpt }}</p>
-                        </div>
-                    </a>
+                    {{ post_item('/' ~ post.category_output_dir ~ '/' ~ post.slug ~ '/', post.title, post.date, post.preview, post.category_title) }}
                     {% endfor %}
-                </div>
+                </ul>
+                {% else %}
+                <p class="post-list-empty">아직 포스트가 없습니다.</p>
+                {% endif %}
             </div>
         </section>
     </main>
