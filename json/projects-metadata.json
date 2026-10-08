@@ -9,6 +9,18 @@
         },
         "posts": [
             {
+                "title": "AI 픽셀아트",
+                "date": "2026-10-08",
+                "slug": "2026100801",
+                "main_image": "/projects/Spell_Unlock_TCG/2026100801/image.png",
+                "tags": [
+                    "테스트"
+                ],
+                "excerpt": "테스트용 글입니다.",
+                "category": "Spell_Unlock_TCG",
+                "category_title": "Spell Unlock TCG"
+            },
+            {
                 "title": "프로젝트: TCG",
                 "date": "2025-12-15",
                 "slug": "2025121501",
