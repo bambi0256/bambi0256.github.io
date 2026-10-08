@@ -1,135 +1,58 @@
 # B.Bee GitHub Blog
 
-## 개요
+GitHub Pages 위에서 동작하는 개인 블로그 겸 포트폴리오입니다. 템플릿 없이 직접 제작했으며, Python(빌드)과 순수 JavaScript(프론트)로 구성됩니다.
 
-이 프로젝트는 개인 블로그를 제작해 보기 위해 진행되었습니다.
-페이지 관리에 Python과 JavaScript를 활용하며, 작성한 포스트 내용에 따라 동적으로 생성됩니다.
+- 작업 지침: [CLAUDE.md](CLAUDE.md)
+- 목표·범위: [docs/vision.md](docs/vision.md)
+- 결정 기록: [docs/decisions.md](docs/decisions.md)
 
----
+## 동작 방식
+
+```
+mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python 빌드  ──▶  HTML / JSON 생성·커밋  ──▶  Pages 배포
+```
+
+1. `mdposts/<project>/` 에 Markdown 글을 작성하고 push합니다.
+2. Actions(`.github/workflows/update-pages.yml`)가 빌드 스크립트 2개를 순서대로 실행합니다.
+3. 생성된 `index.html`, `about/`, `projects/`, `json/` 을 자동 커밋하고 배포합니다.
 
 ## 디렉토리 구조
 
 ```
-/(root)
-|
-├── ./.github/workflows/            # GitHub Actions 워크플로우 파일
-|
-├── assets/                        
-|   ├── css/                       # CSS 스타일시트
-|   ├── js/                        # JavaScript 스크립트
-|   ├── py/                        # Python 스크립트
-|   └── image/                     # Image
-|
-├── mdposts/                       # Markdown (프로젝트 카테고리별 확장)
-|   ├── project1/                  # 프로젝트 1 Markdown
-|   └── project2/                  # 프로젝트 2 Markdown
-|
-├── project1/                      # 프로젝트 1 하위 HTML 페이지
-├── project2/                      # 프로젝트 2 하위 HTML 페이지
-|
-├── index.html                     # 홈페이지 HTML
-├── header.html                    # 공통 헤더 템플릿
-├── footer.html                    # 공통 푸터 템플릿
-├── projects-config.json           # 프로젝트 카테고리 설정
-├── requirements.txt               # 프로젝트 의존성
-├── README.md                      # 프로젝트 설명 파일
-|
-├── temp-*                         # 페이지 템플릿 파일
-└── . . .
+/
+├── mdposts/<project>/        # [소스] 글 원본 (Front Matter + Markdown)
+├── templates/                # [소스] Jinja2 템플릿
+│   ├── index.html            #   홈
+│   ├── about.html            #   소개
+│   ├── projects.html         #   전체 프로젝트 목록
+│   ├── project-page.html     #   프로젝트별 포스트 목록
+│   ├── project-post.html     #   개별 포스트
+│   └── partials/             #   공통 header / footer
+├── assets/
+│   ├── py/                   # [소스] 빌드 스크립트
+│   │   ├── config.py                #   경로 상수·공통 함수
+│   │   ├── update-all-projects.py   #   md → 포스트/프로젝트 HTML + JSON
+│   │   └── update-home-page.py      #   홈 / Projects / About 페이지
+│   ├── js/                   # [소스] hamburger, set-current, toc, project-posts
+│   ├── css/                  # [소스] 스타일
+│   └── image/                # [소스] 이미지
+├── json/
+│   ├── projects-config.json  # [설정] 프로젝트 카테고리 수동 설정
+│   ├── projects-metadata.json        # [생성물]
+│   └── <project>-posts.json          # [생성물] 프로젝트별 포스트 목록 (project-posts.js가 fetch)
+├── index.html                # [생성물] 홈
+├── about/  projects/         # [생성물] 소개 / 프로젝트 / 포스트 페이지
+├── docs/                     # 프로젝트 문서 (vision, decisions)
+└── .github/workflows/        # 빌드·배포
 ```
 
----
+**[생성물] 은 직접 수정하지 않습니다.** 다음 빌드에서 덮어써지므로 `templates/`, 스크립트, `mdposts/` 를 수정합니다.
 
-## 주요 파일 및 기능 설명
+> `index.html`, `json/`, `assets/` 는 사이트 주소(`/`, `/json/...`, `/assets/...`)와 직접 대응하므로 루트에 있어야 합니다. 템플릿은 주소로 노출되지 않아 `templates/` 로 옮겼습니다.
 
-### 1. **`/root/.github/workflows/`**
-- **`update-pages.yml`**: GitHub Actions 워크플로우 파일로, 페이지를 업데이트하는 작업을 자동화합니다.
+## 글 작성
 
-### 2. **`/assets/`**
-- **`/css/`**: 프로젝트의 스타일을 정의한 `style.css`가 포함됩니다. 블로그의 스타일을 정의합니다.
-- **`/js/`**
-  - **`pagination-project.js`**: 프로젝트 페이지를 동적으로 업데이트하고 Pagination을 관리합니다.
-  - **`hamburger.js`**: 반응형 햄버거 메뉴 관리 및 작은 화면에서 메뉴를 토글하는 기능입니다.
-  - **`set-current.js`**: 헤더의 현재 페이지 링크를 강조하는 기능입니다.
-  - **`toc.js`**: 각 포스트에 동적 Table of Content를 생성하는 기능입니다.
-- **`/py/`**
-  - **`update-all-projects.py`**: 프로젝트 Markdown 파일을 HTML로 변환하고, 프로젝트 페이지를 업데이트합니다.
-  - **`update-home-page.py`**: 홈페이지를 생성하는 Python 스크립트로, `temp-index.html` 템플릿을 사용하여 정적 HTML 페이지를 만듭니다.
-- **`/image/`**
-
-### 3. **`/mdposts/`**
-이 디렉토리는 각 프로젝트를 서브 디렉토리(`project1/`, `project2/`등)를 포함하며 각 프로젝트 하위의 Markdown 파일들을 직접 작성하는 공간입니다.
-해당 디렉토리 하위에 변경이 생기면 자동으로 블로그에 업데이트됩니다.
-
-### 4. **`/temp-*` 템플릿 파일들**
-템플릿 파일들은 HTML 페이지를 생성할 때 Jinja2 템플릿 엔진을 사용하여 동적으로 렌더링됩니다. 이를 통해 각 페이지에 필요한 데이터를 동적으로 삽입하고, 최종적인 HTML을 생성합니다.
-- **`temp-index.html`**: 홈페이지 템플릿. Jinja2 템플릿 엔진을 통해 `index.html` 파일을 생성합니다.
-- **`temp-projects.html`**: 프로젝트 페이지 템플릿. 프로젝트 포스트들을 리스트 형식으로 출력합니다.
-- **`temp-project-post.html`**: 개별 프로젝트 포스트 템플릿. 각 프로젝트 포스트의 내용과 메타데이터를 렌더링합니다.
-- **`temp-about.html`**: 자기소개 페이지 템플릿. 동적 변동사항은 없으나 통일성을 위해 존재합니다.
-
-### 5. **`header.html`, `footer.html`**
-- **`header.html`**: 모든 페이지에 공통으로 사용되는 헤더 템플릿. 로고, 네비게이션 메뉴 및 소셜 아이콘이 포함됩니다.
-- **`footer.html`**: 모든 페이지에 공통으로 사용되는 푸터 템플릿. 사이트에 대한 간단한 정보와 네비게이션 링크가 포함됩니다.
-
----
-
-## 부가 설명
-
-이 프로젝트는 템플릿 없이 Github 블로그를 스스로 제작하고 향후 포트폴리오 및 블로그 공간으로 활용하는 것을 목표로 합니다. 
-
-실제 사용을 고려하여 모든 html 파일을 해당하는 디렉토리를 생성하여 index.html로 제작하고, 링크를 깔끔하게 했습니다.
-
-블로그의 디자인은 자체적인 기획과 Chat-GPT를 활용한 스크립트 제작을 기반으로 합니다.
-
----
-
-## 📖 사용자 가이드
-
-### 1. 새로운 프로젝트 카테고리 추가하기
-
-프로젝트 카테고리는 확장 가능한 구조로 설계되어 있습니다. 새 카테고리를 추가하려면:
-
-1. **프로젝트 설정 파일 수정** (`projects-config.json`):
-   ```json
-   {
-     "projects": [
-       {
-         "slug": "project1",
-         "title": "프로젝트 1: 디펜스",
-         "description": "타워 디펜스 게임 프로젝트",
-         "mdposts_dir": "mdposts/project1",
-         "output_dir": "project1"
-       },
-       {
-         "slug": "project2",
-         "title": "프로젝트 2: 퍼즐",
-         "description": "퍼즐 게임 프로젝트",
-         "mdposts_dir": "mdposts/project2",
-         "output_dir": "project2"
-       }
-     ]
-   }
-   ```
-
-2. **마크다운 디렉토리 생성**:
-   ```
-   mkdir mdposts/project2
-   ```
-
-3. **빌드 스크립트 실행** (로컬 테스트 시):
-   ```
-   python assets/py/update-all-projects.py
-   python assets/py/update-home-page.py
-   ```
-
-4. **GitHub에 Push**: 자동으로 배포됩니다.
-
-### 2. 포스트 작성하기
-
-#### Front Matter 형식
-
-모든 마크다운 파일은 다음 Front Matter를 포함해야 합니다:
+`mdposts/<project>/<파일>.md` 에 아래 Front Matter를 포함합니다.
 
 ```markdown
 ---
@@ -137,121 +60,61 @@ title: "포스트 제목"
 date: "2025-12-02"
 slug: "url-friendly-slug"
 main_image: "/assets/image/post-image.jpg"
-tags: ["태그1", "태그2", "태그3"]
-excerpt: "카드에 표시될 짧은 설명 (한 줄)"
+tags: ["태그1", "태그2"]
+excerpt: "카드에 표시될 짧은 설명"
 ---
 
 ## 첫 번째 섹션
 
-본문 내용...
-
-### 하위 섹션
-
-더 많은 내용...
+본문...
 ```
 
-#### 필수 필드
+| 필드 | 설명 |
+|---|---|
+| `title` | 포스트 제목 |
+| `date` | 작성일 (YYYY-MM-DD) |
+| `slug` | URL 식별자 (영문 소문자·숫자·하이픈). 주소는 `/projects/<project>/<slug>/` |
+| `main_image` | 썸네일 이미지 경로 |
+| `tags` | 태그 배열 |
+| `excerpt` | 카드에 표시될 한 줄 설명 |
 
-- **title**: 포스트 제목
-- **date**: 작성�일 (YYYY-MM-DD 형식)
-- **slug**: URL에 사용될 식별자 (영문 소문자, 하이픈 사용)
-- **main_image**: 썸네일 이미지 경로
-- **tags**: 태그 배열
-- **excerpt**: 포스트 카드에 표시될 짧은 설명
+- 선택: `project_title`, `project_description` — 프로젝트 첫 글에서 프로젝트 이름/설명으로 사용됩니다.
+- H1은 쓰지 않습니다. 목차는 H2/H3만 포함되며 포스트 우측에 자동 생성됩니다.
+- 새 프로젝트는 `mdposts/` 하위에 디렉토리를 만들면 자동 발견됩니다. 제목·설명을 직접 지정하려면 `json/projects-config.json` 에 추가합니다.
 
-#### 목차 자동 생성
-
-- H2 (`##`)와 H3 (`###`) 헤딩만 목차에 포함됩니다
-- H1은 제목용이므로 본문에서는 사용하지 마세요
-- 포스트 페이지 우측에 자동으로 목차가 생성됩니다
-
-#### 작성 예시
-
-```markdown
----
-title: "타워 디펜스 게임 분석"
-date: "2025-12-02"
-slug: "tower-defense-analysis"
-main_image: "/assets/image/tower-defense.jpg"
-tags: ["게임 개발", "분석", "TD"]
-excerpt: "타워 디펜스 장르의 핵심 요소 분석"
----
-
-## 장르의 정의
-
-타워 디펜스는...
-
-### 핵심 메커니즘
-
-주요 메커니즘으로는...
-
-## 게임 사례 분석
-
-실제 게임 사례를 통해...
+```json
+{
+  "projects": [
+    {
+      "slug": "Spell_Unlock_TCG",
+      "title": "Spell Unlock TCG",
+      "description": "",
+      "mdposts_dir": "mdposts/Spell_Unlock_TCG",
+      "output_dir": "projects/Spell_Unlock_TCG"
+    }
+  ]
+}
 ```
 
-### 3. 자동 빌드 및 배포
+## 로컬 빌드·확인
 
-#### 로컬 테스트
+저장소 루트에서 실행합니다.
 
 ```bash
-# Python 환경 확인
-python --version
-
-# 의존성 설치
 pip install -r requirements.txt
-
-# 빌드 스크립트 실행
-python assets/py/update-all-projects.py
-python assets/py/update-home-page.py
-
-# 로컬 서버 실행
-python -m http.server 8000
-
-# 브라우저에서 http://localhost:8000 접속
+python assets/py/update-all-projects.py   # 1) 먼저
+python assets/py/update-home-page.py      # 2) 그 다음 (1의 json을 읽음)
+python -m http.server 8000                # http://localhost:8000
 ```
 
-#### GitHub Actions 자동 배포
+Windows 콘솔에서 이모지 출력 오류가 나면 `PYTHONIOENCODING=utf-8` 을 지정합니다 (PowerShell: `$env:PYTHONIOENCODING="utf-8"`).
 
-1. **자동 트리거**: `mdposts/project*/` 디렉토리의 파일을 수정하고 Push하면 자동으로 빌드
-2. **수동 실행**: 
-   - GitHub 저장소 → Actions 탭
-   - "Update Project Pages" 워크플로우 선택
-   - "Run workflow" 버튼 클릭
+## 배포
 
-#### 배포 확인
+- `mdposts/**`, `json/projects-config.json`, `templates/**`, `assets/py/**` 를 push하면 Actions가 자동 실행됩니다.
+- 수동 실행: GitHub → Actions → "Update Project Pages" → Run workflow.
+- JS/CSS만 수정한 경우에는 생성물이 바뀌지 않으므로 빌드가 필요 없습니다.
 
-- GitHub Pages 설정: Settings → Pages
-- 배포 URL: `https://[username].github.io`
-- 배포 상태: Actions 탭에서 워크플로우 실행 상태 확인
+## 디자인
 
-### 4. 디자인 수정
-
-현재 블로그는 **검정-노랑 꿀벌 테마**를 사용합니다.
-
-#### CSS 파일
-
-- `assets/css/header-footer-style.css`: 헤더/푸터 스타일
-- `assets/css/index-style.css`: 홈페이지 스타일
-- `assets/css/project-style.css`: 프로젝트 목록 페이지
-- `assets/css/post-style.css`: 개별 포스트 페이지
-
-#### 색상 변경
-
-파일에서 다음 색상 코드를 찾아 변경:
-- `#343434`: 검정 (배경, 텍스트)
-- `#FFDE59`: 노랑 (액센트, 버튼)
-
-변경 후 GitHub Actions에서 워크플로우를 수동 실행하여 배포하세요.
-
----
-
-## 🐝 B.Bee 테마 특징
-
-- **색상**: 검정-노랑 꿀벌 컨셉
-- **폰트**: 데브시스터즈 쿠키런 폰트
-- **구조**: 확장 가능한 다중 프로젝트 카테고리
-- **자동화**: GitHub Actions 기반 자동 빌드/배포
-- **반응형**: 모바일 햄버거 메뉴 지원
-
-
+검정-노랑 꿀벌 테마(`#343434`, `#FFDE59`), 폰트는 데브시스터즈 쿠키런. 스타일은 `assets/css/` 에서 관리하며 모바일 햄버거 메뉴를 지원합니다.
