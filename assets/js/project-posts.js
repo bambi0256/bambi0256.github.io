@@ -7,7 +7,7 @@ let allPosts = [];
 // 페이지 로드 시 포스트 데이터 불러오기
 async function loadProjectPosts() {
     try {
-        const response = await fetch(`/assets/js/${projectSlug}-posts.json`);
+        const response = await fetch(`/json/${projectSlug}-posts.json`);
         if (!response.ok) {
             throw new Error(`Failed to load posts: ${response.status}`);
         }

@@ -2,7 +2,7 @@
 
 ## 한 줄 목표
 
-GitHub Pages 위에서 동작하는 **개인 블로그 겸 포트폴리오**를, 블로그 주인이 웹에서 직접 글을 쓰고 방문 현황을 확인할 수 있는 상태까지 완성한다.
+GitHub Pages 위에서 동작하는 **개인 블로그 겸 포트폴리오**를, 블로그 주인이 웹에서 직접 글을 쓸 수 있는 상태까지 완성한다. (방문 현황 확인은 MVP 이후)
 
 ## 원칙
 
@@ -16,18 +16,18 @@ GitHub Pages 위에서 동작하는 **개인 블로그 겸 포트폴리오**를,
 | 영역 | 상태 |
 |---|---|
 | 글 작성 | `mdposts/<프로젝트>/*.md` 를 직접 작성 → push → GitHub Actions가 HTML 생성 |
-| 빌드 | `assets/py/update-all-projects.py`, `update-home-page.py` (Jinja2 + python-frontmatter) |
+| 빌드 | `assets/py/update-all-projects.py`, `update-home-page.py`, 공통 `config.py` (Jinja2 + python-frontmatter) |
+| 템플릿 | `templates/` (페이지 5종 + `partials/` header·footer) |
 | 프론트 | 순수 HTML/CSS/JS, 검정-노랑 꿀벌 테마 |
 | 메타데이터 | `json/projects-metadata.json` (빌드 산출물, 홈/프로젝트 목록에서 사용) |
 
-### 알려진 문제 (MVP 1번 리팩토링에서 해소 대상)
+### 해소된 문제 (MVP 1, 결정 기록: [decisions.md](decisions.md))
 
-- `assets/js/project-posts.js`가 `/assets/js/{slug}-posts.json`을 fetch하지만 실제 파일은 `json/{slug}-posts.json`에 생성됨 → 프로젝트 목록 페이지 경로 불일치.
-- `assets/js/pagination-project.js`, `recent-posts.js`는 어떤 템플릿에서도 로드되지 않음(미사용 추정). `pagination-project.js`는 존재하지 않는 `project-posts.json`을 참조.
-- `update-pages.yml`의 트리거 경로가 `projects-config.json`(루트)로 되어 있으나 실제 위치는 `json/projects-config.json`. `git add project*/`, `assets/js/` 등 add 대상이 현재 구조와 불일치(`json/`이 add되지 않음).
-- README의 구조 설명(`project1/`, 루트의 `projects-config.json`)이 실제 구조(`projects/`, `json/`)와 다름.
-- `temp-project-post.html`이 `toc.js`를 `<head>`에서 `defer` 없이 로드, `header.html`의 `<header>` 태그가 닫히지 않음.
-- 생성물(`index.html`, `projects/`, `about/`, `json/`)과 소스(`temp-*`, `mdposts/`)가 같은 트리에 섞여 있음.
+- 프로젝트 목록 페이지: `project-posts.js` 의 fetch 경로를 `/json/{slug}-posts.json` 으로 수정.
+- 미사용 JS 3종(`pagination-project.js`, `recent-posts.js`, `projects-page.js`) 삭제.
+- Actions: 트리거 경로 수정, `update-home-page.py` 실행 추가, `json/` 커밋 대상 포함.
+- 마크업: `header` 닫기, `toc.js` defer, 홈의 중복 `set-current.js` 제거.
+- 소스(`templates/`, `mdposts/`, `assets/`)와 생성물(`index.html`, `about/`, `projects/`, `json/`)의 경계를 디렉토리와 README에 반영.
 
 ## MVP 범위
 
@@ -36,12 +36,12 @@ GitHub Pages 위에서 동작하는 **개인 블로그 겸 포트폴리오**를,
 **목표**: 동작은 그대로 유지하고, 구조와 경로를 일관되게 정리한다. 새 기능을 얹을 수 있는 바탕을 만든다.
 
 완료 기준:
-- [ ] 소스 / 생성물 / 설정 / 스크립트의 경계가 문서화되고 디렉토리 구조에 반영됨
-- [ ] 위 "알려진 문제"가 모두 해소됨 (미사용 JS는 삭제 또는 사용처 확정)
-- [ ] 빌드 스크립트의 중복·죽은 코드 정리, 경로 상수 한 곳에서 관리
-- [ ] GitHub Actions 트리거/커밋 대상이 실제 구조와 일치
-- [ ] README가 실제 구조와 일치
-- [ ] 로컬 빌드(`python assets/py/update-all-projects.py` → `update-home-page.py`) 후 기존 페이지 출력이 리팩토링 전과 동일(또는 의도된 차이만 존재)
+- [x] 소스 / 생성물 / 설정 / 스크립트의 경계가 문서화되고 디렉토리 구조에 반영됨
+- [x] 알려진 문제가 모두 해소됨 (미사용 JS는 삭제 또는 사용처 확정)
+- [x] 빌드 스크립트의 중복·죽은 코드 정리, 경로 상수 한 곳에서 관리
+- [x] GitHub Actions 트리거/커밋 대상이 실제 구조와 일치
+- [x] README가 실제 구조와 일치
+- [x] 로컬 빌드(`python assets/py/update-all-projects.py` → `update-home-page.py`) 후 기존 페이지 출력이 리팩토링 전과 동일(또는 의도된 차이만 존재)
 
 ### 2. Git 계정 검증을 통한 글 작성 권한 제한
 
@@ -52,9 +52,7 @@ GitHub Pages 위에서 동작하는 **개인 블로그 겸 포트폴리오**를,
 - [ ] 주인이 아니면 작성 UI에 접근/게시 불가 (클라이언트 차단만이 아니라, 실제 게시 수단이 저장소 쓰기 권한에 의해 막혀야 함)
 - [ ] 인증 정보(토큰)가 저장소에 커밋되지 않음
 
-> **미결정 사항 (구현 전 사용자와 확정)**: 정적 사이트에서 "주인 검증"을 어떻게 할지.
-> 후보 — (A) 주인이 발급한 Fine-grained PAT를 브라우저에 입력, GitHub API로 `GET /user` 검증 후 Contents API로 커밋 (서버 불필요, 가장 단순) / (B) GitHub OAuth App + 토큰 교환용 프록시(서버리스 함수 필요).
-> 기본 권장은 (A). 확정 전에는 구현하지 않는다.
+> **확정 ([D-001](decisions.md))**: Fine-grained PAT를 브라우저에 입력 → GitHub API(`GET /user`)로 계정·저장소 쓰기 권한 검증 → Contents API로 커밋. OAuth 프록시는 사용하지 않는다.
 
 ### 3. 웹 페이지에서 글 작성 툴 — 블로그 주인 전용
 
@@ -67,7 +65,7 @@ GitHub Pages 위에서 동작하는 **개인 블로그 겸 포트폴리오**를,
 - [ ] 필수 필드 누락/slug 중복 시 게시 전 오류 표시
 - [ ] 이미지 업로드, 수정/삭제, 임시저장, WYSIWYG 등은 **범위 밖** (필요 시 승인 요청)
 
-### 4. 페이지 인사이트 확인 페이지 — 블로그 주인 전용
+### 4. 페이지 인사이트 확인 페이지 — 블로그 주인 전용 (⏸ MVP 이후로 연기, [D-002](decisions.md))
 
 **목표**: 일일 방문자 수 / 총 방문자 수 등을 주인이 한 곳에서 확인한다.
 
@@ -76,7 +74,7 @@ GitHub Pages 위에서 동작하는 **개인 블로그 겸 포트폴리오**를,
 - [ ] 주인 검증(2번)을 통과한 경우에만 조회 가능
 - [ ] 방문 수집이 페이지 로딩 성능·개인정보에 과도한 영향을 주지 않음
 
-> **미결정 사항 (구현 전 사용자와 확정)**: 정적 사이트에는 자체 카운터 저장소가 없으므로 외부 수집 수단이 필요하다.
+> **미결정 사항 (재개 시 확정)**: 정적 사이트에는 자체 카운터 저장소가 없으므로 외부 수집 수단이 필요하다.
 > 후보 — (A) 호스팅형 통계 서비스(GoatCounter 등)의 API를 대시보드에서 조회 / (B) GA4·Cloudflare Web Analytics 등 / (C) 자체 서버리스 카운터.
 > 서비스/비용/개인정보 영향이 달라지므로 사용자 승인 후 선택한다.
 
@@ -87,4 +85,4 @@ GitHub Pages 위에서 동작하는 **개인 블로그 겸 포트폴리오**를,
 
 ## 종결 조건
 
-위 1~4의 완료 기준이 모두 체크되면 MVP 종결. 종결 후의 작업은 새 vision 문서(또는 이 문서의 개정)에서 사용자가 범위를 다시 정한다.
+위 1~3의 완료 기준이 모두 체크되면 MVP 종결(4번은 연기). 종결 후의 작업은 새 vision 문서(또는 이 문서의 개정)에서 사용자가 범위를 다시 정한다.
