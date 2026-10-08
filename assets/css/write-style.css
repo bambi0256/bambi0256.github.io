@@ -1,0 +1,60 @@
+.write-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.write-section h1 {
+    color: #343434;
+    margin-bottom: 10px;
+}
+
+.write-section .description {
+    color: #666;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+#auth-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#token-input {
+    flex: 1;
+    min-width: 240px;
+    padding: 10px 12px;
+    border: 2px solid #343434;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.write-section button {
+    padding: 10px 20px;
+    background-color: #FFDE59;
+    color: #343434;
+    border: 2px solid #343434;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.write-section button:hover {
+    background-color: #343434;
+    color: #FFDE59;
+}
+
+#auth-message {
+    margin-top: 14px;
+    min-height: 1.4em;
+    color: #343434;
+}
+
+#auth-message.error {
+    color: #c0392b;
+}
+
+[hidden] {
+    display: none !important;
+}

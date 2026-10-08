@@ -41,3 +41,8 @@
 - **결정**: 워크플로우 트리거를 `mdposts/**`, `json/projects-config.json`, `templates/**`, `assets/py/**` 로 하고, 빌드 스텝에 `update-home-page.py` 와 `json/` 커밋을 추가한다.
 - **이유**: 기존에는 홈/프로젝트 페이지가 자동 갱신되지 않고 `json/{slug}-posts.json` 이 커밋되지 않아 프로젝트 목록 페이지가 깨져 있었다. 템플릿만 바꿔도 생성물이 낡는 문제가 있었다.
 - **영향**: 푸시 후 Actions 실행 결과는 GitHub에서 확인 필요(로컬 검증 불가).
+
+### D-008. 주인 검증 구현: `assets/js/auth.js` + `/write/` 게이트
+- **결정**: `GET /user` 의 `login` 이 `bambi0256` 이고 `GET /repos/bambi0256/bambi0256.github.io` 의 `permissions.push` 가 true 일 때만 통과한다. 토큰은 `sessionStorage` 에만 보관한다(탭 종료 시 삭제, 입력 필드는 제출 즉시 비움). `/write/` 는 `templates/write.html` 로 생성하고 `noindex` 를 둔다. 네비게이션에는 링크를 추가하지 않는다(주소 직접 접근).
+- **이유**: D-001 의 토큰 보관 방식 미결 사항 확정. 로컬 저장소는 XSS·공용 PC에서 잔존 위험이 커서 세션 단위로 제한.
+- **영향**: 클라이언트 검증은 UI 접근 제어이며, 실제 쓰기는 GitHub가 토큰 권한으로 강제한다(주인이 아닌 토큰은 커밋 불가). 사용자는 저장소에 한정된 Fine-grained 토큰(Contents: Read and write)을 발급해야 한다. 번복 시: 로그인 유지가 필요하면 localStorage 옵션을 별도 승인 후 추가.

@@ -30,7 +30,7 @@ B.Bee 개인 블로그(`bambi0256.github.io`)의 작업 지침. 목표와 범위
 | `assets/js/`, `assets/css/`, `assets/image/` | 프론트 자원 | 직접 |
 | `json/projects-config.json` | 프로젝트 카테고리 수동 설정 | 직접 |
 | `.github/workflows/update-pages.yml` | 빌드/배포 | 직접 |
-| `index.html`, `about/`, `projects/`, `json/projects-metadata.json`, `json/*-posts.json` | **생성물** | **직접 수정 금지** — 템플릿/스크립트를 고치고 재빌드 |
+| `index.html`, `about/`, `projects/`, `write/`, `json/projects-metadata.json`, `json/*-posts.json` | **생성물** | **직접 수정 금지** — 템플릿/스크립트를 고치고 재빌드 |
 
 > 생성물을 손으로 고치면 다음 빌드에서 덮어써진다. 수정이 필요하면 항상 원본(템플릿·스크립트·md)을 고친다.
 > 리팩토링으로 구조가 바뀌면 이 표와 README를 함께 갱신한다.
@@ -68,7 +68,7 @@ H1은 본문에서 쓰지 않고, 목차는 H2/H3만 포함된다.
 
 - 토큰·시크릿을 저장소에 커밋하지 않는다 (코드, 설정, 로그 포함). 필요하면 GitHub Secrets 또는 브라우저 로컬 저장소만 사용.
 - 주인 검증은 클라이언트 UI 숨김만으로 끝내지 않는다. 실제 쓰기 동작이 저장소 권한에 의해 강제되어야 한다.
-- 주인 계정: GitHub `bambi0256`.
+- 주인 계정: GitHub `bambi0256`. 검증 로직은 `assets/js/auth.js` 에 둔다 (D-008). 토큰은 `sessionStorage` 에만 보관한다.
 - 외부 서비스(통계 등)를 연결하기 전에 어떤 데이터가 전송되는지 사용자에게 설명한다.
 
 ## 작업 방식

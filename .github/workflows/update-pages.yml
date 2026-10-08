@@ -32,7 +32,7 @@ jobs:
         run: |
           python assets/py/update-all-projects.py
           python assets/py/update-home-page.py
-          git add projects/ json/ index.html about/
+          git add projects/ json/ index.html about/ write/
 
       - name: Commit changes
         run: |
