@@ -14,11 +14,13 @@ JSON_DIR = 'json'
 METADATA_PATH = 'json/projects-metadata.json'
 PROJECTS_DIR = 'projects'
 ABOUT_DIR = 'about'
+WRITE_DIR = 'write'
 HOME_PATH = 'index.html'
 
 # 템플릿 파일명 (TEMPLATES_DIR 기준)
 TEMPLATE_HOME = 'index.html'
 TEMPLATE_ABOUT = 'about.html'
+TEMPLATE_WRITE = 'write.html'
 TEMPLATE_PROJECTS = 'projects.html'
 TEMPLATE_PROJECT_PAGE = 'project-page.html'
 TEMPLATE_PROJECT_POST = 'project-post.html'

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>B.Bee | Write</title>
+    <link rel="stylesheet" href="/assets/css/header-footer-style.css">
+    <link rel="stylesheet" href="/assets/css/write-style.css">
+</head>
+<body>
+    <header>
+    <div class="container header-content">
+        <!-- Logo and Navigation -->
+        <div class="logo-nav">
+            <div class="logo">
+                <a href="/"><img src="/assets/image/logo.png" alt="B.Bee Logo"></a>
+            </div>
+
+            <!-- Hamburger Menu Button (Mobile) -->
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/projects/" class="nav-link">Projects</a></li>
+                    <li><a href="/about/" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/_j256p" target="_blank">
+                <img src="/assets/image/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/bambi0256" target="_blank">
+                <img src="/assets/image/github-icon.png" alt="GitHub">
+            </a>
+        </div>
+    </div>
+    <script src="/assets/js/set-current.js" defer></script>
+    <script src="/assets/js/hamburger.js" defer></script>
+</header>
+
+    <main>
+        <section class="write-section">
+            <!-- 주인 검증 -->
+            <div id="auth-gate">
+                <h1>글 작성</h1>
+                <p class="description">
+                    블로그 주인 전용 페이지입니다. 이 저장소에 쓰기 권한이 있는 GitHub Fine-grained 토큰(Contents: Read and write)을 입력하세요.
+                    토큰은 이 탭이 열려 있는 동안에만 브라우저에 보관됩니다.
+                </p>
+                <form id="auth-form">
+                    <input type="password" id="token-input" placeholder="GitHub Fine-grained token" autocomplete="off" required>
+                    <button type="submit">검증</button>
+                </form>
+                <p id="auth-message" role="status"></p>
+            </div>
+
+            <!-- 작성 영역 (검증 통과 시 표시) -->
+            <div id="editor-area" hidden>
+                <h1>글 작성</h1>
+                <p class="description"><span id="auth-user"></span> 계정으로 인증되었습니다.</p>
+                <button type="button" id="logout-button">로그아웃</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+    <div class="container footer-content">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects/">Projects</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/_j256p" target="_blank">
+                <img src="/assets/image/instagram-icon.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/bambi0256" target="_blank">
+                <img src="/assets/image/github-icon.png" alt="GitHub">
+            </a>
+        </div>
+        <p style="text-align: center;">2024 ⓒ B.Bee | (Font: 데브시스터즈)</p>
+    </div>
+</footer>
+
+    <script src="/assets/js/auth.js"></script>
+    <script src="/assets/js/write.js"></script>
+</body>
+</html>

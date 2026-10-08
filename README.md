@@ -24,6 +24,7 @@ mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python �
 ├── templates/                # [소스] Jinja2 템플릿
 │   ├── index.html            #   홈
 │   ├── about.html            #   소개
+│   ├── write.html            #   글 작성 (주인 검증 게이트)
 │   ├── projects.html         #   전체 프로젝트 목록
 │   ├── project-page.html     #   프로젝트별 포스트 목록
 │   ├── project-post.html     #   개별 포스트
@@ -33,7 +34,7 @@ mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python �
 │   │   ├── config.py                #   경로 상수·공통 함수
 │   │   ├── update-all-projects.py   #   md → 포스트/프로젝트 HTML + JSON
 │   │   └── update-home-page.py      #   홈 / Projects / About 페이지
-│   ├── js/                   # [소스] hamburger, set-current, toc, project-posts
+│   ├── js/                   # [소스] hamburger, set-current, toc, project-posts, auth, write
 │   ├── css/                  # [소스] 스타일
 │   └── image/                # [소스] 이미지
 ├── json/
@@ -41,7 +42,7 @@ mdposts/<project>/*.md  ──push──▶  GitHub Actions  ──▶  Python �
 │   ├── projects-metadata.json        # [생성물]
 │   └── <project>-posts.json          # [생성물] 프로젝트별 포스트 목록 (project-posts.js가 fetch)
 ├── index.html                # [생성물] 홈
-├── about/  projects/         # [생성물] 소개 / 프로젝트 / 포스트 페이지
+├── about/  projects/  write/ # [생성물] 소개 / 프로젝트·포스트 / 글 작성(주인 전용) 페이지
 ├── docs/                     # 프로젝트 문서 (vision, decisions)
 └── .github/workflows/        # 빌드·배포
 ```

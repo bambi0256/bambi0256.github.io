@@ -1,4 +1,4 @@
-"""홈(index.html), Projects, About 페이지를 생성한다. update-all-projects.py 실행 후에 실행해야 한다."""
+"""홈(index.html), Projects, About, Write 페이지를 생성한다. update-all-projects.py 실행 후에 실행해야 한다."""
 import os
 
 import config
@@ -48,8 +48,15 @@ def update_about_page():
     print("✅ About page updated successfully!")
 
 
+def update_write_page():
+    html = config.get_template(config.TEMPLATE_WRITE).render()
+    config.write_html(os.path.join(config.WRITE_DIR, 'index.html'), html)
+    print("✅ Write page updated successfully!")
+
+
 if __name__ == "__main__":
     projects_data = load_projects_metadata()
     update_homepage(projects_data)
     update_projects_page(projects_data)
     update_about_page()
+    update_write_page()
